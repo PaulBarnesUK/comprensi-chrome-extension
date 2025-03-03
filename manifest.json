@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Video Difficulty Rater",
+  "version": "1.0.0",
+  "description": "Rate and track the difficulty of YouTube videos for language learning",
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "*://*.youtube.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background/index.ts",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["src/content/index.ts"]
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup/index.html"
+  },
+  "icons": {
+    "16": "src/assets/icon32.png",
+    "32": "src/assets/icon32.png",
+    "48": "src/assets/icon32.png",
+    "128": "src/assets/icon32.png"
+  }
+} 

@@ -1,0 +1,27 @@
+{
+  "name": "youtube-language-level",
+  "version": "1.0.0",
+  "description": "Chrome extension for rating and tracking YouTube video difficulty for language learning",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "check": "tsc --noEmit"
+  },
+  "keywords": [
+    "chrome-extension",
+    "youtube",
+    "language-learning",
+    "difficulty-rating"
+  ],
+  "author": "Comprensi",
+  "license": "ISC",
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^2.0.0-beta.23",
+    "@types/chrome": "^0.0.254",
+    "@types/node": "^20.11.24",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.4"
+  }
+}
