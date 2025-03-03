@@ -8,15 +8,15 @@
 - [x] Create base privacy policy
 
 ## Core Extension Structure
-- [ ] Create directory structure for extension components
+- [x] Create directory structure for extension components
   - background service worker
   - content scripts
   - popup
   - utils
   - types
-- [ ] Set up TypeScript configuration
-- [ ] Configure build process
-- [ ] Implement basic message passing between components
+- [x] Set up TypeScript configuration
+- [x] Configure build process
+- [x] Implement basic message passing between components
 
 ## Video Watching Tracking
 - [ ] Implement content script for detecting video watch events

@@ -1,6 +1,6 @@
 # Language Level for YouTube
 
-A Chrome extension that helps language learners track and rate the difficulty of YouTube videos through pairwise comparisons using the TrueSkill rating system.
+A Chrome extension that helps language learners by estimating the difficulty level of YouTube videos through community feedback. By collaboratively rating videos through pairwise comparisons, users contribute to a community-driven system that enhances everyone's learning experience.
 
 ## Features
 
