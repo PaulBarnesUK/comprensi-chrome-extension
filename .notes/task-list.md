@@ -19,11 +19,9 @@
 - [x] Implement basic message passing between components
 
 ## Video Watching Tracking
-- [ ] Implement content script for detecting video watch events
-- [ ] Create storage schema for watched videos
-- [ ] Set up chrome.storage.local for storing watch history
-- [ ] Implement watch time threshold detection
-- [ ] Add video metadata collection (title, ID, URL, etc.)
+- [x] Implement content script for detecting video watch events
+- [x] Create storage schema for watched videos
+- [x] Set up chrome.storage.local for storing watch history
 
 ## Pairwise Comparison UI
 - [ ] Design UI for comparison prompt
