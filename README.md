@@ -55,6 +55,54 @@ src/
 └── utils/         # Shared utilities
 ```
 
+### Directory Structure Documentation
+
+This project includes a Bash script that generates a detailed directory structure markdown file:
+
+- `update_directory.sh` - Generates a comprehensive directory structure in `.notes/directory_structure.md`
+
+To update the directory structure documentation:
+
+```bash
+./update_directory.sh
+```
+
+This is to give AI coders context of the full codebase.
+
+#### Git Hook Setup (Optional)
+
+For developers who want to keep the directory structure documentation automatically updated:
+
+1. Create a pre-commit hook:
+   ```bash
+   cp .git/hooks/pre-commit.sample .git/hooks/pre-commit
+   ```
+
+2. Edit the pre-commit hook:
+   ```bash
+   #!/bin/bash
+   
+   # Get the root directory of the Git repository
+   REPO_ROOT=$(git rev-parse --show-toplevel)
+   
+   echo "Running directory structure update script..."
+   # Run the update_directory.sh script
+   $REPO_ROOT/update_directory.sh
+   
+   # Add the updated directory structure file to the commit
+   git add $REPO_ROOT/.notes/directory_structure.md
+   
+   # Exit with success status
+   exit 0
+   ```
+
+3. Make it executable:
+   ```bash
+   chmod +x .git/hooks/pre-commit
+   ```
+
+This will automatically update the directory structure documentation before each commit.
+
 ## Contributing
 
 1. Fork the repository
