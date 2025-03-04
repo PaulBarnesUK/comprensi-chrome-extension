@@ -16,7 +16,7 @@ export function setupWatchTimeTracking(state: VideoWatcherState): void {
             sendWatchProgressUpdate(state);
             state.lastReportedTime = videoElement.currentTime;
         }
-    }, 1000);
+    }, 2500);
 }
 
 export function updateWatchTime(state: VideoWatcherState, videoElement: HTMLVideoElement): void {

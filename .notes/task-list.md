@@ -61,3 +61,6 @@
 - [ ] Write store description
 - [ ] Implement update mechanism
 
+## TODOs
+- [ ] Fix video watch tracking logic (very brittle right now) & remove video metadata as it's not necessary
+
