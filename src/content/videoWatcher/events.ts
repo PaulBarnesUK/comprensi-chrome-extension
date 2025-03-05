@@ -1,48 +1,48 @@
-import { VideoWatcherState } from './types';
+import { endVideoTracking } from './detector';
 import { updateWatchTime, sendWatchProgressUpdate } from './reporting';
 import { getVideoElement } from './selectors';
-import { endVideoTracking } from './detector';
+import { VideoWatcherState } from './types';
 
 export function attachVideoEventListeners(
-    videoElement: HTMLVideoElement,
-    state: VideoWatcherState
+  videoElement: HTMLVideoElement,
+  state: VideoWatcherState
 ): void {
-    const handlePause = createHandleVideoPause(state);
-    const handleEnded = createHandleVideoEnded(state);
+  const handlePause = createHandleVideoPause(state);
+  const handleEnded = createHandleVideoEnded(state);
 
-    videoElement.addEventListener('pause', handlePause);
-    videoElement.addEventListener('ended', handleEnded);
-    
-    state.eventHandlers = {
-        pause: handlePause,
-        ended: handleEnded
-    };
+  videoElement.addEventListener('pause', handlePause);
+  videoElement.addEventListener('ended', handleEnded);
+
+  state.eventHandlers = {
+    pause: handlePause,
+    ended: handleEnded,
+  };
 }
 
 export function detachVideoEventListeners(
-    videoElement: HTMLVideoElement,
-    state: VideoWatcherState
+  videoElement: HTMLVideoElement,
+  state: VideoWatcherState
 ): void {
-    if (!state.eventHandlers) return;
+  if (!state.eventHandlers) return;
 
-    videoElement.removeEventListener('pause', state.eventHandlers.pause);
-    videoElement.removeEventListener('ended', state.eventHandlers.ended);
+  videoElement.removeEventListener('pause', state.eventHandlers.pause);
+  videoElement.removeEventListener('ended', state.eventHandlers.ended);
 
-    state.eventHandlers = null;
+  state.eventHandlers = null;
 }
 
 export function createHandleVideoPause(state: VideoWatcherState): EventListener {
-    return () => {
-        const videoElement = getVideoElement();
-        if (!videoElement || videoElement.paused) return;
+  return () => {
+    const videoElement = getVideoElement();
+    if (!videoElement || videoElement.paused) return;
 
-        updateWatchTime(state, videoElement);
-        sendWatchProgressUpdate(state);
-    };
+    updateWatchTime(state, videoElement);
+    sendWatchProgressUpdate(state);
+  };
 }
 
 export function createHandleVideoEnded(state: VideoWatcherState): EventListener {
-    return () => {
-        endVideoTracking(state);
-    };
-} 
+  return () => {
+    endVideoTracking(state);
+  };
+}

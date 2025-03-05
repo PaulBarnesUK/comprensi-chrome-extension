@@ -9,8 +9,8 @@ console.log('Popup initialized');
 
 document.addEventListener('DOMContentLoaded', async () => {
   // Load user settings
-  const { settings } = await chrome.storage.local.get([ 'settings' ]);
-  const { selectedLanguages } = await chrome.storage.sync.get([ 'selectedLanguages' ]);
+  const { settings } = await chrome.storage.local.get(['settings']);
+  const { selectedLanguages } = await chrome.storage.sync.get(['selectedLanguages']);
 
   console.log('Current settings:', { selectedLanguages, settings });
-}); 
+});

@@ -18,7 +18,7 @@ export interface ExtensionSettings {
   maximumWatchTimeSeconds: number;
 }
 
-export type MessageType = 
+export type MessageType =
   | 'CONTENT_SCRIPT_LOADED'
   | 'VIDEO_WATCHED'
   | 'GET_WATCH_HISTORY'

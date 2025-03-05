@@ -6,6 +6,7 @@
 - [x] Set up development environment with hot reloading
 - [x] Create initial README
 - [x] Create base privacy policy
+- [x] Set up linting and code formatting
 
 ## Core Extension Structure
 - [x] Create directory structure for extension components

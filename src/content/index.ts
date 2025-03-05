@@ -12,6 +12,6 @@ initVideoWatchDetector();
 // 4. DOM observation for dynamic content
 
 // Send initialization message to background script
-chrome.runtime.sendMessage({ type: 'CONTENT_SCRIPT_LOADED' }, (response) => {
+chrome.runtime.sendMessage({ type: 'CONTENT_SCRIPT_LOADED' }, response => {
   console.log('Background script response:', response);
-}); 
+});
