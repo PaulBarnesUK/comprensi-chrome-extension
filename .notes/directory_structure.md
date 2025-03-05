@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-03-05 12:44:08
+Generated on 2025-03-05 20:15:06
 
 ## Core Components
 
@@ -7,15 +7,22 @@ Generated on 2025-03-05 12:44:08
 - PRIVACY.md _(4 KB)_
 - README.md _(4 KB)_
 - **designs/**
-    - pairwise-comparison-modal.png _(236 KB)_- eslint.config.js _(4 KB)_
+    - pairwise-comparison-modal-desktop.png _(300 KB)_
+    - pairwise-comparison-modal-mobile.png _(164 KB)_- eslint.config.js _(4 KB)_
 - manifest.json _(4 KB)_
-- package-lock.json _(196 KB)_
+- package-lock.json _(216 KB)_
 - package.json _(4 KB)_
 - **src/**
     - **assets/**
         - icon32.png _(4 KB)_    - **background/**
-        - index.ts _(4 KB)_    - **content/**
+        - index.ts _(4 KB)_    - **components/**
+        - **ComparisonModal/**
+            - ComparisonModal.module.scss _(4 KB)_
+            - ComparisonModal.tsx _(8 KB)_
+            - index.ts _(4 KB)_        - index.ts _(4 KB)_    - **content/**
+        - comparisonManager.ts _(4 KB)_
         - index.ts _(4 KB)_
+        - videoComparison.ts _(4 KB)_
         - **videoWatcher/**
             - detector.ts _(4 KB)_
             - events.ts _(4 KB)_
@@ -29,7 +36,9 @@ Generated on 2025-03-05 12:44:08
                 - url.ts _(4 KB)_    - **popup/**
         - index.html _(4 KB)_
         - index.ts _(4 KB)_    - **types/**
-        - index.ts _(4 KB)_    - **utils/**
+        - index.ts _(4 KB)_
+        - scss.d.ts _(4 KB)_    - **utils/**
+        - reactUtils.tsx _(4 KB)_
         - storage.ts _(4 KB)_- tsconfig.json _(4 KB)_
 - update_directory.sh _(4 KB)_
 - vite.config.ts _(4 KB)_

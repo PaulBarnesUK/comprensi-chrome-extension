@@ -28,6 +28,7 @@
     "@types/node": "^20.11.24",
     "@typescript-eslint/eslint-plugin": "^8.26.0",
     "@typescript-eslint/parser": "^8.26.0",
+    "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.21.0",
     "eslint-config-prettier": "^10.0.2",
     "eslint-plugin-import": "^2.31.0",
@@ -38,5 +39,12 @@
     "prettier": "^3.5.3",
     "typescript": "^5.3.3",
     "vite": "^5.1.4"
+  },
+  "dependencies": {
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sass": "^1.85.1"
   }
 }
