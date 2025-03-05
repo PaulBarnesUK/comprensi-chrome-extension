@@ -1,5 +1,6 @@
 // Content script for YouTube Video Difficulty Rater
 import { initVideoWatchDetector } from './videoWatcher';
+import './videoComparison';
 
 console.log('Content script initialized');
 
@@ -8,7 +9,7 @@ initVideoWatchDetector();
 // This will be expanded to handle:
 // 1. Video watch detection - IMPLEMENTED
 // 2. Difficulty indicator injection
-// 3. Comparison UI
+// 3. Comparison UI - IMPLEMENTED
 // 4. DOM observation for dynamic content
 
 // Send initialization message to background script

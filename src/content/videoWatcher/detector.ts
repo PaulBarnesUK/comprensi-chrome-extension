@@ -1,4 +1,5 @@
 import { getWatchedVideo } from '../../utils/storage';
+import { handleVideoEnd } from '../videoComparison';
 
 import { attachVideoEventListeners, detachVideoEventListeners } from './events';
 import { setupWatchTimeTracking, sendWatchProgressUpdate } from './reporting';
@@ -73,10 +74,11 @@ async function initializeWatchState(state: VideoWatcherState): Promise<void> {
 }
 
 export async function endVideoTracking(state: VideoWatcherState): Promise<void> {
-  if (state.watchIntervalId === null) return;
+    console.log('endVideoTracking', state);
+//   if (state.watchIntervalId === null) return;
 
-  window.clearInterval(state.watchIntervalId);
-  state.watchIntervalId = null;
+//   window.clearInterval(state.watchIntervalId);
+//   state.watchIntervalId = null;
 
   const videoElement = getVideoElement();
   if (videoElement && state.eventHandlers) {
@@ -84,7 +86,16 @@ export async function endVideoTracking(state: VideoWatcherState): Promise<void> 
   }
 
   if (state.currentVideo) {
-    sendWatchProgressUpdate(state);
+    const watchData = sendWatchProgressUpdate(state);
+
+    console.log('watchData', watchData);
+    
+    if (watchData && watchData.watched) {
+      // Add a small delay to ensure the video has fully ended
+      setTimeout(() => {
+        handleVideoEnd(watchData);
+      }, 500);
+    }
   }
 
   console.log('Stopped tracking video');

@@ -1,3 +1,4 @@
+import { WatchData } from '../../types';
 import { getVideoElement } from './selectors';
 import { VideoWatcherState } from './types';
 import { createWatchData, calculateWatchPercentage } from './utils/calculations';
@@ -33,8 +34,8 @@ export function shouldReportProgress(state: VideoWatcherState): boolean {
   return currentWatchPercentage > state.watchPercentage;
 }
 
-export function sendWatchProgressUpdate(state: VideoWatcherState): void {
-  if (!state.currentVideo) return;
+export function sendWatchProgressUpdate(state: VideoWatcherState): WatchData | null {
+  if (!state.currentVideo) return null;
 
   const watchData = createWatchData(state.currentVideo, state.totalWatchTime);
 
@@ -53,4 +54,6 @@ export function sendWatchProgressUpdate(state: VideoWatcherState): void {
       }
     }
   );
+  
+  return watchData;
 }
