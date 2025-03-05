@@ -83,3 +83,35 @@ We will implement these practices throughout development rather than as isolated
 - Important to implement efficient caching for API responses
 - Must ensure unobtrusive user experience
 - Privacy considerations for watch history storage 
+
+## March 5, 2024 - Pairwise Comparison UI Design
+
+### UI/UX Decisions
+- Implemented a full-page modal design for video comparisons
+- Modal will appear automatically when a video ends
+- Modal includes three options: "This was harder" (for each video) and "Both equally difficult"
+- Added community-focused messaging: "Your feedback helps fellow learners find videos that match their level. Every vote counts!"
+
+### Design Elements
+- Clear question: "Which video was harder to understand?"
+- Video thumbnails with channel information and view counts
+- Explicit action buttons with clear labeling
+- Option to skip comparison
+- Semi-transparent overlay to focus attention
+
+### Implementation Plan
+- For the first iteration, we will only implement the end-of-video modal
+- Future iterations may include additional trigger points in the user journey
+- Need to ensure the modal doesn't appear too frequently to avoid user fatigue
+
+### Design Considerations
+- Balance between being noticeable and not overly intrusive
+- Clear visual hierarchy to guide user actions
+- Community-focused language to encourage participation
+- Simple, straightforward interaction flow
+
+### Next Steps
+- Implement the modal UI in code
+- Create logic for determining when to show comparisons
+- Test user experience with different timing scenarios
+- Develop backend integration for sending comparison results 

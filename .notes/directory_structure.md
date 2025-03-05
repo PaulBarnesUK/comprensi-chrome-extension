@@ -1,14 +1,15 @@
 # Chrome Extension Directory Structure
-Generated on 2025-03-05 09:12:17
+Generated on 2025-03-05 12:44:08
 
 ## Core Components
 
 - LICENSE _(4 KB)_
 - PRIVACY.md _(4 KB)_
 - README.md _(4 KB)_
-- eslint.config.js _(4 KB)_
+- **designs/**
+    - pairwise-comparison-modal.png _(236 KB)_- eslint.config.js _(4 KB)_
 - manifest.json _(4 KB)_
-- package-lock.json _(184 KB)_
+- package-lock.json _(196 KB)_
 - package.json _(4 KB)_
 - **src/**
     - **assets/**
