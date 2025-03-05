@@ -10,6 +10,7 @@ export interface WatchData extends VideoMetadata {
   watchTimeSeconds: number;
   watchPercentage: number;
   lastWatched: number;
+  watched: boolean;
 }
 
 export interface ExtensionSettings {

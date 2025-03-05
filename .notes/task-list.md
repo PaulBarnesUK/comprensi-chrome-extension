@@ -23,6 +23,8 @@
 - [x] Implement content script for detecting video watch events
 - [x] Create storage schema for watched videos
 - [x] Set up chrome.storage.local for storing watch history
+- [x] Implement watch time threshold detection
+- [x] Add video metadata collection (title, ID, URL, etc.) NOT NECESSARY, TO BE REMOVED IN FUTURE
 
 ## Pairwise Comparison UI
 - [ ] Design UI for comparison prompt

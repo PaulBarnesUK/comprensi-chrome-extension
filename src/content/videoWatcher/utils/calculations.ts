@@ -13,5 +13,6 @@ export function createWatchData(videoMetadata: VideoMetadata, watchTimeSeconds: 
     watchTimeSeconds: Math.floor(watchTimeSeconds),
     watchPercentage,
     lastWatched: Date.now(),
+    watched: false,
   };
 }

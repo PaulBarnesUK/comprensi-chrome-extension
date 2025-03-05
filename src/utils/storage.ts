@@ -2,7 +2,7 @@ import { StorageSchema, WatchData } from '../types';
 
 export async function getWatchedVideo(videoId: string): Promise<WatchData | null> {
   try {
-    const result = (await chrome.storage.local.get(['watchedVideos'])) as Partial<StorageSchema>;
+    const result = await chrome.storage.local.get(['watchedVideos']) as Partial<StorageSchema>;
     return (result.watchedVideos && result.watchedVideos[videoId]) || null;
   } catch (error) {
     console.error('Error getting watched video:', error);
@@ -12,7 +12,7 @@ export async function getWatchedVideo(videoId: string): Promise<WatchData | null
 
 export async function saveWatchedVideo(watchData: WatchData): Promise<void> {
   try {
-    const result = (await chrome.storage.local.get(['watchedVideos'])) as Partial<StorageSchema>;
+    const result = await chrome.storage.local.get(['watchedVideos']) as Partial<StorageSchema>;
     const watchedVideos = result.watchedVideos || {};
 
     watchedVideos[watchData.videoId] = watchData;
@@ -34,7 +34,7 @@ export async function clearWatchedVideos(): Promise<void> {
 
 export async function getSettings(): Promise<StorageSchema['settings']['settings']> {
   try {
-    const result = (await chrome.storage.local.get(['settings'])) as Partial<StorageSchema>;
+    const result = await chrome.storage.local.get(['settings']) as Partial<StorageSchema>;
     return result.settings?.settings || getDefaultSettings();
   } catch (error) {
     console.error('Error getting settings:', error);
