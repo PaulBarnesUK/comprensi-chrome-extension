@@ -34,12 +34,12 @@
 - [ ] Implement API client for sending comparison results
 
 ## Video Difficulty Display
-- [ ] Create content script for thumbnail modification
-- [ ] Implement video ID extraction from page
-- [ ] Create batch API client for fetching difficulty ratings
+- [x] Create content script for thumbnail modification
+- [x] Implement video ID extraction from page
+- [x] Create batch API client for fetching difficulty ratings
 - [ ] Design and implement difficulty indicator UI
-- [ ] Handle dynamic page loading (scroll events)
-- [ ] Add mutation observers for dynamic content
+- [x] Handle dynamic page loading (scroll events)
+- [x] Add mutation observers for dynamic content
 
 ## Extension Popup
 - [ ] Design popup UI
