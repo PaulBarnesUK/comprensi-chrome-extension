@@ -30,8 +30,9 @@ chrome.runtime.onInstalled.addListener(details => {
  * 2. Both minimum conditions are met:
  *    - Watch time is at least the minimum seconds (e.g., 30 seconds)
  *    - Watch percentage is at least the minimum percentage (e.g., 70%)
+ * @returns The updated watch data with the watched property set
  */
-async function handleVideoWatched(watchData: WatchData): Promise<void> {
+async function handleVideoWatched(watchData: WatchData): Promise<WatchData> {
   try {
     const settings = await getSettings();
 
@@ -43,7 +44,9 @@ async function handleVideoWatched(watchData: WatchData): Promise<void> {
     watchData.watched = isWatched;
     
     await saveWatchedVideo(watchData);
-    console.log('Saved watch data for video:', watchData.videoId);
+    console.log('Saved watch data for video:', watchData.videoId, 'Watched:', isWatched);
+    
+    return watchData;
   } catch (error) {
     console.error('Error storing watch data:', error);
     throw error;
@@ -55,7 +58,10 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
 
   if (isVideoWatchedMessage(message)) {
     handleVideoWatched(message.data)
-      .then(() => sendResponse({ success: true }))
+      .then((updatedWatchData) => sendResponse({ 
+        success: true,
+        watchData: updatedWatchData
+      }))
       .catch(error => {
         console.error('Error handling video watched:', error);
         sendResponse({ success: false, error: error.message });
@@ -63,6 +69,12 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
     return true;
   }
 
-  sendResponse({ received: true });
-  return true;
+  // Handle other message types
+  if (message.type === 'CONTENT_SCRIPT_LOADED') {
+    sendResponse({ status: 'Background script acknowledged content script' });
+    return;
+  }
+
+  // Default response for unhandled message types
+  sendResponse({ status: 'Unknown message type' });
 });

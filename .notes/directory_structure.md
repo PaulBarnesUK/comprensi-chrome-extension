@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-03-05 20:16:12
+Generated on 2025-03-06 10:41:19
 
 ## Core Components
 
@@ -20,7 +20,7 @@ Generated on 2025-03-05 20:16:12
             - ComparisonModal.module.scss _(4 KB)_
             - ComparisonModal.tsx _(8 KB)_
             - index.ts _(4 KB)_        - index.ts _(4 KB)_    - **content/**
-        - comparisonManager.ts _(4 KB)_
+        - comparisonModalManager.ts _(4 KB)_
         - index.ts _(4 KB)_
         - videoComparison.ts _(4 KB)_
         - **videoWatcher/**

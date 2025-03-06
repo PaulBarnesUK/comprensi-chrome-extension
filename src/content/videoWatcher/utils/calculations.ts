@@ -2,15 +2,17 @@ import { VideoMetadata, WatchData } from '../../../types';
 
 export function calculateWatchPercentage(watchTimeSeconds: number, videoDuration: number): number {
   if (!videoDuration) return 0;
-  return Math.min(100, (watchTimeSeconds / videoDuration) * 100);
+  const validWatchTime = Math.max(0, watchTimeSeconds);
+  return Math.min(100, (validWatchTime / videoDuration) * 100);
 }
 
 export function createWatchData(videoMetadata: VideoMetadata, watchTimeSeconds: number): WatchData {
-  const watchPercentage = calculateWatchPercentage(watchTimeSeconds, videoMetadata.duration);
+  const validWatchTime = Math.max(0, watchTimeSeconds);
+  const watchPercentage = calculateWatchPercentage(validWatchTime, videoMetadata.duration);
 
   return {
     ...videoMetadata,
-    watchTimeSeconds: Math.floor(watchTimeSeconds),
+    watchTimeSeconds: Math.floor(validWatchTime),
     watchPercentage,
     lastWatched: Date.now(),
     watched: false,

@@ -65,20 +65,26 @@ async function initializeWatchState(state: VideoWatcherState): Promise<void> {
   if (previousWatchData) {
     state.totalWatchTime = previousWatchData.watchTimeSeconds || 0;
     state.watchPercentage = previousWatchData.watchPercentage || 0;
-    state.lastReportedTime = state.totalWatchTime;
   } else {
     state.totalWatchTime = 0;
-    state.lastReportedTime = 0;
     state.watchPercentage = 0;
   }
+  
+  const videoElement = getVideoElement();
+  state.lastReportedTime = videoElement ? videoElement.currentTime : 0;
 }
 
 export async function endVideoTracking(state: VideoWatcherState): Promise<void> {
-    console.log('endVideoTracking', state);
-//   if (state.watchIntervalId === null) return;
+    console.log('endVideoTracking called with state:', {
+        hasInterval: state.watchIntervalId !== null,
+        hasVideo: !!state.currentVideo,
+        videoId: state.currentVideo?.videoId
+      });
 
-//   window.clearInterval(state.watchIntervalId);
-//   state.watchIntervalId = null;
+  if (state.watchIntervalId === null) return;
+
+  window.clearInterval(state.watchIntervalId);
+  state.watchIntervalId = null;
 
   const videoElement = getVideoElement();
   if (videoElement && state.eventHandlers) {
@@ -86,15 +92,19 @@ export async function endVideoTracking(state: VideoWatcherState): Promise<void> 
   }
 
   if (state.currentVideo) {
-    const watchData = sendWatchProgressUpdate(state);
-
-    console.log('watchData', watchData);
-    
-    if (watchData && watchData.watched) {
-      // Add a small delay to ensure the video has fully ended
-      setTimeout(() => {
-        handleVideoEnd(watchData);
-      }, 500);
+    try {
+      const watchData = await sendWatchProgressUpdate(state);
+      
+      console.log('Video tracking ended, watch data:', watchData);
+      
+      if (watchData && watchData.watched) {
+        // Add a small delay to ensure the video has fully ended
+        setTimeout(() => {
+          handleVideoEnd(watchData);
+        }, 500);
+      }
+    } catch (error) {
+      console.error('Error sending final watch progress update:', error);
     }
   }
 

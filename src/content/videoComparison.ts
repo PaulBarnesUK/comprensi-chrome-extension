@@ -1,5 +1,5 @@
 import { WatchData } from '../types';
-import { comparisonManager } from './comparisonManager';
+import { comparisonManager } from './comparisonModalManager';
 
 /**
  * Fetches the most recently watched videos from storage
