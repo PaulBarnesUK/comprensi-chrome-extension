@@ -28,6 +28,7 @@ export default defineConfig({
         content: resolve(__dirname, 'src/content/index.ts'),
         popup: resolve(__dirname, 'src/popup/index.html'),
       }
-    }
+    },
+    assetsInlineLimit: 100000,
   },
 }); 

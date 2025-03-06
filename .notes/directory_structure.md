@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-03-06 21:07:03
+Generated on 2025-03-06 21:16:58
 
 ## Core Components
 
@@ -18,7 +18,7 @@ Generated on 2025-03-06 21:07:03
     - **assets/**
         - **flags/**
             - de.svg _(4 KB)_
-            - es.svg _(84 KB)_
+            - es.svg _(4 KB)_
             - fr.svg _(4 KB)_
             - it.svg _(4 KB)_
             - pt.svg _(12 KB)_        - icon32.png _(4 KB)_    - **background/**
