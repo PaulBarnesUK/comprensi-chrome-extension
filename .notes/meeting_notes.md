@@ -138,7 +138,6 @@ We've decided to break down the Video Difficulty Display feature into smaller, m
 
 4. **Thumbnail Modification**
    - Create functions to inject indicators into thumbnails
-   - Implement styling based on difficulty levels
    - Test with static/mocked data
 
 5. **Dynamic Content Handling**
@@ -162,3 +161,59 @@ We've decided to break down the Video Difficulty Display feature into smaller, m
 - Begin implementation of the basic difficulty indicator component
 - Create the directory structure for the feature
 - Design the indicator UI based on the provided designs 
+
+## March 6, 2024 - Video ID Extraction Approach (Chunk 2)
+
+### Data Structure Design
+We've decided on the following data structure for tracking videos:
+
+```typescript
+interface DifficultyData {
+  score: number;
+  sigma: number; // Confidence/uncertainty
+  language: string; // Language of the video content
+}
+
+interface VideoData {
+  videoId: string;
+  difficulty?: DifficultyData;
+}
+
+// Main tracking object
+const videoRegistry: Record<string, VideoData> = {};
+```
+
+### Implementation Approach
+1. **DOM Processing**:
+   - Use data attributes to mark processed thumbnails (`data-difficulty-processed="true"`)
+   - Use separate attribute for thumbnails with indicators (`data-difficulty-indicator="true"`)
+   - Query selectors will filter out already processed elements for efficiency
+
+2. **Thumbnail Scanning**:
+   - Scan for thumbnails that haven't been processed yet
+   - Extract video IDs and add to registry if not already present
+   - Mark thumbnails as processed in the DOM
+   - Batch fetch difficulty data for new video IDs only
+
+3. **Indicator Injection**:
+   - After receiving API data, update the registry with difficulty information
+   - Find thumbnail elements for each video ID that don't have indicators yet
+   - Create and inject difficulty indicators using the React component
+   - Use language information from the API response
+
+4. **Dynamic Content Handling**:
+   - Use MutationObserver to detect new thumbnails
+   - Apply the same processing logic to newly detected thumbnails
+   - Implement debouncing to avoid excessive API calls during scrolling
+
+### Key Decisions
+- Use DOM data attributes rather than in-memory flags for tracking processed elements
+- Only query for unprocessed elements to improve performance
+- Wait for API data to provide language information
+- Separate the concepts of "processed" (scanned and in registry) and "has indicator" (visual element added)
+
+### Next Steps
+- Implement video ID extraction from thumbnail elements
+- Create the registry data structure
+- Set up thumbnail scanning functionality
+- Create a mock API client for testing 
