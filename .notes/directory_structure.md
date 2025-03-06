@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-03-06 11:00:09
+Generated on 2025-03-06 13:22:51
 
 ## Core Components
 
@@ -7,6 +7,8 @@ Generated on 2025-03-06 11:00:09
 - PRIVACY.md _(4 KB)_
 - README.md _(4 KB)_
 - **designs/**
+    - difficulty-display-thumbnail-example.png _(212 KB)_
+    - difficulty-display-variants.png _(12 KB)_
     - pairwise-comparison-modal-desktop.png _(300 KB)_
     - pairwise-comparison-modal-mobile.png _(164 KB)_- eslint.config.js _(4 KB)_
 - manifest.json _(4 KB)_
@@ -14,14 +16,23 @@ Generated on 2025-03-06 11:00:09
 - package.json _(4 KB)_
 - **src/**
     - **assets/**
-        - icon32.png _(4 KB)_    - **background/**
+        - **flags/**
+            - de.svg _(4 KB)_
+            - es.svg _(84 KB)_
+            - fr.svg _(4 KB)_
+            - it.svg _(4 KB)_
+            - pt.svg _(12 KB)_        - icon32.png _(4 KB)_    - **background/**
         - index.ts _(4 KB)_    - **components/**
         - **ComparisonModal/**
             - ComparisonModal.module.scss _(4 KB)_
             - ComparisonModal.tsx _(8 KB)_
+            - index.ts _(4 KB)_        - **DifficultyIndicator/**
+            - DifficultyIndicator.module.scss _(4 KB)_
+            - DifficultyIndicator.tsx _(4 KB)_
             - index.ts _(4 KB)_        - index.ts _(4 KB)_    - **content/**
         - comparisonModalManager.ts _(4 KB)_
-        - index.ts _(4 KB)_
+        - **difficultyDisplay/**
+            - index.tsx _(4 KB)_        - index.ts _(4 KB)_
         - videoComparison.ts _(4 KB)_
         - **videoWatcher/**
             - detector.ts _(4 KB)_
@@ -37,7 +48,8 @@ Generated on 2025-03-06 11:00:09
         - index.html _(4 KB)_
         - index.ts _(4 KB)_    - **types/**
         - index.ts _(4 KB)_
-        - scss.d.ts _(4 KB)_    - **utils/**
+        - scss.d.ts _(4 KB)_
+        - svg.d.ts _(4 KB)_    - **utils/**
         - reactUtils.tsx _(4 KB)_
         - storage.ts _(4 KB)_- tsconfig.json _(4 KB)_
 - update_directory.sh _(4 KB)_
