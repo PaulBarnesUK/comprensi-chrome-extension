@@ -27,10 +27,10 @@
 - [x] Add video metadata collection (title, ID, URL, etc.) NOT NECESSARY, TO BE REMOVED IN FUTURE
 
 ## Pairwise Comparison UI
-- [ ] Design UI for comparison prompt
-- [ ] Implement comparison modal/popup component
-- [ ] Create logic for selecting which videos to compare
-- [ ] Add user interaction handlers
+- [x] Design UI for comparison prompt
+- [x] Implement comparison modal/popup component
+- [x] Create logic for selecting which videos to compare
+- [x] Add user interaction handlers
 - [ ] Implement API client for sending comparison results
 
 ## Video Difficulty Display
