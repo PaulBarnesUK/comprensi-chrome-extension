@@ -2,6 +2,7 @@ import { findUnprocessedThumbnails, markThumbnailAsProcessed } from './core/thum
 import { extractVideoIdFromThumbnail } from './core/videoIdExtractor';
 import { observeDomChanges } from './core/domObserver';
 import { mockFetchDifficultyData } from './core/mockApiClient';
+import { processVideosForIndicators } from './core/indicatorManager';
 import { VideoRegistry, DifficultyData } from '../../types/difficulty';
 
 const videoRegistry: VideoRegistry = {};
@@ -80,8 +81,7 @@ async function fetchDifficultyDataForVideos(videoIds: string[]): Promise<void> {
     }
     
     updateRegistryWithDifficultyData(response.data.videos);
-    
-    // In the next chunk, we'll implement the indicator injection here
+    processVideosForIndicators(videoRegistry);
   } catch (error) {
     console.error('Error fetching difficulty data:', error);
   }
