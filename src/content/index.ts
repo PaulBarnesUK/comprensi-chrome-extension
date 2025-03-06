@@ -6,7 +6,7 @@ import { initDifficultyDisplay } from './difficultyDisplay';
 console.log('Content script initialized');
 
 initVideoWatchDetector();
-initDifficultyDisplay(); // Initialize difficulty display feature
+initDifficultyDisplay();
 
 // This will be expanded to handle:
 // 1. Video watch detection - IMPLEMENTED

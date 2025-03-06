@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-03-06 14:32:48
+Generated on 2025-03-06 20:18:10
 
 ## Core Components
 
@@ -33,11 +33,15 @@ Generated on 2025-03-06 14:32:48
         - comparisonModalManager.ts _(4 KB)_
         - **difficultyDisplay/**
             - **constants/**
+                - apiConfig.ts _(4 KB)_
                 - urlPatterns.ts _(4 KB)_            - **core/**
+                - apiClient.ts _(4 KB)_
                 - domObserver.ts _(4 KB)_
+                - mockApiClient.ts _(4 KB)_
                 - thumbnailFinder.ts _(4 KB)_
                 - videoIdExtractor.ts _(4 KB)_            - index.tsx _(4 KB)_
             - **utils/**
+                - apiUtils.ts _(4 KB)_
                 - elementParser.ts _(4 KB)_
                 - urlParser.ts _(4 KB)_        - index.ts _(4 KB)_
         - videoComparison.ts _(4 KB)_
@@ -54,6 +58,7 @@ Generated on 2025-03-06 14:32:48
                 - url.ts _(4 KB)_    - **popup/**
         - index.html _(4 KB)_
         - index.ts _(4 KB)_    - **types/**
+        - api.ts _(4 KB)_
         - difficulty.ts _(4 KB)_
         - index.ts _(4 KB)_
         - scss.d.ts _(4 KB)_
