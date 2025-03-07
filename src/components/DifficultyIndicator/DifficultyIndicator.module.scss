@@ -2,15 +2,16 @@
 .container {
   display: flex;
   align-items: center;
-  background-color: #D9D9D9;
+  background-color: rgba(0,0,0,0.6);
+  color: #fff;
   border: 2px solid #fff;
   border-radius: 100px;
   padding: 7px 10px 7px 35px;
-  color: #000;
+  color: #fff;
   font-family: 'Roboto', Arial, sans-serif;
   position: absolute;
-  top: 10px;
-  left: 10px;
+  bottom: 7px;
+  left: 7px;
   z-index: 10;
   height: 30px;
   width: 88px;
@@ -51,9 +52,9 @@
 
 .progressBar {
   width: 100%;
-  background-color: #909090;
+  background-color: #fff;
   overflow: hidden;
-  height: 3px;
+  height: 4px;
 }
 
 .progress {
@@ -63,30 +64,30 @@
 // Difficulty colors
 .totalBeginner {
   &.progress {
-    background-color: #26C00E;
+    background-color: #4AFF33;
   }
 }
 
 .beginner {
   &.progress {
-    background-color: #2A7FFF;
+    background-color: #33CCFF;
   }
 }
 
 .intermediate {
   &.progress {
-    background-color: #F2AE00;
+    background-color: #FFD633;
   }
 }
 
 .advanced {
   &.progress {
-    background-color: #D40000;
+    background-color: #FF5252;
   }
 }
 
 .expert {
   &.progress {
-    background-color: #000;
+    background-color: #E066FF;
   }
 } 
