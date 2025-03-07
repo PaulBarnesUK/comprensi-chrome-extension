@@ -29,6 +29,7 @@ A Chrome extension that helps language learners track and rate the difficulty of
    - Select target languages for difficulty indicators
    - Filter difficulty displays by selected languages
    - Hide difficulty ratings for non-selected languages
+   - Supported languages: French, Spanish, Italian, German, Portuguese, English, Hindi, Korean, Japanese, and Chinese
 
 ## Technical Architecture
 

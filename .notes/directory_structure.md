@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-03-06 21:16:58
+Generated on 2025-03-07 09:44:07
 
 ## Core Components
 
@@ -17,11 +17,18 @@ Generated on 2025-03-06 21:16:58
 - **src/**
     - **assets/**
         - **flags/**
+            - br.svg _(8 KB)_
+            - cn.svg _(4 KB)_
             - de.svg _(4 KB)_
             - es.svg _(4 KB)_
             - fr.svg _(4 KB)_
+            - gb.svg _(4 KB)_
+            - in.svg _(4 KB)_
             - it.svg _(4 KB)_
-            - pt.svg _(12 KB)_        - icon32.png _(4 KB)_    - **background/**
+            - jp.svg _(4 KB)_
+            - kr.svg _(4 KB)_
+            - pt.svg _(12 KB)_
+            - us.svg _(4 KB)_        - icon32.png _(4 KB)_    - **background/**
         - index.ts _(4 KB)_    - **components/**
         - **ComparisonModal/**
             - ComparisonModal.module.scss _(4 KB)_
@@ -29,7 +36,8 @@ Generated on 2025-03-06 21:16:58
             - index.ts _(4 KB)_        - **DifficultyIndicator/**
             - DifficultyIndicator.module.scss _(4 KB)_
             - DifficultyIndicator.tsx _(4 KB)_
-            - index.ts _(4 KB)_        - index.ts _(4 KB)_    - **content/**
+            - index.ts _(4 KB)_
+            - languageFlags.ts _(4 KB)_        - index.ts _(4 KB)_    - **content/**
         - comparisonModalManager.ts _(4 KB)_
         - **difficultyDisplay/**
             - **constants/**

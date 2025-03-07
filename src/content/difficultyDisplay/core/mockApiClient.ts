@@ -2,7 +2,7 @@ import { ApiResponse, DifficultyResponse } from '../../../types/api';
 import { DifficultyData } from '../../../types/difficulty';
 
 // Languages for mock data
-const LANGUAGES = ['fr', 'es', 'de', 'it', 'pt'];
+const LANGUAGES = ['fr', 'es', 'de', 'it', 'pt', 'en', 'hi', 'ko', 'ja', 'zh'];
 
 // Generate a random difficulty score between 1 and 100
 function generateRandomScore(): number {

@@ -9,6 +9,7 @@ A Chrome extension that helps language learners by estimating the difficulty lev
 - Display difficulty indicators on video thumbnails
 - Filter difficulty ratings by language
 - Personalized language learning settings
+- Support for multiple languages: French, Spanish, Italian, German, Portuguese, English, Hindi, Korean, Japanese, and Chinese
 
 ## Development
 

@@ -1,19 +1,6 @@
 import React from 'react';
 import styles from './DifficultyIndicator.module.scss';
-
-import frFlag from '@/assets/flags/fr.svg';
-import esFlag from '@/assets/flags/es.svg';
-import itFlag from '@/assets/flags/it.svg';
-import ptFlag from '@/assets/flags/pt.svg';
-import deFlag from '@/assets/flags/de.svg';
-
-const FLAGS: Record<string, string> = {
-  fr: frFlag,
-  es: esFlag,
-  it: itFlag,
-  pt: ptFlag,
-  de: deFlag,
-};
+import LANGUAGE_FLAGS from './languageFlags';
 
 export interface DifficultyIndicatorProps {
   score: number;
@@ -38,9 +25,9 @@ export const DifficultyIndicator: React.FC<DifficultyIndicatorProps> = ({
   return (
     <div className={`${styles.container}`}>
       <div className={styles.flag}>
-        {FLAGS[language] && (
+        {LANGUAGE_FLAGS[language] && (
           <img 
-            src={FLAGS[language]} 
+            src={LANGUAGE_FLAGS[language]} 
             alt={`${language} flag`} 
             className={styles.flagIcon} 
           />
@@ -59,4 +46,4 @@ export const DifficultyIndicator: React.FC<DifficultyIndicatorProps> = ({
       </div>
     </div>
   );
-}; 
+};
