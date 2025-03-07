@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-03-07 10:10:05
+Generated on 2025-03-07 12:02:50
 
 ## Core Components
 
@@ -29,15 +29,23 @@ Generated on 2025-03-07 10:10:05
             - kr.svg _(4 KB)_
             - pt.svg _(12 KB)_
             - us.svg _(4 KB)_        - icon32.png _(4 KB)_    - **background/**
-        - index.ts _(4 KB)_    - **components/**
+        - index.ts _(8 KB)_    - **components/**
         - **ComparisonModal/**
             - ComparisonModal.module.scss _(4 KB)_
             - ComparisonModal.tsx _(8 KB)_
             - index.ts _(4 KB)_        - **DifficultyIndicator/**
             - DifficultyIndicator.module.scss _(4 KB)_
             - DifficultyIndicator.tsx _(4 KB)_
-            - index.ts _(4 KB)_
-            - languageFlags.ts _(4 KB)_        - index.ts _(4 KB)_    - **content/**
+            - index.ts _(4 KB)_        - **LanguageSettings/**
+            - LanguageSettings.module.scss _(4 KB)_
+            - LanguageSettings.tsx _(4 KB)_
+            - index.ts _(4 KB)_        - **LanguageToggle/**
+            - LanguageToggle.module.scss _(4 KB)_
+            - LanguageToggle.tsx _(4 KB)_
+            - index.ts _(4 KB)_        - **Popup/**
+            - Popup.module.scss _(4 KB)_
+            - Popup.tsx _(4 KB)_
+            - index.ts _(4 KB)_        - index.ts _(4 KB)_    - **content/**
         - comparisonModalManager.ts _(4 KB)_
         - **difficultyDisplay/**
             - **constants/**
@@ -73,6 +81,8 @@ Generated on 2025-03-07 10:10:05
         - index.ts _(4 KB)_
         - scss.d.ts _(4 KB)_
         - svg.d.ts _(4 KB)_    - **utils/**
+        - languages.ts _(4 KB)_
+        - messaging.ts _(4 KB)_
         - reactUtils.tsx _(4 KB)_
         - storage.ts _(4 KB)_- tsconfig.json _(4 KB)_
 - update_directory.sh _(4 KB)_

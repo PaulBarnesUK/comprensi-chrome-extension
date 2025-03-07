@@ -1,5 +1,19 @@
-import { Message, WatchData, isVideoWatchedMessage } from '../types';
-import { saveWatchedVideo, getSettings } from '../utils/storage';
+import { 
+  Message, 
+  WatchData, 
+  isVideoWatchedMessage,
+  isGetSelectedLanguagesMessage,
+  isSaveSelectedLanguagesMessage,
+  isSelectAllLanguagesMessage,
+  isDeselectAllLanguagesMessage
+} from '../types';
+import { 
+  saveWatchedVideo, 
+  getSettings, 
+  getSelectedLanguages, 
+  saveSelectedLanguages 
+} from '../utils/storage';
+import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from '../utils/languages';
 
 console.log('Background service worker initialized');
 
@@ -17,7 +31,7 @@ chrome.runtime.onInstalled.addListener(details => {
     });
 
     chrome.storage.sync.set({
-      selectedLanguages: [],
+      selectedLanguages: [DEFAULT_LANGUAGE],
     });
   }
 });
@@ -64,6 +78,58 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
       }))
       .catch(error => {
         console.error('Error handling video watched:', error);
+        sendResponse({ success: false, error: error.message });
+      });
+    return true;
+  }
+
+  if (isGetSelectedLanguagesMessage(message)) {
+    getSelectedLanguages()
+      .then(languages => sendResponse({ 
+        success: true, 
+        languages 
+      }))
+      .catch(error => {
+        console.error('Error getting selected languages:', error);
+        sendResponse({ success: false, error: error.message });
+      });
+    return true;
+  }
+
+  if (isSaveSelectedLanguagesMessage(message)) {
+    saveSelectedLanguages(message.data.languages)
+      .then(() => sendResponse({ 
+        success: true 
+      }))
+      .catch(error => {
+        console.error('Error saving selected languages:', error);
+        sendResponse({ success: false, error: error.message });
+      });
+    return true;
+  }
+
+  if (isSelectAllLanguagesMessage(message)) {
+    const allLanguageCodes = SUPPORTED_LANGUAGES.map(lang => lang.code);
+    saveSelectedLanguages(allLanguageCodes)
+      .then(() => sendResponse({ 
+        success: true, 
+        languages: allLanguageCodes 
+      }))
+      .catch(error => {
+        console.error('Error selecting all languages:', error);
+        sendResponse({ success: false, error: error.message });
+      });
+    return true;
+  }
+
+  if (isDeselectAllLanguagesMessage(message)) {
+    saveSelectedLanguages([])
+      .then(() => sendResponse({ 
+        success: true, 
+        languages: [] 
+      }))
+      .catch(error => {
+        console.error('Error deselecting all languages:', error);
         sendResponse({ success: false, error: error.message });
       });
     return true;

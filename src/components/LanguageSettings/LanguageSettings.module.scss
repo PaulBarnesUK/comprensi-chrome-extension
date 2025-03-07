@@ -1,0 +1,41 @@
+.container {
+  margin-bottom: 16px;
+}
+
+.heading {
+  font-size: 16px;
+  margin: 0 0 12px 0;
+  font-weight: 500;
+}
+
+.languageList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.bulkActions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.actionButton {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: #eee;
+  }
+
+  &:active {
+    background-color: #e0e0e0;
+  }
+} 

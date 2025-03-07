@@ -1,16 +1,11 @@
-// Popup script for YouTube Video Difficulty Rater
-console.log('Popup initialized');
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import Popup from '../components/Popup';
 
-// This will be expanded to handle:
-// 1. Language selection UI
-// 2. Settings management
-// 3. Stats display
-// 4. User preferences
-
-document.addEventListener('DOMContentLoaded', async () => {
-  // Load user settings
-  const { settings } = await chrome.storage.local.get(['settings']);
-  const { selectedLanguages } = await chrome.storage.sync.get(['selectedLanguages']);
-
-  console.log('Current settings:', { selectedLanguages, settings });
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('app');
+  if (container) {
+    const root = createRoot(container);
+    root.render(React.createElement(Popup));
+  }
 });

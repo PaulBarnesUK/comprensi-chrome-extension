@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './DifficultyIndicator.module.scss';
-import LANGUAGE_FLAGS from './languageFlags';
+import { LANGUAGE_FLAGS } from '../../utils/languages';
 
 export interface DifficultyIndicatorProps {
   score: number;
