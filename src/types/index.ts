@@ -4,6 +4,7 @@ export interface VideoMetadata {
   channelName: string;
   url: string;
   duration: number;
+  language?: string;
 }
 
 export interface WatchData extends VideoMetadata {
@@ -11,7 +12,6 @@ export interface WatchData extends VideoMetadata {
   watchPercentage: number;
   lastWatched: number;
   watched: boolean;
-  language?: string;
 }
 
 export interface ExtensionSettings {

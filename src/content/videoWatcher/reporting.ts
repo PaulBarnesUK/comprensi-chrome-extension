@@ -55,6 +55,7 @@ export function updateWatchTime(state: VideoWatcherState, videoElement: HTMLVide
 }
 
 export function shouldReportProgress(state: VideoWatcherState): boolean {
+  console.log('shouldReportProgress', state);
   if (!state.currentVideo) return false;
 
   const currentWatchPercentage = calculateWatchPercentage(
@@ -76,24 +77,24 @@ export function sendWatchProgressUpdate(state: VideoWatcherState): Promise<Watch
     chrome.runtime.sendMessage(
       {
         type: 'VIDEO_WATCHED',
-        data: watchData,
+        data: watchData
       },
-      (response) => {
+      response => {
         if (chrome.runtime.lastError) {
           console.error('Error sending watch progress:', chrome.runtime.lastError);
           reject(chrome.runtime.lastError);
           return;
         }
-        
+
         if (!response || !response.success) {
           console.error('Error response from background script:', response);
           reject(new Error('Failed to save watch data'));
           return;
         }
-        
+
         const updatedWatchData = response.watchData as WatchData;
         console.log('Reported watch progress:', updatedWatchData);
-        
+
         resolve(updatedWatchData);
       }
     );
