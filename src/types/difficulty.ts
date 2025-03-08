@@ -8,7 +8,7 @@
 export interface DifficultyData {
   score: number;
   sigma: number; // Confidence/uncertainty
-  language: string; // Language of the video content
+  language: string;
 }
 
 /**

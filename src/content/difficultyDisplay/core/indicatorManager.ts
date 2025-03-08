@@ -4,15 +4,27 @@ import {
   shouldDisplayIndicator, 
   injectIndicator 
 } from './indicatorInjector';
+import { getSelectedLanguages } from '../../../utils/messaging';
 
-export function processVideosForIndicators(videoRegistry: VideoRegistry): void {
-  const eligibleVideos = findEligibleVideos(videoRegistry);
-  injectIndicatorsForVideos(eligibleVideos);
+export async function processVideosForIndicators(videoRegistry: VideoRegistry): Promise<void> {
+  try {
+    const selectedLanguages = await getSelectedLanguages();
+    const eligibleVideos = findEligibleVideos(videoRegistry, selectedLanguages);
+    
+    injectIndicatorsForVideos(eligibleVideos);
+  } catch (error) {
+    console.error('Error processing videos for indicators:', error);
+  }
 }
 
-function findEligibleVideos(videoRegistry: VideoRegistry): VideoData[] {
+function findEligibleVideos(videoRegistry: VideoRegistry, selectedLanguages: string[]): VideoData[] {
+  
+  console.log('Selected languages:', selectedLanguages);
+
   return Object.values(videoRegistry).filter(video => 
-    video.difficulty && shouldDisplayIndicator(video.difficulty)
+    video.difficulty && 
+    shouldDisplayIndicator(video.difficulty) &&
+    selectedLanguages.includes(video.difficulty.language)
   );
 }
 

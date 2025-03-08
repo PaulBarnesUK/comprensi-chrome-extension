@@ -81,7 +81,7 @@ async function fetchDifficultyDataForVideos(videoIds: string[]): Promise<void> {
     }
     
     updateRegistryWithDifficultyData(response.data.videos);
-    processVideosForIndicators(videoRegistry);
+    await processVideosForIndicators(videoRegistry);
   } catch (error) {
     console.error('Error fetching difficulty data:', error);
   }

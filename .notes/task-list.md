@@ -65,6 +65,6 @@
 
 ## TODOs
 - [ ] Fix video watch tracking logic (very brittle right now) & remove video metadata as it's not necessary
-- [ ] Implement language check (video lang should match user selected langs) before rendering difficulty indicator
+- [x] Implement language check (video lang should match user selected langs) before rendering difficulty indicator
 - [ ] Implement language check (video lang should match user selected langs) before prompting user for difficulty comparison
 
