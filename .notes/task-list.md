@@ -42,10 +42,9 @@
 - [x] Add mutation observers for dynamic content
 
 ## Extension Popup
-- [ ] Design popup UI
-- [ ] Implement language selection interface
-- [ ] Create language preference storage
-- [ ] Add user settings management
+- [x] Design popup UI
+- [x] Implement language selection interface
+- [x] Create language preference storage
 
 ## API Integration
 - [ ] Design API client architecture
@@ -66,4 +65,6 @@
 
 ## TODOs
 - [ ] Fix video watch tracking logic (very brittle right now) & remove video metadata as it's not necessary
+- [ ] Implement language check (video lang should match user selected langs) before rendering difficulty indicator
+- [ ] Implement language check (video lang should match user selected langs) before prompting user for difficulty comparison
 
