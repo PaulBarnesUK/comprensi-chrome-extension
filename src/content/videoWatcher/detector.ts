@@ -7,6 +7,8 @@ import { getVideoElement } from './selectors';
 import { VideoWatcherState } from './types';
 import { getVideoMetadata } from './utils/metadata';
 import { isVideoPage, observeUrlChanges } from './utils/url';
+import { waitForVideoElement } from './utils/domObserver';
+import { retryOperation } from './utils/retry';
 
 function createWatcherState(): VideoWatcherState {
   return {
@@ -24,7 +26,6 @@ export async function initVideoWatchDetector(): Promise<void> {
   const state = createWatcherState();
 
   if (isVideoPage()) {
-    console.log('isVideoPage');
     await beginVideoTracking(state);
   }
 
@@ -36,36 +37,61 @@ function setupUrlChangeDetection(state: VideoWatcherState): void {
     endVideoTracking(state);
 
     if (isVideoPage()) {
-      setTimeout(async () => await beginVideoTracking(state), 1000); // Small delay to ensure the page has loaded
+      attemptVideoTracking(state);
     }
   };
 
   state.urlObserver = observeUrlChanges(onUrlChange);
 }
 
+function attemptVideoTracking(state: VideoWatcherState): void {
+  if (state.watchIntervalId !== null) return;
+
+  // First attempt immediately
+  beginVideoTracking(state);
+
+  // If first attempt fails, try again after a delay
+  setTimeout(() => {
+    if (state.watchIntervalId === null && isVideoPage()) {
+      beginVideoTracking(state);
+    }
+  }, 2000);
+}
+
 export async function beginVideoTracking(state: VideoWatcherState): Promise<void> {
-  console.log('beginVideoTracking', state);
   if (state.watchIntervalId !== null) return;
 
   const videoElement = getVideoElement();
 
-  console.log('videoElement', videoElement);
-  if (!videoElement) return;
+  if (videoElement) {
+    await setupVideoTracking(state, videoElement);
+  } else {
+    waitForVideoElement(async video => {
+      await setupVideoTracking(state, video);
+    });
+  }
+}
 
-  console.log('videoElement', videoElement);
+async function setupVideoTracking(
+  state: VideoWatcherState,
+  videoElement: HTMLVideoElement
+): Promise<void> {
+  const getMetadata = () => Promise.resolve(getVideoMetadata(videoElement));
 
-  state.currentVideo = getVideoMetadata();
-  if (!state.currentVideo) return;
+  const metadata = await retryOperation(getMetadata);
+  if (!metadata) return;
 
-  await initializeWatchState(state);
+  state.currentVideo = metadata;
+  await initializeWatchState(state, videoElement);
 
   setupWatchTimeTracking(state);
   attachVideoEventListeners(videoElement, state);
-
-  console.log('Tracking video:', state.currentVideo.videoId);
 }
 
-async function initializeWatchState(state: VideoWatcherState): Promise<void> {
+async function initializeWatchState(
+  state: VideoWatcherState,
+  videoElement: HTMLVideoElement
+): Promise<void> {
   const previousWatchData = await getWatchedVideo(state.currentVideo!.videoId);
 
   if (previousWatchData) {
@@ -76,17 +102,10 @@ async function initializeWatchState(state: VideoWatcherState): Promise<void> {
     state.watchPercentage = 0;
   }
 
-  const videoElement = getVideoElement();
-  state.lastReportedTime = videoElement ? videoElement.currentTime : 0;
+  state.lastReportedTime = videoElement.currentTime;
 }
 
 export async function endVideoTracking(state: VideoWatcherState): Promise<void> {
-  console.log('endVideoTracking called with state:', {
-    hasInterval: state.watchIntervalId !== null,
-    hasVideo: !!state.currentVideo,
-    videoId: state.currentVideo?.videoId
-  });
-
   if (state.watchIntervalId === null) return;
 
   window.clearInterval(state.watchIntervalId);
@@ -101,10 +120,7 @@ export async function endVideoTracking(state: VideoWatcherState): Promise<void> 
     try {
       const watchData = await sendWatchProgressUpdate(state);
 
-      console.log('Video tracking ended, watch data:', watchData);
-
       if (watchData && watchData.watched) {
-        // Add a small delay to ensure the video has fully ended
         setTimeout(() => {
           handleVideoEnd(watchData);
         }, 500);
@@ -114,6 +130,5 @@ export async function endVideoTracking(state: VideoWatcherState): Promise<void> 
     }
   }
 
-  console.log('Stopped tracking video');
   state.currentVideo = null;
 }

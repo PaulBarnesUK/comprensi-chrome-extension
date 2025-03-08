@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-03-08 13:40:14
+Generated on 2025-03-08 14:29:29
 
 ## Core Components
 
@@ -79,7 +79,9 @@ Generated on 2025-03-08 13:40:14
             - types.ts _(4 KB)_
             - **utils/**
                 - calculations.ts _(4 KB)_
+                - domObserver.ts _(4 KB)_
                 - metadata.ts _(4 KB)_
+                - retry.ts _(4 KB)_
                 - url.ts _(4 KB)_    - **popup/**
         - index.html _(4 KB)_
         - index.ts _(4 KB)_    - **services/**
