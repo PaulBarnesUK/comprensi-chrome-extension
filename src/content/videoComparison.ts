@@ -9,7 +9,7 @@ export async function getRecentWatchedVideos(): Promise<WatchData[]> {
   try {
     const result = await chrome.storage.local.get(['watchedVideos']);
     const watchedVideos = result.watchedVideos || {};
-    
+
     // Convert to array and sort by lastWatched (most recent first)
     return Object.values(watchedVideos as Record<string, WatchData>)
       .filter((video: WatchData) => video.watched)
@@ -28,20 +28,20 @@ export async function getRecentWatchedVideos(): Promise<WatchData[]> {
 export async function shouldShowComparison(currentVideoId: string): Promise<WatchData | null> {
   try {
     const recentVideos = await getRecentWatchedVideos();
-    
+
     // If we have fewer than 2 watched videos, don't show comparison
     if (recentVideos.length < 2) {
       return null;
     }
-    
+
     // Find the current video in the list
     const currentVideoIndex = recentVideos.findIndex(video => video.videoId === currentVideoId);
-    
+
     // If current video is not found or is not the most recent, don't compare
     if (currentVideoIndex === -1 || currentVideoIndex > 0) {
       return null;
     }
-    
+
     // Return the second most recent video for comparison
     return recentVideos[1] || null;
   } catch (error) {
@@ -56,9 +56,9 @@ export async function shouldShowComparison(currentVideoId: string): Promise<Watc
  */
 export async function handleVideoEnd(currentVideo: WatchData): Promise<void> {
   if (!currentVideo) return;
-  
+
   const previousVideo = await shouldShowComparison(currentVideo.videoId);
-  
+
   if (previousVideo) {
     showComparisonModal(currentVideo, previousVideo);
   }
@@ -86,8 +86,8 @@ function showComparisonModal(currentVideo: WatchData, previousVideo: WatchData):
  * @param result The comparison result ('current', 'previous', or 'equal')
  */
 function sendComparisonResult(
-  currentVideoId: string, 
-  previousVideoId: string, 
+  currentVideoId: string,
+  previousVideoId: string,
   result: 'current' | 'previous' | 'equal'
 ): void {
   // This will be implemented to send the result to the backend API
@@ -96,7 +96,7 @@ function sendComparisonResult(
     previousVideoId,
     result
   });
-  
+
   // In a real implementation, this would send the data to an API endpoint
   // Example:
   // fetch('https://api.example.com/comparisons', {
@@ -108,4 +108,4 @@ function sendComparisonResult(
   //     result
   //   })
   // });
-} 
+}

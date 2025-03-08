@@ -49,4 +49,4 @@ export class ComparisonModalManager {
   }
 }
 
-export const comparisonManager = new ComparisonModalManager(); 
+export const comparisonManager = new ComparisonModalManager();
