@@ -8,6 +8,8 @@ export function getVideoMetadata(): VideoMetadata | null {
     const videoElement = getVideoElement();
     const videoId = extractVideoId(window.location.href);
 
+    console.log('videoElement', videoElement, videoId);
+
     if (!videoElement || !videoId) return null;
 
     return {
@@ -15,7 +17,7 @@ export function getVideoMetadata(): VideoMetadata | null {
       title: getVideoTitle(),
       channelName: getChannelName(),
       url: window.location.href,
-      duration: Math.floor(videoElement.duration),
+      duration: Math.floor(videoElement.duration)
     };
   } catch (error) {
     console.error('Error extracting video metadata:', error);

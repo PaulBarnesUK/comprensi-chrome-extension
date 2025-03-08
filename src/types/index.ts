@@ -11,6 +11,7 @@ export interface WatchData extends VideoMetadata {
   watchPercentage: number;
   lastWatched: number;
   watched: boolean;
+  language?: string;
 }
 
 export interface ExtensionSettings {
@@ -68,18 +69,26 @@ export function isVideoWatchedMessage(message: Message): message is VideoWatched
   return message.type === 'VIDEO_WATCHED';
 }
 
-export function isGetSelectedLanguagesMessage(message: Message): message is GetSelectedLanguagesMessage {
+export function isGetSelectedLanguagesMessage(
+  message: Message
+): message is GetSelectedLanguagesMessage {
   return message.type === 'GET_SELECTED_LANGUAGES';
 }
 
-export function isSaveSelectedLanguagesMessage(message: Message): message is SaveSelectedLanguagesMessage {
+export function isSaveSelectedLanguagesMessage(
+  message: Message
+): message is SaveSelectedLanguagesMessage {
   return message.type === 'SAVE_SELECTED_LANGUAGES';
 }
 
-export function isSelectAllLanguagesMessage(message: Message): message is SelectAllLanguagesMessage {
+export function isSelectAllLanguagesMessage(
+  message: Message
+): message is SelectAllLanguagesMessage {
   return message.type === 'SELECT_ALL_LANGUAGES';
 }
 
-export function isDeselectAllLanguagesMessage(message: Message): message is DeselectAllLanguagesMessage {
+export function isDeselectAllLanguagesMessage(
+  message: Message
+): message is DeselectAllLanguagesMessage {
   return message.type === 'DESELECT_ALL_LANGUAGES';
 }

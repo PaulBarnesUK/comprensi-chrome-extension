@@ -1,0 +1,9 @@
+export const API_BASE_URL = 'https://api.example.com/v1';
+
+export const API_ENDPOINTS = {
+  DIFFICULTY: '/difficulty',
+  VIDEO_LANGUAGE: '/video/language'
+};
+
+export const API_RETRY_ATTEMPTS = 3;
+export const API_RETRY_DELAY = 1000;

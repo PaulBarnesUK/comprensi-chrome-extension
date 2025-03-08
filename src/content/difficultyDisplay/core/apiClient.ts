@@ -1,17 +1,18 @@
 import { ApiResponse, DifficultyResponse } from '../../../types/api';
-import { API_BASE_URL, API_ENDPOINTS } from '../constants/apiConfig';
-import { fetchWithRetry } from '../utils/apiUtils';
+import { API_BASE_URL, API_ENDPOINTS, fetchWithRetry } from '../../../services/api';
 
-export async function fetchDifficultyData(videoIds: string[]): Promise<ApiResponse<DifficultyResponse>> {
+export async function fetchDifficultyData(
+  videoIds: string[]
+): Promise<ApiResponse<DifficultyResponse>> {
   if (!videoIds.length) {
     return {
       success: true,
       data: { videos: {} }
     };
   }
-  
+
   const url = `${API_BASE_URL}${API_ENDPOINTS.DIFFICULTY}`;
-  
+
   const options: RequestInit = {
     method: 'POST',
     headers: {
@@ -19,6 +20,6 @@ export async function fetchDifficultyData(videoIds: string[]): Promise<ApiRespon
     },
     body: JSON.stringify({ videoIds })
   };
-  
+
   return fetchWithRetry<DifficultyResponse>(url, options);
-} 
+}

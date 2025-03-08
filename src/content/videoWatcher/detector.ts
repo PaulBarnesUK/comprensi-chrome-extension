@@ -16,7 +16,7 @@ function createWatcherState(): VideoWatcherState {
     lastReportedTime: 0,
     watchIntervalId: null,
     eventHandlers: null,
-    urlObserver: null,
+    urlObserver: null
   };
 }
 
@@ -24,6 +24,7 @@ export async function initVideoWatchDetector(): Promise<void> {
   const state = createWatcherState();
 
   if (isVideoPage()) {
+    console.log('isVideoPage');
     await beginVideoTracking(state);
   }
 
@@ -43,10 +44,15 @@ function setupUrlChangeDetection(state: VideoWatcherState): void {
 }
 
 export async function beginVideoTracking(state: VideoWatcherState): Promise<void> {
+  console.log('beginVideoTracking', state);
   if (state.watchIntervalId !== null) return;
 
   const videoElement = getVideoElement();
+
+  console.log('videoElement', videoElement);
   if (!videoElement) return;
+
+  console.log('videoElement', videoElement);
 
   state.currentVideo = getVideoMetadata();
   if (!state.currentVideo) return;
@@ -69,17 +75,17 @@ async function initializeWatchState(state: VideoWatcherState): Promise<void> {
     state.totalWatchTime = 0;
     state.watchPercentage = 0;
   }
-  
+
   const videoElement = getVideoElement();
   state.lastReportedTime = videoElement ? videoElement.currentTime : 0;
 }
 
 export async function endVideoTracking(state: VideoWatcherState): Promise<void> {
-    console.log('endVideoTracking called with state:', {
-        hasInterval: state.watchIntervalId !== null,
-        hasVideo: !!state.currentVideo,
-        videoId: state.currentVideo?.videoId
-      });
+  console.log('endVideoTracking called with state:', {
+    hasInterval: state.watchIntervalId !== null,
+    hasVideo: !!state.currentVideo,
+    videoId: state.currentVideo?.videoId
+  });
 
   if (state.watchIntervalId === null) return;
 
@@ -94,9 +100,9 @@ export async function endVideoTracking(state: VideoWatcherState): Promise<void> 
   if (state.currentVideo) {
     try {
       const watchData = await sendWatchProgressUpdate(state);
-      
+
       console.log('Video tracking ended, watch data:', watchData);
-      
+
       if (watchData && watchData.watched) {
         // Add a small delay to ensure the video has fully ended
         setTimeout(() => {

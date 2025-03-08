@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-03-08 11:02:39
+Generated on 2025-03-08 13:40:14
 
 ## Core Components
 
@@ -46,7 +46,6 @@ Generated on 2025-03-08 11:02:39
             - Popup.module.scss _(4 KB)_
             - Popup.tsx _(4 KB)_
             - index.ts _(4 KB)_        - index.ts _(4 KB)_    - **content/**
-        - comparisonModalManager.ts _(4 KB)_
         - **difficultyDisplay/**
             - **constants/**
                 - apiConfig.ts _(4 KB)_
@@ -62,8 +61,16 @@ Generated on 2025-03-08 11:02:39
                 - apiUtils.ts _(4 KB)_
                 - elementParser.ts _(4 KB)_
                 - urlParser.ts _(4 KB)_        - index.ts _(4 KB)_
-        - videoComparison.ts _(4 KB)_
-        - **videoWatcher/**
+        - **videoComparison/**
+            - constants.ts _(4 KB)_
+            - **core/**
+                - comparison.ts _(4 KB)_
+                - languageCheck.ts _(4 KB)_
+                - modalManager.ts _(4 KB)_            - index.ts _(4 KB)_
+            - **services/**
+                - languageService.ts _(4 KB)_
+                - mockLanguageService.ts _(4 KB)_            - **utils/**
+                - filterUtils.ts _(4 KB)_        - **videoWatcher/**
             - detector.ts _(4 KB)_
             - events.ts _(4 KB)_
             - index.ts _(4 KB)_
@@ -75,7 +82,12 @@ Generated on 2025-03-08 11:02:39
                 - metadata.ts _(4 KB)_
                 - url.ts _(4 KB)_    - **popup/**
         - index.html _(4 KB)_
-        - index.ts _(4 KB)_    - **types/**
+        - index.ts _(4 KB)_    - **services/**
+        - **api/**
+            - constants.ts _(4 KB)_
+            - index.ts _(4 KB)_
+            - **utils/**
+                - fetchUtils.ts _(4 KB)_    - **types/**
         - api.ts _(4 KB)_
         - difficulty.ts _(4 KB)_
         - index.ts _(4 KB)_

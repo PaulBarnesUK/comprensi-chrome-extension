@@ -1,6 +1,6 @@
-import { ComparisonModal } from '../components';
-import { renderComponent } from '../utils/reactUtils';
-import { WatchData } from '../types';
+import { ComparisonModal } from '@/components';
+import { renderComponent } from '@/utils/reactUtils';
+import { WatchData } from '@/types';
 
 /**
  * Interface for the comparison modal props
