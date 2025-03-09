@@ -11,11 +11,15 @@ export function getVideoMetadata(videoElement?: HTMLVideoElement): VideoMetadata
     if (!video || !videoId) return null;
 
     const duration = isFiniteDuration(video.duration) ? Math.floor(video.duration) : 0;
+    const title = getVideoTitle();
+    const channelName = getChannelName();
+
+    if (!duration || !title || !channelName) return null;
 
     return {
       videoId,
-      title: getVideoTitle(),
-      channelName: getChannelName(),
+      title,
+      channelName,
       url: window.location.href,
       duration
     };
@@ -26,5 +30,5 @@ export function getVideoMetadata(videoElement?: HTMLVideoElement): VideoMetadata
 }
 
 function isFiniteDuration(duration: number): boolean {
-  return !isNaN(duration) && isFinite(duration) && duration > 0;
+  return isFinite(duration) && duration > 0;
 }

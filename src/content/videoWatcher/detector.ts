@@ -36,9 +36,11 @@ function setupUrlChangeDetection(state: VideoWatcherState): void {
   const onUrlChange = async () => {
     endVideoTracking(state);
 
-    if (isVideoPage()) {
-      attemptVideoTracking(state);
-    }
+    setTimeout(() => {
+      if (isVideoPage()) {
+        attemptVideoTracking(state);
+      }
+    }, 2000);
   };
 
   state.urlObserver = observeUrlChanges(onUrlChange);
@@ -80,6 +82,8 @@ async function setupVideoTracking(
 
   const metadata = await retryOperation(getMetadata);
   if (!metadata) return;
+
+  console.log('metadata', metadata);
 
   state.currentVideo = metadata;
   await initializeWatchState(state, videoElement);
@@ -130,5 +134,6 @@ export async function endVideoTracking(state: VideoWatcherState): Promise<void> 
     }
   }
 
+  console.log('endVideoTracking', state);
   state.currentVideo = null;
 }

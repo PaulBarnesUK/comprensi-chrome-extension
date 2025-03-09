@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-03-08 15:35:47
+Generated on 2025-03-09 12:35:02
 
 ## Core Components
 
@@ -29,6 +29,7 @@ Generated on 2025-03-08 15:35:47
             - kr.svg _(4 KB)_
             - pt.svg _(12 KB)_
             - us.svg _(4 KB)_        - icon32.png _(4 KB)_    - **background/**
+        - **handlers/**
         - index.ts _(8 KB)_    - **components/**
         - **ComparisonModal/**
             - ComparisonModal.module.scss _(4 KB)_

@@ -10,12 +10,12 @@ export function getChannelElement(): HTMLElement | null {
   return document.querySelector('#channel-name #text');
 }
 
-export function getVideoTitle(): string {
+export function getVideoTitle(): string | null {
   const titleElement = getTitleElement();
-  return titleElement?.textContent?.trim() || 'Unknown Title';
+  return titleElement?.textContent?.trim() || null;
 }
 
-export function getChannelName(): string {
+export function getChannelName(): string | null {
   const channelElement = getChannelElement();
-  return channelElement?.textContent?.trim() || 'Unknown Channel';
+  return channelElement?.textContent?.trim() || null;
 }
