@@ -36,11 +36,9 @@ function setupUrlChangeDetection(state: VideoWatcherState): void {
   const onUrlChange = async () => {
     endVideoTracking(state);
 
-    setTimeout(() => {
-      if (isVideoPage()) {
-        attemptVideoTracking(state);
-      }
-    }, 2000);
+    if (isVideoPage()) {
+      attemptVideoTracking(state);
+    }
   };
 
   state.urlObserver = observeUrlChanges(onUrlChange);
@@ -49,29 +47,15 @@ function setupUrlChangeDetection(state: VideoWatcherState): void {
 function attemptVideoTracking(state: VideoWatcherState): void {
   if (state.watchIntervalId !== null) return;
 
-  // First attempt immediately
   beginVideoTracking(state);
-
-  // If first attempt fails, try again after a delay
-  setTimeout(() => {
-    if (state.watchIntervalId === null && isVideoPage()) {
-      beginVideoTracking(state);
-    }
-  }, 2000);
 }
 
 export async function beginVideoTracking(state: VideoWatcherState): Promise<void> {
   if (state.watchIntervalId !== null) return;
 
-  const videoElement = getVideoElement();
-
-  if (videoElement) {
-    await setupVideoTracking(state, videoElement);
-  } else {
-    waitForVideoElement(async video => {
-      await setupVideoTracking(state, video);
-    });
-  }
+  waitForVideoElement(async video => {
+    await setupVideoTracking(state, video);
+  });
 }
 
 async function setupVideoTracking(
@@ -82,8 +66,6 @@ async function setupVideoTracking(
 
   const metadata = await retryOperation(getMetadata);
   if (!metadata) return;
-
-  console.log('metadata', metadata);
 
   state.currentVideo = metadata;
   await initializeWatchState(state, videoElement);
