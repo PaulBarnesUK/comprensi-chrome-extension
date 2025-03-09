@@ -14,7 +14,7 @@ export function getVideoMetadata(videoElement?: HTMLVideoElement): VideoMetadata
     const title = getVideoTitle();
     const channelName = getChannelName();
 
-    if (!duration || !title || !channelName) return null;
+    if (duration < 60 || !title || !channelName) return null;
 
     return {
       videoId,

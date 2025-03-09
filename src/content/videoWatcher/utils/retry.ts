@@ -7,7 +7,7 @@ interface RetryOptions {
 }
 
 const defaultRetryOptions: RetryOptions = {
-  maxAttempts: 3,
+  maxAttempts: 5,
   delayMs: 500,
   backoffFactor: 1.5
 };
