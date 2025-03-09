@@ -34,5 +34,9 @@ export function waitForVideoElement(
   callback: ElementFoundCallback<HTMLVideoElement>,
   timeoutMs = 30000
 ): void {
-  waitForElement<HTMLVideoElement>('video', callback, timeoutMs);
+  waitForElement<HTMLVideoElement>(
+    '.html5-video-player video.html5-main-video',
+    callback,
+    timeoutMs
+  );
 }

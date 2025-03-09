@@ -1,5 +1,5 @@
 export function getVideoElement(): HTMLVideoElement | null {
-  return document.querySelector('video');
+  return document.querySelector('.html5-video-player video.html5-main-video');
 }
 
 export function getTitleElement(): HTMLElement | null {
