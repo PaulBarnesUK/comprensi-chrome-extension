@@ -12,6 +12,9 @@ export function setupWatchTimeTracking(state: VideoWatcherState): void {
     const videoElement = getVideoElement();
     if (!videoElement || videoElement.paused) return;
 
+    const isAdPlaying = videoElement.closest('.ad-showing') !== null;
+    if (isAdPlaying) return;
+
     updateWatchTime(state, videoElement);
 
     if (shouldReportProgress(state)) {
