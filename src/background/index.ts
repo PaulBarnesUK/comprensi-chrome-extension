@@ -14,8 +14,6 @@ import {
   saveSelectedLanguages
 } from '../utils/storage';
 import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from '../utils/languages';
-// import { fetchVideoLanguage } from '../content/videoComparison/services/languageService';
-import { mockFetchVideo as fetchVideoLanguage } from '../content/videoComparison/services/mockLanguageService';
 
 console.log('Background service worker initialized');
 
@@ -58,19 +56,6 @@ async function handleVideoWatched(watchData: WatchData): Promise<WatchData> {
         watchData.watchPercentage >= settings.minimumWatchPercentage);
 
     watchData.watched = isWatched;
-
-    // If the video is watched and doesn't have language data, fetch it
-    if (isWatched && !watchData.language) {
-      try {
-        const languageResponse = await fetchVideoLanguage(watchData.videoId);
-
-        if (languageResponse.success && languageResponse.data) {
-          watchData.language = languageResponse.data.difficulty.language;
-        }
-      } catch (error) {
-        console.error('Error fetching video language:', error);
-      }
-    }
 
     await saveWatchedVideo(watchData);
     console.log('Saved watch data for video:', watchData.videoId, 'Watched:', isWatched);
@@ -159,13 +144,4 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
       });
     return true;
   }
-
-  // Handle other message types
-  if (message.type === 'CONTENT_SCRIPT_LOADED') {
-    sendResponse({ status: 'Background script acknowledged content script' });
-    return;
-  }
-
-  // Default response for unhandled message types
-  sendResponse({ status: 'Unknown message type' });
 });

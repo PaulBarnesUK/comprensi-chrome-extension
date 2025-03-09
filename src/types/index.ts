@@ -1,10 +1,15 @@
+export interface DifficultyData {
+  score: number;
+  sigma: number; // Confidence/uncertainty
+}
+
 export interface VideoMetadata {
   videoId: string;
   title: string;
   channelName: string;
-  url: string;
   duration: number;
-  language?: string;
+  language: string;
+  difficulty: DifficultyData;
 }
 
 export interface WatchData extends VideoMetadata {

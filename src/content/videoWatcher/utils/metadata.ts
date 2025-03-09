@@ -1,34 +1,30 @@
-import { VideoMetadata } from '../../../types';
-import { getVideoElement, getVideoTitle, getChannelName } from '../selectors';
-
+import { VideoMetadata } from '@/types';
 import { extractVideoId } from './url';
+import { mockFetchVideoMetadata } from '@/services/api';
 
-export function getVideoMetadata(videoElement?: HTMLVideoElement): VideoMetadata | null {
+/**
+ * Fetches video metadata from the API
+ * @param videoElement Optional video element (not used with API approach)
+ * @returns Promise resolving to video metadata or null if unavailable
+ */
+export async function getVideoMetadata(): Promise<VideoMetadata | null> {
   try {
-    const video = videoElement || getVideoElement();
     const videoId = extractVideoId(window.location.href);
 
-    if (!video || !videoId) return null;
+    if (!videoId) return null;
 
-    const duration = isFiniteDuration(video.duration) ? Math.floor(video.duration) : 0;
-    const title = getVideoTitle();
-    const channelName = getChannelName();
+    // Use mock service for now - will be replaced with real API when available
+    // To switch to real API, replace mockFetchVideoMetadata with fetchVideoMetadata
+    const response = await mockFetchVideoMetadata(videoId);
 
-    if (duration < 60 || !title || !channelName) return null;
+    if (!response.success || !response.data) {
+      console.error('Failed to fetch video metadata:', response.error);
+      return null;
+    }
 
-    return {
-      videoId,
-      title,
-      channelName,
-      url: window.location.href,
-      duration
-    };
+    return response.data;
   } catch (error) {
-    console.error('Error extracting video metadata:', error);
+    console.error('Error fetching video metadata:', error);
     return null;
   }
-}
-
-function isFiniteDuration(duration: number): boolean {
-  return isFinite(duration) && duration > 0;
 }

@@ -1,5 +1,5 @@
-import { ApiResponse, DifficultyResponse } from '../../../types/api';
-import { API_BASE_URL, API_ENDPOINTS, fetchWithRetry } from '../../../services/api';
+import { ApiResponse, DifficultyResponse } from '@/types/api';
+import { API_BASE_URL, API_ENDPOINTS, fetchWithRetry } from '@/services/api';
 
 export async function fetchDifficultyData(
   videoIds: string[]

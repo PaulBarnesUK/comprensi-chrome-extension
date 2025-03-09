@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-03-09 20:33:38
+Generated on 2025-03-09 21:09:18
 
 ## Core Components
 
@@ -59,7 +59,6 @@ Generated on 2025-03-09 20:33:38
                 - thumbnailFinder.ts _(4 KB)_
                 - videoIdExtractor.ts _(4 KB)_            - index.tsx _(4 KB)_
             - **utils/**
-                - apiUtils.ts _(4 KB)_
                 - elementParser.ts _(4 KB)_
                 - urlParser.ts _(4 KB)_        - index.ts _(4 KB)_
         - **videoComparison/**
@@ -68,9 +67,7 @@ Generated on 2025-03-09 20:33:38
                 - comparison.ts _(4 KB)_
                 - languageCheck.ts _(4 KB)_
                 - modalManager.ts _(4 KB)_            - index.ts _(4 KB)_
-            - **services/**
-                - languageService.ts _(4 KB)_
-                - mockLanguageService.ts _(4 KB)_            - **utils/**
+            - **utils/**
                 - filterUtils.ts _(4 KB)_        - **videoWatcher/**
             - detector.ts _(4 KB)_
             - events.ts _(4 KB)_
@@ -89,8 +86,9 @@ Generated on 2025-03-09 20:33:38
         - **api/**
             - constants.ts _(4 KB)_
             - index.ts _(4 KB)_
+            - mockVideoService.ts _(4 KB)_
             - **utils/**
-                - fetchUtils.ts _(4 KB)_    - **types/**
+                - fetchUtils.ts _(4 KB)_            - videoService.ts _(4 KB)_    - **types/**
         - api.ts _(4 KB)_
         - difficulty.ts _(4 KB)_
         - index.ts _(4 KB)_

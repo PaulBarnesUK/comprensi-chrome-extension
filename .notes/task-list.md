@@ -51,11 +51,6 @@
 - [ ] Implement API endpoints integration
 - [ ] Create TypeScript interfaces for API responses
 
-## Storage Management
-- [ ] Design storage schema
-- [ ] Implement storage utilities
-- [ ] Add storage quota management
-
 ## Deployment
 - [ ] Prepare for Chrome Web Store submission
 - [ ] Create scaled versions of extension icon
@@ -64,7 +59,9 @@
 - [ ] Implement update mechanism
 
 ## TODOs
-- [ ] Fix video watch tracking logic (very brittle right now) & remove video metadata as it's not necessary
+- [x] Fix video watch tracking logic (very brittle right now) & remove video metadata as it's not necessary
+- [x] Fix bug where video doesn't track if navigating from main page (duration gets stuck at zero and state.currentVideo is null)
+- [x] Fix bug where channel name and video title get parsed incorrectly - I think they're getting pulled in too early or something
 - [x] Implement language check (video lang should match user selected langs) before rendering difficulty indicator
-- [ ] Implement language check (video lang should match user selected langs) before prompting user for difficulty comparison
+- [x] Implement language check (video lang should match user selected langs) before prompting user for difficulty comparison
 

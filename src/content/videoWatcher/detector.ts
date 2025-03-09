@@ -62,7 +62,7 @@ async function setupVideoTracking(
   state: VideoWatcherState,
   videoElement: HTMLVideoElement
 ): Promise<void> {
-  const getMetadata = () => Promise.resolve(getVideoMetadata(videoElement));
+  const getMetadata = () => getVideoMetadata();
 
   const metadata = await retryOperation(getMetadata);
   if (!metadata) return;
