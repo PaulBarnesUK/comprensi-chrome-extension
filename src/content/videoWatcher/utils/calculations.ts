@@ -1,4 +1,4 @@
-import { VideoMetadata, WatchData } from '../../../types';
+import { VideoFullData, WatchData } from '../../../types';
 
 export function calculateWatchPercentage(watchTimeSeconds: number, videoDuration: number): number {
   if (!videoDuration) return 0;
@@ -6,15 +6,15 @@ export function calculateWatchPercentage(watchTimeSeconds: number, videoDuration
   return Math.min(100, (validWatchTime / videoDuration) * 100);
 }
 
-export function createWatchData(videoMetadata: VideoMetadata, watchTimeSeconds: number): WatchData {
+export function createWatchData(videoData: VideoFullData, watchTimeSeconds: number): WatchData {
   const validWatchTime = Math.max(0, watchTimeSeconds);
-  const watchPercentage = calculateWatchPercentage(validWatchTime, videoMetadata.duration);
+  const watchPercentage = calculateWatchPercentage(validWatchTime, videoData.duration);
 
   return {
-    ...videoMetadata,
+    ...videoData,
     watchTimeSeconds: Math.floor(validWatchTime),
     watchPercentage,
     lastWatched: Date.now(),
-    watched: false,
+    watched: false
   };
 }

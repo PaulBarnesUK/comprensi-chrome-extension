@@ -3,16 +3,19 @@ export interface DifficultyData {
   sigma: number; // Confidence/uncertainty
 }
 
-export interface VideoMetadata {
+export interface VideoBaseData {
   videoId: string;
-  title: string;
-  channelName: string;
-  duration: number;
   language: string;
   difficulty: DifficultyData;
 }
 
-export interface WatchData extends VideoMetadata {
+export interface VideoFullData extends VideoBaseData {
+  title: string;
+  channelName: string;
+  duration: number;
+}
+
+export interface WatchData extends VideoFullData {
   watchTimeSeconds: number;
   watchPercentage: number;
   lastWatched: number;

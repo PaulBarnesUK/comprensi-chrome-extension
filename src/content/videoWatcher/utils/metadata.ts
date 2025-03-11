@@ -1,30 +1,30 @@
-import { VideoMetadata } from '@/types';
+import { VideoFullData } from '@/types';
 import { extractVideoId } from './url';
-import { mockFetchVideoMetadata } from '@/services/api';
+import { mockFetchVideoData } from '@/services/api';
 
 /**
- * Fetches video metadata from the API
+ * Fetches video data from the API
  * @param videoElement Optional video element (not used with API approach)
- * @returns Promise resolving to video metadata or null if unavailable
+ * @returns Promise resolving to video data or null if unavailable
  */
-export async function getVideoMetadata(): Promise<VideoMetadata | null> {
+export async function getVideoData(): Promise<VideoFullData | null> {
   try {
     const videoId = extractVideoId(window.location.href);
 
     if (!videoId) return null;
 
     // Use mock service for now - will be replaced with real API when available
-    // To switch to real API, replace mockFetchVideoMetadata with fetchVideoMetadata
-    const response = await mockFetchVideoMetadata(videoId);
+    // To switch to real API, replace mockFetchVideoData with fetchVideoData
+    const response = await mockFetchVideoData(videoId);
 
     if (!response.success || !response.data) {
-      console.error('Failed to fetch video metadata:', response.error);
+      console.error('Failed to fetch video data:', response.error);
       return null;
     }
 
     return response.data;
   } catch (error) {
-    console.error('Error fetching video metadata:', error);
+    console.error('Error fetching video data:', error);
     return null;
   }
 }

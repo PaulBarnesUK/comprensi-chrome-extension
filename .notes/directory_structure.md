@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-03-09 21:09:18
+Generated on 2025-03-11 17:17:53
 
 ## Core Components
 
@@ -51,13 +51,11 @@ Generated on 2025-03-09 21:09:18
             - **constants/**
                 - apiConfig.ts _(4 KB)_
                 - urlPatterns.ts _(4 KB)_            - **core/**
-                - apiClient.ts _(4 KB)_
                 - domObserver.ts _(4 KB)_
-                - indicatorInjector.tsx _(4 KB)_
+                - indicatorInjector.ts _(4 KB)_
                 - indicatorManager.ts _(4 KB)_
-                - mockApiClient.ts _(4 KB)_
                 - thumbnailFinder.ts _(4 KB)_
-                - videoIdExtractor.ts _(4 KB)_            - index.tsx _(4 KB)_
+                - videoIdExtractor.ts _(4 KB)_            - index.ts _(4 KB)_
             - **utils/**
                 - elementParser.ts _(4 KB)_
                 - urlParser.ts _(4 KB)_        - index.ts _(4 KB)_

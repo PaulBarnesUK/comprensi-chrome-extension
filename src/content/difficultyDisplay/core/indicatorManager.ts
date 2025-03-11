@@ -1,4 +1,4 @@
-import { VideoRegistry, VideoData } from '../../../types/difficulty';
+import { VideoRegistry, FetchedVideoState, isFetchedVideo } from '../../../types/difficulty';
 import {
   findThumbnailsForVideoId,
   shouldDisplayIndicator,
@@ -17,33 +17,36 @@ export async function processVideosForIndicators(videoRegistry: VideoRegistry): 
   }
 }
 
+/**
+ * Finds videos that are eligible for indicator display
+ */
 function findEligibleVideos(
   videoRegistry: VideoRegistry,
   selectedLanguages: string[]
-): VideoData[] {
-  return Object.values(videoRegistry).filter(
-    video =>
-      video.difficulty &&
-      shouldDisplayIndicator(video.difficulty) &&
-      selectedLanguages.includes(video.difficulty.language)
-  );
+): FetchedVideoState[] {
+  return Object.values(videoRegistry)
+    .filter(isFetchedVideo)
+    .filter(
+      video => shouldDisplayIndicator(video.data) && selectedLanguages.includes(video.data.language)
+    );
 }
 
-function injectIndicatorsForVideos(videos: VideoData[]): void {
+/**
+ * Injects difficulty indicators for the provided videos
+ */
+function injectIndicatorsForVideos(videos: FetchedVideoState[]): void {
   if (!videos.length) return;
 
   console.log(`Injecting indicators for ${videos.length} videos`);
 
   videos.forEach(video => {
-    if (!video.difficulty) return;
-
     const thumbnails = findThumbnailsForVideoId(video.videoId);
 
     if (thumbnails.length) {
       console.log(`Found ${thumbnails.length} thumbnails for video ${video.videoId}`);
 
       thumbnails.forEach(thumbnail => {
-        injectIndicator(thumbnail, video.difficulty!);
+        injectIndicator(thumbnail, video.data);
       });
     }
   });

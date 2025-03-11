@@ -1,4 +1,4 @@
-import { VideoMetadata } from '../../types';
+import { VideoBaseData, VideoFullData } from '../../types';
 import { ApiResponse } from '../../types/api';
 
 /**
@@ -7,11 +7,11 @@ import { ApiResponse } from '../../types/api';
 const MOCK_LANGUAGES = ['en', 'es', 'fr', 'de', 'pt', 'it', 'ja', 'ko', 'zh', 'ru'];
 
 /**
- * Generates a random difficulty score between 1-10
+ * Generates a random difficulty score between 1-100
  */
 function generateRandomDifficulty() {
   return {
-    score: 1 + Math.random() * 9,
+    score: Math.round(1 + Math.random() * 99),
     sigma: 0.5 + Math.random() * 1.5
   };
 }
@@ -21,7 +21,7 @@ function generateRandomDifficulty() {
  * @param videoId The YouTube video ID
  * @returns Promise resolving to mocked video metadata
  */
-export async function mockFetchVideoMetadata(videoId: string): Promise<ApiResponse<VideoMetadata>> {
+export async function mockFetchVideoData(videoId: string): Promise<ApiResponse<VideoFullData>> {
   // Simulate network delay
   await new Promise(resolve => setTimeout(resolve, 300 + Math.random() * 700));
 
@@ -29,7 +29,7 @@ export async function mockFetchVideoMetadata(videoId: string): Promise<ApiRespon
   const language = MOCK_LANGUAGES[Math.floor(Math.random() * MOCK_LANGUAGES.length)];
 
   // Create mock metadata
-  const metadata: VideoMetadata = {
+  const metadata: VideoFullData = {
     videoId,
     title: `Mock Video Title for ${videoId}`,
     channelName: 'Mock Channel',
@@ -41,5 +41,24 @@ export async function mockFetchVideoMetadata(videoId: string): Promise<ApiRespon
   return {
     success: true,
     data: metadata
+  };
+}
+
+export async function mockFetchVideosData(
+  videoIds: string[]
+): Promise<ApiResponse<VideoBaseData[]>> {
+  // Simulate network delay
+  await new Promise(resolve => setTimeout(resolve, 300 + Math.random() * 700));
+
+  const generateRandomLanguage = () =>
+    MOCK_LANGUAGES[Math.floor(Math.random() * MOCK_LANGUAGES.length)];
+
+  return {
+    success: true,
+    data: videoIds.map(id => ({
+      videoId: id,
+      language: generateRandomLanguage(),
+      difficulty: generateRandomDifficulty()
+    }))
   };
 }

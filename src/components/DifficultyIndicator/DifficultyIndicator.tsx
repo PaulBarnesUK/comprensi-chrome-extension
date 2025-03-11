@@ -7,11 +7,7 @@ export interface DifficultyIndicatorProps {
   language: string;
 }
 
-export const DifficultyIndicator: React.FC<DifficultyIndicatorProps> = ({
-  score,
-  language,
-}) => {
-    
+export const DifficultyIndicator: React.FC<DifficultyIndicatorProps> = ({ score, language }) => {
   const percentage = Math.round(score);
 
   const getColorClass = () => {
@@ -26,20 +22,18 @@ export const DifficultyIndicator: React.FC<DifficultyIndicatorProps> = ({
     <div className={`${styles.container}`}>
       <div className={styles.flag}>
         {LANGUAGE_FLAGS[language] && (
-          <img 
-            src={LANGUAGE_FLAGS[language]} 
-            alt={`${language} flag`} 
-            className={styles.flagIcon} 
+          <img
+            src={LANGUAGE_FLAGS[language]}
+            alt={`${language} flag`}
+            className={styles.flagIcon}
           />
         )}
       </div>
       <div className={styles.scoreContainer}>
-        <div className={`${styles.score} ${getColorClass()}`}>
-          {score}/100
-        </div>
+        <div className={`${styles.score} ${getColorClass()}`}>{score}/100</div>
         <div className={styles.progressBar}>
-          <div 
-            className={`${styles.progress} ${getColorClass()}`} 
+          <div
+            className={`${styles.progress} ${getColorClass()}`}
             style={{ width: `${percentage}%` }}
           ></div>
         </div>

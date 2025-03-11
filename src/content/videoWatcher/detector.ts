@@ -5,7 +5,7 @@ import { attachVideoEventListeners, detachVideoEventListeners } from './events';
 import { setupWatchTimeTracking, sendWatchProgressUpdate } from './reporting';
 import { getVideoElement } from './selectors';
 import { VideoWatcherState } from './types';
-import { getVideoMetadata } from './utils/metadata';
+import { getVideoData } from './utils/metadata';
 import { isVideoPage, observeUrlChanges } from './utils/url';
 import { waitForVideoElement } from './utils/domObserver';
 import { retryOperation } from './utils/retry';
@@ -62,12 +62,12 @@ async function setupVideoTracking(
   state: VideoWatcherState,
   videoElement: HTMLVideoElement
 ): Promise<void> {
-  const getMetadata = () => getVideoMetadata();
+  const getData = () => getVideoData();
 
-  const metadata = await retryOperation(getMetadata);
-  if (!metadata) return;
+  const videoData = await retryOperation(getData);
+  if (!videoData) return;
 
-  state.currentVideo = metadata;
+  state.currentVideo = videoData;
   await initializeWatchState(state, videoElement);
 
   setupWatchTimeTracking(state);

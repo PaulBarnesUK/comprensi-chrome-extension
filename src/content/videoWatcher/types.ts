@@ -1,4 +1,4 @@
-import { VideoMetadata } from '../../types';
+import { VideoFullData } from '../../types';
 
 export interface VideoEventHandlers {
   pause: EventListener;
@@ -7,7 +7,7 @@ export interface VideoEventHandlers {
 
 export interface VideoWatcherState {
   // Video metadata
-  currentVideo: VideoMetadata | null;
+  currentVideo: VideoFullData | null;
 
   // Timing information
   totalWatchTime: number;
