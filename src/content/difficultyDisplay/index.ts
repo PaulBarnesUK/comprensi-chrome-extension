@@ -2,7 +2,7 @@ import { findUnprocessedThumbnails, markThumbnailAsProcessed } from './core/thum
 import { extractVideoIdFromThumbnail } from './core/videoIdExtractor';
 import { observeDomChanges } from './core/domObserver';
 import { processVideosForIndicators } from './core/indicatorManager';
-import { VideoRegistry, createInitialState, createFetchedState } from '../../types/difficulty';
+import { VideoRegistry, createInitialState, createFetchedState } from './types';
 import { VideoBaseData } from '../../types';
 import { mockFetchVideosData } from '../../services/api';
 

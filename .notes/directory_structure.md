@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-03-11 17:17:53
+Generated on 2025-03-12 09:22:14
 
 ## Core Components
 
@@ -29,7 +29,6 @@ Generated on 2025-03-11 17:17:53
             - kr.svg _(4 KB)_
             - pt.svg _(12 KB)_
             - us.svg _(4 KB)_        - icon32.png _(4 KB)_    - **background/**
-        - **handlers/**
         - index.ts _(8 KB)_    - **components/**
         - **ComparisonModal/**
             - ComparisonModal.module.scss _(4 KB)_
@@ -56,6 +55,7 @@ Generated on 2025-03-11 17:17:53
                 - indicatorManager.ts _(4 KB)_
                 - thumbnailFinder.ts _(4 KB)_
                 - videoIdExtractor.ts _(4 KB)_            - index.ts _(4 KB)_
+            - types.ts _(4 KB)_
             - **utils/**
                 - elementParser.ts _(4 KB)_
                 - urlParser.ts _(4 KB)_        - index.ts _(4 KB)_
@@ -88,7 +88,6 @@ Generated on 2025-03-11 17:17:53
             - **utils/**
                 - fetchUtils.ts _(4 KB)_            - videoService.ts _(4 KB)_    - **types/**
         - api.ts _(4 KB)_
-        - difficulty.ts _(4 KB)_
         - index.ts _(4 KB)_
         - scss.d.ts _(4 KB)_
         - svg.d.ts _(4 KB)_    - **utils/**

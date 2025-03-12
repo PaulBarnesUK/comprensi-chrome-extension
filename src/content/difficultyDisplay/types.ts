@@ -1,4 +1,4 @@
-import { VideoBaseData } from './index';
+import { VideoBaseData } from '../../types';
 
 /**
  * Initial state of a video in the registry

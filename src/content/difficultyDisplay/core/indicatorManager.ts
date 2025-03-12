@@ -1,4 +1,4 @@
-import { VideoRegistry, FetchedVideoState, isFetchedVideo } from '../../../types/difficulty';
+import { VideoRegistry, FetchedVideoState, isFetchedVideo } from '../types';
 import {
   findThumbnailsForVideoId,
   shouldDisplayIndicator,
