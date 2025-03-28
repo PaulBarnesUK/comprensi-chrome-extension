@@ -1,16 +1,12 @@
 # Chrome Extension Directory Structure
-Generated on 2025-03-12 09:22:14
+Generated on 2025-03-28 19:25:58
 
 ## Core Components
 
 - LICENSE _(4 KB)_
 - PRIVACY.md _(4 KB)_
 - README.md _(4 KB)_
-- **designs/**
-    - difficulty-display-thumbnail-example.png _(212 KB)_
-    - difficulty-display-variants.png _(12 KB)_
-    - pairwise-comparison-modal-desktop.png _(300 KB)_
-    - pairwise-comparison-modal-mobile.png _(164 KB)_- eslint.config.js _(4 KB)_
+- eslint.config.js _(4 KB)_
 - manifest.json _(4 KB)_
 - package-lock.json _(216 KB)_
 - package.json _(4 KB)_
@@ -84,7 +80,6 @@ Generated on 2025-03-12 09:22:14
         - **api/**
             - constants.ts _(4 KB)_
             - index.ts _(4 KB)_
-            - mockVideoService.ts _(4 KB)_
             - **utils/**
                 - fetchUtils.ts _(4 KB)_            - videoService.ts _(4 KB)_    - **types/**
         - api.ts _(4 KB)_
