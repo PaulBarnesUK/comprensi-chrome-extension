@@ -1,6 +1,8 @@
 import { WatchData } from '../../../types';
 import { comparisonManager } from './modalManager';
 import { findEligibleComparisonVideo } from './languageCheck';
+import { sendComparisonResult } from '../../../services/api/videoService';
+import { ComparisonResult } from '@/types/api';
 
 export async function getRecentWatchedVideos(): Promise<WatchData[]> {
   try {
@@ -29,7 +31,7 @@ export async function shouldShowComparison(currentVideoId: string): Promise<Watc
 export async function handleVideoEnd(currentVideo: WatchData): Promise<void> {
   if (!currentVideo) return;
 
-  const previousVideo = await shouldShowComparison(currentVideo.videoId);
+  const previousVideo = await shouldShowComparison(currentVideo.id);
 
   if (previousVideo) {
     showComparisonModal(currentVideo, previousVideo);
@@ -40,32 +42,26 @@ function showComparisonModal(currentVideo: WatchData, previousVideo: WatchData):
   comparisonManager.showModal({
     currentVideo,
     previousVideo,
-    onCompare: (result: 'current' | 'previous' | 'equal') => {
-      sendComparisonResult(currentVideo.videoId, previousVideo.videoId, result);
+    onCompare: (result: ComparisonResult) => {
+      handleCompare(currentVideo.id, previousVideo.id, result);
     }
   });
 }
 
-function sendComparisonResult(
+function handleCompare(
   currentVideoId: string,
   previousVideoId: string,
-  result: 'current' | 'previous' | 'equal'
+  result: ComparisonResult
 ): void {
-  console.log('Comparison result:', {
-    currentVideoId,
-    previousVideoId,
-    result
-  });
-
-  // In a real implementation, this would send the data to an API endpoint
-  // Example:
-  // fetch('https://api.example.com/comparisons', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify({
-  //     currentVideoId,
-  //     previousVideoId,
-  //     result
-  //   })
-  // });
+  sendComparisonResult(currentVideoId, previousVideoId, result)
+    .then(response => {
+      if (response.success) {
+        console.log('Comparison result sent successfully:', response.data);
+      } else {
+        console.error('Failed to send comparison result:', response.error);
+      }
+    })
+    .catch(error => {
+      console.error('Error sending comparison result:', error);
+    });
 }

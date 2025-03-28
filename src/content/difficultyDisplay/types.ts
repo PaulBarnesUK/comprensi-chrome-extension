@@ -1,4 +1,4 @@
-import { VideoBaseData } from '../../types';
+import { VideoFullData } from '../../types';
 
 /**
  * Initial state of a video in the registry
@@ -14,7 +14,7 @@ export interface InitialVideoState {
 export interface FetchedVideoState {
   videoId: string;
   state: 'fetched';
-  data: VideoBaseData;
+  data: VideoFullData;
 }
 
 /**
@@ -37,7 +37,7 @@ export function createInitialState(videoId: string): InitialVideoState {
 /**
  * Creates fetched state for a video
  */
-export function createFetchedState(videoId: string, data: VideoBaseData): FetchedVideoState {
+export function createFetchedState(videoId: string, data: VideoFullData): FetchedVideoState {
   return {
     videoId,
     state: 'fetched',

@@ -78,7 +78,7 @@ async function initializeWatchState(
   state: VideoWatcherState,
   videoElement: HTMLVideoElement
 ): Promise<void> {
-  const previousWatchData = await getWatchedVideo(state.currentVideo!.videoId);
+  const previousWatchData = await getWatchedVideo(state.currentVideo!.id);
 
   if (previousWatchData) {
     state.totalWatchTime = previousWatchData.watchTimeSeconds || 0;

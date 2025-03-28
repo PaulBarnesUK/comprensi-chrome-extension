@@ -1,6 +1,7 @@
 import { ComparisonModal } from '@/components';
 import { renderComponent } from '@/utils/reactUtils';
 import { WatchData } from '@/types';
+import { ComparisonResult } from '@/types/api';
 
 /**
  * Interface for the comparison modal props
@@ -8,7 +9,7 @@ import { WatchData } from '@/types';
 export interface ComparisonModalProps {
   currentVideo: WatchData;
   previousVideo: WatchData;
-  onCompare: (result: 'current' | 'previous' | 'equal') => void;
+  onCompare: (result: ComparisonResult) => void;
 }
 
 /**

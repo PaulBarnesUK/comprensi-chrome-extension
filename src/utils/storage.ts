@@ -3,7 +3,7 @@ import { DEFAULT_LANGUAGE } from './languages';
 
 export async function getWatchedVideo(videoId: string): Promise<WatchData | null> {
   try {
-    const result = await chrome.storage.local.get(['watchedVideos']) as Partial<StorageSchema>;
+    const result = (await chrome.storage.local.get(['watchedVideos'])) as Partial<StorageSchema>;
     return (result.watchedVideos && result.watchedVideos[videoId]) || null;
   } catch (error) {
     console.error('Error getting watched video:', error);
@@ -13,10 +13,10 @@ export async function getWatchedVideo(videoId: string): Promise<WatchData | null
 
 export async function saveWatchedVideo(watchData: WatchData): Promise<void> {
   try {
-    const result = await chrome.storage.local.get(['watchedVideos']) as Partial<StorageSchema>;
+    const result = (await chrome.storage.local.get(['watchedVideos'])) as Partial<StorageSchema>;
     const watchedVideos = result.watchedVideos || {};
 
-    watchedVideos[watchData.videoId] = watchData;
+    watchedVideos[watchData.id] = watchData;
     await chrome.storage.local.set({ watchedVideos });
   } catch (error) {
     console.error('Error saving watched video:', error);
@@ -35,7 +35,7 @@ export async function clearWatchedVideos(): Promise<void> {
 
 export async function getSettings(): Promise<StorageSchema['settings']['settings']> {
   try {
-    const result = await chrome.storage.local.get(['settings']) as Partial<StorageSchema>;
+    const result = (await chrome.storage.local.get(['settings'])) as Partial<StorageSchema>;
     return result.settings?.settings || getDefaultSettings();
   } catch (error) {
     console.error('Error getting settings:', error);
@@ -47,7 +47,7 @@ function getDefaultSettings(): StorageSchema['settings']['settings'] {
   return {
     minimumWatchPercentage: 70,
     minimumWatchTimeSeconds: 30,
-    maximumWatchTimeSeconds: 900,
+    maximumWatchTimeSeconds: 900
   };
 }
 

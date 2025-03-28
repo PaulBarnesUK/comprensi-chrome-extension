@@ -3,8 +3,8 @@ import { extractVideoIdFromThumbnail } from './core/videoIdExtractor';
 import { observeDomChanges } from './core/domObserver';
 import { processVideosForIndicators } from './core/indicatorManager';
 import { VideoRegistry, createInitialState, createFetchedState } from './types';
-import { VideoBaseData } from '../../types';
-import { mockFetchVideosData } from '../../services/api';
+import { VideoFullData } from '../../types';
+import { fetchVideosData } from '../../services/api/videoService';
 
 const videoRegistry: VideoRegistry = {};
 
@@ -74,7 +74,7 @@ async function fetchVideosDataForVideos(videoIds: string[]): Promise<void> {
   try {
     console.log(`Fetching videos data for ${videoIds.length} videos`);
 
-    const response = await mockFetchVideosData(videoIds);
+    const response = await fetchVideosData(videoIds);
 
     if (!response.success || !response.data) {
       console.error('Failed to fetch videos data:', response.error);
@@ -91,10 +91,10 @@ async function fetchVideosDataForVideos(videoIds: string[]): Promise<void> {
 /**
  * Updates the video registry with videos data from the API
  */
-function updateRegistryWithVideosData(videos: VideoBaseData[]): void {
+function updateRegistryWithVideosData(videos: VideoFullData[]): void {
   videos.forEach(video => {
-    if (videoRegistry[video.videoId]) {
-      videoRegistry[video.videoId] = createFetchedState(video.videoId, video);
+    if (videoRegistry[video.id]) {
+      videoRegistry[video.id] = createFetchedState(video.id, video);
     }
   });
 

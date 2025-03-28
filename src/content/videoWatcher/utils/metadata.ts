@@ -1,6 +1,6 @@
 import { VideoFullData } from '@/types';
 import { extractVideoId } from './url';
-import { mockFetchVideoData } from '@/services/api';
+import { fetchVideoData } from '@/services/api/videoService';
 
 /**
  * Fetches video data from the API
@@ -13,9 +13,7 @@ export async function getVideoData(): Promise<VideoFullData | null> {
 
     if (!videoId) return null;
 
-    // Use mock service for now - will be replaced with real API when available
-    // To switch to real API, replace mockFetchVideoData with fetchVideoData
-    const response = await mockFetchVideoData(videoId);
+    const response = await fetchVideoData(videoId);
 
     if (!response.success || !response.data) {
       console.error('Failed to fetch video data:', response.error);

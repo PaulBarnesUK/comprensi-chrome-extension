@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { DifficultyIndicator } from '../../../components/DifficultyIndicator';
-import { VideoBaseData } from '../../../types';
+import { VideoFullData } from '../../../types';
 
 /**
  * Finds all thumbnails for a specific video ID
@@ -16,8 +16,8 @@ export function findThumbnailsForVideoId(videoId: string): HTMLElement[] {
 /**
  * Determines if a video should have a difficulty indicator displayed
  */
-export function shouldDisplayIndicator(videoData: VideoBaseData): boolean {
-  return videoData.difficulty.score > 0 && videoData.difficulty.sigma < 15;
+export function shouldDisplayIndicator(videoData: VideoFullData): boolean {
+  return videoData.difficulty.score > 0 && videoData.difficulty.confidence > 0.85;
 }
 
 /**
@@ -41,7 +41,7 @@ export function createIndicatorContainer(thumbnail: HTMLElement): HTMLDivElement
 /**
  * Renders the difficulty indicator component
  */
-export function renderIndicator(mountPoint: HTMLElement, videoData: VideoBaseData): void {
+export function renderIndicator(mountPoint: HTMLElement, videoData: VideoFullData): void {
   const root = createRoot(mountPoint);
   root.render(
     React.createElement(DifficultyIndicator, {
@@ -61,7 +61,7 @@ export function markThumbnailWithIndicator(thumbnail: HTMLElement): void {
 /**
  * Injects a difficulty indicator into a thumbnail
  */
-export function injectIndicator(thumbnail: HTMLElement, videoData: VideoBaseData): void {
+export function injectIndicator(thumbnail: HTMLElement, videoData: VideoFullData): void {
   const container = createIndicatorContainer(thumbnail);
   if (!container) return;
 

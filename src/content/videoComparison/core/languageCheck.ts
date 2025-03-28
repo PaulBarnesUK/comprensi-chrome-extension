@@ -10,7 +10,7 @@ export async function findEligibleComparisonVideo(
     return null;
   }
 
-  const currentVideoIndex = recentVideos.findIndex(video => video.videoId === currentVideoId);
+  const currentVideoIndex = recentVideos.findIndex(video => video.id === currentVideoId);
 
   if (currentVideoIndex === -1 || currentVideoIndex > 0) {
     return null;

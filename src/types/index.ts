@@ -1,10 +1,10 @@
 export interface DifficultyData {
   score: number;
-  sigma: number; // Confidence/uncertainty
+  confidence: number;
 }
 
 export interface VideoBaseData {
-  videoId: string;
+  id: string;
   language: string;
   difficulty: DifficultyData;
 }

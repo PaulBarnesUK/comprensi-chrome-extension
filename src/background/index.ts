@@ -58,7 +58,7 @@ async function handleVideoWatched(watchData: WatchData): Promise<WatchData> {
     watchData.watched = isWatched;
 
     await saveWatchedVideo(watchData);
-    console.log('Saved watch data for video:', watchData.videoId, 'Watched:', isWatched);
+    console.log('Saved watch data for video:', watchData.id, 'Watched:', isWatched);
 
     return watchData;
   } catch (error) {
