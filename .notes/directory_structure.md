@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-03-28 19:51:04
+Generated on 2025-03-29 09:13:08
 
 ## Core Components
 
@@ -62,7 +62,8 @@ Generated on 2025-03-28 19:51:04
                 - languageCheck.ts _(4 KB)_
                 - modalManager.ts _(4 KB)_            - index.ts _(4 KB)_
             - **utils/**
-                - filterUtils.ts _(4 KB)_        - **videoWatcher/**
+                - filterUtils.ts _(4 KB)_
+                - scoringUtils.ts _(4 KB)_        - **videoWatcher/**
             - detector.ts _(4 KB)_
             - events.ts _(4 KB)_
             - index.ts _(4 KB)_
