@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './ComparisonModal.module.scss';
 import { WatchData } from '../../types';
 import { ComparisonResult } from '@/types/api';
+import { Info } from 'lucide-react';
 
 interface ComparisonModalProps {
   isOpen: boolean;
@@ -35,7 +36,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
         <div className={styles.modalHeader}>
           <h2 className={styles.modalTitle}>Which video was easier to understand?</h2>
           <div className={styles.infoContainer}>
-            <span className={styles.infoIcon}>ⓘ</span>
+            <Info className={styles.infoIcon} size={16} />
             <p className={styles.modalSubtitle}>
               Your feedback helps fellow learners find videos that match their level. Every vote
               counts!
@@ -52,13 +53,6 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                   alt={previousVideo.title}
                   className={styles.thumbnail}
                 />
-                <div className={styles.channelIconContainer}>
-                  <img
-                    src={`https://i.ytimg.com/vi/${previousVideo.id}/1.jpg`}
-                    alt={`${previousVideo.channelName} icon`}
-                    className={styles.channelIcon}
-                  />
-                </div>
               </div>
               <div className={styles.videoInfo}>
                 <h3 className={styles.videoTitle}>{previousVideo.title}</h3>
@@ -79,13 +73,6 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                   alt={currentVideo.title}
                   className={styles.thumbnail}
                 />
-                <div className={styles.channelIconContainer}>
-                  <img
-                    src={`https://i.ytimg.com/vi/${currentVideo.id}/1.jpg`}
-                    alt={`${currentVideo.channelName} icon`}
-                    className={styles.channelIcon}
-                  />
-                </div>
               </div>
               <div className={styles.videoInfo}>
                 <h3 className={styles.videoTitle}>{currentVideo.title}</h3>

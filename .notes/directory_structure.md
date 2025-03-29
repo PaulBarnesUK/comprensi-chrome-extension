@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-03-29 09:13:08
+Generated on 2025-03-29 18:19:57
 
 ## Core Components
 
@@ -28,7 +28,7 @@ Generated on 2025-03-29 09:13:08
         - index.ts _(8 KB)_    - **components/**
         - **ComparisonModal/**
             - ComparisonModal.module.scss _(4 KB)_
-            - ComparisonModal.tsx _(8 KB)_
+            - ComparisonModal.tsx _(4 KB)_
             - index.ts _(4 KB)_        - **DifficultyIndicator/**
             - DifficultyIndicator.module.scss _(4 KB)_
             - DifficultyIndicator.tsx _(4 KB)_
