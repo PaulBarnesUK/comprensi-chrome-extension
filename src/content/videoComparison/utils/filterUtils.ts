@@ -15,7 +15,7 @@ export function filterRecentVideosInLanguage(
   return videos.filter(
     video =>
       video.language &&
-      video.language === currentVideoLanguage &&
+      video.language.primary === currentVideoLanguage &&
       now - video.lastWatched <= ONE_DAY_MS
   );
 }

@@ -2,6 +2,7 @@ import { endVideoTracking } from './detector';
 import { updateWatchTime, sendWatchProgressUpdate } from './reporting';
 import { getVideoElement } from './selectors';
 import { VideoWatcherState } from './types';
+import { checkForComparisonOpportunity } from '../videoComparison/core/comparison';
 
 export function attachVideoEventListeners(
   videoElement: HTMLVideoElement,
@@ -15,7 +16,7 @@ export function attachVideoEventListeners(
 
   state.eventHandlers = {
     pause: handlePause,
-    ended: handleEnded,
+    ended: handleEnded
   };
 }
 
@@ -32,12 +33,20 @@ export function detachVideoEventListeners(
 }
 
 export function createHandleVideoPause(state: VideoWatcherState): EventListener {
-  return () => {
+  return async () => {
     const videoElement = getVideoElement();
-    if (!videoElement || videoElement.paused) return;
+    if (!videoElement) return;
 
     updateWatchTime(state, videoElement);
-    sendWatchProgressUpdate(state);
+
+    const watchData = await sendWatchProgressUpdate(state);
+
+    if (watchData) {
+      // make this timeout cancel on video play
+      setTimeout(() => {
+        checkForComparisonOpportunity(watchData);
+      }, 500);
+    }
   };
 }
 

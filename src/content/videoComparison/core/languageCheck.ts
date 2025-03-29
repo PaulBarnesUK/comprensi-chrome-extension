@@ -30,7 +30,7 @@ export async function findEligibleComparisonVideo(
 
   const eligibleVideos = filterRecentVideosInLanguage(
     recentVideos.slice(1), // Exclude current video
-    currentVideo.language,
+    currentVideo.language.primary,
     selectedLanguages
   );
 

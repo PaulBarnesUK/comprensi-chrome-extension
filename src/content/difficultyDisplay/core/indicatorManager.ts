@@ -27,7 +27,10 @@ function findEligibleVideos(
   return Object.values(videoRegistry)
     .filter(isFetchedVideo)
     .filter(
-      video => shouldDisplayIndicator(video.data) && selectedLanguages.includes(video.data.language)
+      video =>
+        shouldDisplayIndicator(video.data) &&
+        video.data.language?.primary !== undefined &&
+        selectedLanguages.includes(video.data.language.primary)
     );
 }
 

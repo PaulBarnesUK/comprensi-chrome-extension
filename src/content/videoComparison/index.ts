@@ -5,4 +5,4 @@
  * Shows comparison UI when appropriate based on language and recency.
  */
 
-export { handleVideoEnd } from './core/comparison';
+export { checkForComparisonOpportunity } from './core/comparison';

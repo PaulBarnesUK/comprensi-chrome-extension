@@ -1,5 +1,5 @@
 import { getWatchedVideo } from '../../utils/storage';
-import { handleVideoEnd } from '../videoComparison';
+import { checkForComparisonOpportunity } from '../videoComparison';
 
 import { attachVideoEventListeners, detachVideoEventListeners } from './events';
 import { setupWatchTimeTracking, sendWatchProgressUpdate } from './reporting';
@@ -108,7 +108,7 @@ export async function endVideoTracking(state: VideoWatcherState): Promise<void> 
 
       if (watchData && watchData.watched) {
         setTimeout(() => {
-          handleVideoEnd(watchData);
+          checkForComparisonOpportunity(watchData);
         }, 500);
       }
     } catch (error) {

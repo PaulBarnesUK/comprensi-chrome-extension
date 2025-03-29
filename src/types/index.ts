@@ -3,9 +3,14 @@ export interface DifficultyData {
   confidence: number;
 }
 
+export interface LanguageData {
+  primary: string;
+  secondary: string;
+}
+
 export interface VideoBaseData {
   id: string;
-  language: string;
+  language: LanguageData | null;
   difficulty: DifficultyData;
 }
 

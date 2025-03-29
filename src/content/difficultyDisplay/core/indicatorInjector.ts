@@ -17,7 +17,7 @@ export function findThumbnailsForVideoId(videoId: string): HTMLElement[] {
  * Determines if a video should have a difficulty indicator displayed
  */
 export function shouldDisplayIndicator(videoData: VideoFullData): boolean {
-  return videoData.difficulty.score > 0 && videoData.difficulty.confidence > 0.85;
+  return videoData.difficulty.score > 0; // && videoData.difficulty.confidence > 0.85;
 }
 
 /**
@@ -43,10 +43,15 @@ export function createIndicatorContainer(thumbnail: HTMLElement): HTMLDivElement
  */
 export function renderIndicator(mountPoint: HTMLElement, videoData: VideoFullData): void {
   const root = createRoot(mountPoint);
+
+  if (!videoData.language) {
+    return;
+  }
+
   root.render(
     React.createElement(DifficultyIndicator, {
       score: videoData.difficulty.score,
-      language: videoData.language
+      language: videoData.language.primary
     })
   );
 }

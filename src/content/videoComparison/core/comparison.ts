@@ -28,8 +28,8 @@ export async function shouldShowComparison(currentVideoId: string): Promise<Watc
   }
 }
 
-export async function handleVideoEnd(currentVideo: WatchData): Promise<void> {
-  if (!currentVideo) return;
+export async function checkForComparisonOpportunity(currentVideo: WatchData): Promise<void> {
+  if (!currentVideo || !currentVideo.watched) return;
 
   const previousVideo = await shouldShowComparison(currentVideo.id);
 
