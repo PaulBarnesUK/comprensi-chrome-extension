@@ -49,8 +49,8 @@ export async function findEligibleComparisonVideo(
 function findOptimalComparisonVideo(
   currentVideo: WatchData,
   eligibleVideos: WatchData[]
-): WatchData {
-  let bestVideo = eligibleVideos[0];
+): WatchData | null {
+  let bestVideo = null;
   let bestScore = -Infinity;
 
   for (let i = 0; i < eligibleVideos.length; i++) {

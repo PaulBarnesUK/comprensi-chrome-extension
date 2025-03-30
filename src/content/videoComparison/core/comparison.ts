@@ -3,6 +3,7 @@ import { comparisonManager } from './modalManager';
 import { findEligibleComparisonVideo } from './languageCheck';
 import { sendComparisonResult } from '../../../services/api/videoService';
 import { ComparisonResult } from '@/types/api';
+import { getWatchedVideo, saveWatchedVideo } from '../../../utils/storage';
 
 const comparisonsShownThisSession = new Set<string>();
 
@@ -50,29 +51,22 @@ function showComparisonModal(currentVideo: WatchData, previousVideo: WatchData):
       handleCompare(currentVideo.id, previousVideo.id, result);
     }
   });
-  comparisonsShownThisSession.add(currentVideo.id);
 }
 
 async function updateComparisonRecord(videoId1: string, videoId2: string): Promise<void> {
   try {
-    const result = await chrome.storage.local.get(['watchedVideos']);
-    const watchedVideos = result.watchedVideos || {};
+    const video1 = await getWatchedVideo(videoId1);
+    const video2 = await getWatchedVideo(videoId2);
 
-    if (watchedVideos[videoId1]) {
-      watchedVideos[videoId1].comparedWith = [
-        ...(watchedVideos[videoId1].comparedWith || []),
-        videoId2
-      ];
+    if (video1 && !video1.comparedWith?.includes(videoId2)) {
+      video1.comparedWith = [...(video1.comparedWith || []), videoId2];
+      await saveWatchedVideo(video1);
     }
 
-    if (watchedVideos[videoId2]) {
-      watchedVideos[videoId2].comparedWith = [
-        ...(watchedVideos[videoId2].comparedWith || []),
-        videoId1
-      ];
+    if (video2 && !video2.comparedWith?.includes(videoId1)) {
+      video2.comparedWith = [...(video2.comparedWith || []), videoId1];
+      await saveWatchedVideo(video2);
     }
-
-    await chrome.storage.local.set({ watchedVideos });
   } catch (error) {
     console.error('Error updating comparison record:', error);
   }
@@ -85,7 +79,10 @@ function handleCompare(
 ): void {
   sendComparisonResult(currentVideoId, previousVideoId, result)
     .then(async response => {
-      await updateComparisonRecord(currentVideoId, previousVideoId);
+      if (response.success) {
+        await updateComparisonRecord(currentVideoId, previousVideoId);
+        comparisonsShownThisSession.add(currentVideoId);
+      }
 
       return response;
     })

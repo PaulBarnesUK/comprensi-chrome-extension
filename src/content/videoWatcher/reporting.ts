@@ -69,11 +69,10 @@ export function shouldReportProgress(state: VideoWatcherState): boolean {
   return currentWatchPercentage > state.watchPercentage;
 }
 
-export function sendWatchProgressUpdate(state: VideoWatcherState): Promise<WatchData | null> {
+export async function sendWatchProgressUpdate(state: VideoWatcherState): Promise<WatchData | null> {
   if (!state.currentVideo) return Promise.resolve(null);
 
-  const watchData = createWatchData(state.currentVideo, state.totalWatchTime);
-
+  const watchData = await createWatchData(state.currentVideo, state.totalWatchTime);
   state.watchPercentage = watchData.watchPercentage;
 
   return new Promise((resolve, reject) => {
