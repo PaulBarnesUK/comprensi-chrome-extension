@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './ComparisonModal.module.scss';
 import { WatchData } from '../../types';
 import { ComparisonResult } from '@/types/api';
-import { Info } from 'lucide-react';
+import { Info, X } from 'lucide-react';
 
 interface ComparisonModalProps {
   isOpen: boolean;
@@ -30,14 +30,14 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
         <button className={styles.closeButton} onClick={onClose}>
-          &times;
+          <X className={styles.closeIcon} size={24} />
         </button>
 
         <div className={styles.modalHeader}>
           <h2 className={styles.modalTitle}>Which video was easier to understand?</h2>
           <div className={styles.infoContainer}>
-            <Info className={styles.infoIcon} size={16} />
             <p className={styles.modalSubtitle}>
+              <Info className={styles.infoIcon} size={14} />
               Your feedback helps fellow learners find videos that match their level. Every vote
               counts!
             </p>
