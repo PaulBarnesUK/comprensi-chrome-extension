@@ -18,7 +18,8 @@ function createWatcherState(): VideoWatcherState {
     lastReportedTime: 0,
     watchIntervalId: null,
     eventHandlers: null,
-    urlObserver: null
+    urlObserver: null,
+    comparisonTimeout: null
   };
 }
 

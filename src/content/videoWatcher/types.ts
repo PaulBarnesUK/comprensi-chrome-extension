@@ -3,6 +3,7 @@ import { VideoFullData } from '../../types';
 export interface VideoEventHandlers {
   pause: EventListener;
   ended: EventListener;
+  play: EventListener;
 }
 
 export interface VideoWatcherState {
@@ -18,4 +19,7 @@ export interface VideoWatcherState {
   watchIntervalId: number | null;
   eventHandlers: VideoEventHandlers | null;
   urlObserver: MutationObserver | null;
+
+  // Timeout for comparison opportunity
+  comparisonTimeout: ReturnType<typeof setTimeout> | null;
 }

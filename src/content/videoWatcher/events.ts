@@ -10,13 +10,16 @@ export function attachVideoEventListeners(
 ): void {
   const handlePause = createHandleVideoPause(state);
   const handleEnded = createHandleVideoEnded(state);
+  const handlePlay = createHandleVideoPlay(state);
 
   videoElement.addEventListener('pause', handlePause);
   videoElement.addEventListener('ended', handleEnded);
+  videoElement.addEventListener('play', handlePlay);
 
   state.eventHandlers = {
     pause: handlePause,
-    ended: handleEnded
+    ended: handleEnded,
+    play: handlePlay
   };
 }
 
@@ -28,6 +31,7 @@ export function detachVideoEventListeners(
 
   videoElement.removeEventListener('pause', state.eventHandlers.pause);
   videoElement.removeEventListener('ended', state.eventHandlers.ended);
+  videoElement.removeEventListener('play', state.eventHandlers.play);
 
   state.eventHandlers = null;
 }
@@ -42,10 +46,18 @@ export function createHandleVideoPause(state: VideoWatcherState): EventListener 
     const watchData = await sendWatchProgressUpdate(state);
 
     if (watchData) {
-      // make this timeout cancel on video play
-      setTimeout(() => {
+      state.comparisonTimeout = setTimeout(() => {
         checkForComparisonOpportunity(watchData);
-      }, 500);
+      }, 1000);
+    }
+  };
+}
+
+export function createHandleVideoPlay(state: VideoWatcherState): EventListener {
+  return () => {
+    if (state.comparisonTimeout) {
+      clearTimeout(state.comparisonTimeout);
+      state.comparisonTimeout = null;
     }
   };
 }
