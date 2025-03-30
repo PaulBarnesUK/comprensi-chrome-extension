@@ -4,6 +4,8 @@ import { findEligibleComparisonVideo } from './languageCheck';
 import { sendComparisonResult } from '../../../services/api/videoService';
 import { ComparisonResult } from '@/types/api';
 
+const comparisonsShownThisSession = new Set<string>();
+
 export async function getRecentWatchedVideos(): Promise<WatchData[]> {
   try {
     const result = await chrome.storage.local.get(['watchedVideos']);
@@ -20,6 +22,8 @@ export async function getRecentWatchedVideos(): Promise<WatchData[]> {
 
 export async function shouldShowComparison(currentVideoId: string): Promise<WatchData | null> {
   try {
+    if (comparisonsShownThisSession.has(currentVideoId)) return null;
+
     const recentVideos = await getRecentWatchedVideos();
     return findEligibleComparisonVideo(recentVideos, currentVideoId);
   } catch (error) {
@@ -46,6 +50,32 @@ function showComparisonModal(currentVideo: WatchData, previousVideo: WatchData):
       handleCompare(currentVideo.id, previousVideo.id, result);
     }
   });
+  comparisonsShownThisSession.add(currentVideo.id);
+}
+
+async function updateComparisonRecord(videoId1: string, videoId2: string): Promise<void> {
+  try {
+    const result = await chrome.storage.local.get(['watchedVideos']);
+    const watchedVideos = result.watchedVideos || {};
+
+    if (watchedVideos[videoId1]) {
+      watchedVideos[videoId1].comparedWith = [
+        ...(watchedVideos[videoId1].comparedWith || []),
+        videoId2
+      ];
+    }
+
+    if (watchedVideos[videoId2]) {
+      watchedVideos[videoId2].comparedWith = [
+        ...(watchedVideos[videoId2].comparedWith || []),
+        videoId1
+      ];
+    }
+
+    await chrome.storage.local.set({ watchedVideos });
+  } catch (error) {
+    console.error('Error updating comparison record:', error);
+  }
 }
 
 function handleCompare(
@@ -54,6 +84,11 @@ function handleCompare(
   result: ComparisonResult
 ): void {
   sendComparisonResult(currentVideoId, previousVideoId, result)
+    .then(async response => {
+      await updateComparisonRecord(currentVideoId, previousVideoId);
+
+      return response;
+    })
     .then(response => {
       if (response.success) {
         console.log('Comparison result sent successfully:', response.data);

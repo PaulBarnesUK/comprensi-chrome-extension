@@ -25,6 +25,7 @@ export interface WatchData extends VideoFullData {
   watchPercentage: number;
   lastWatched: number;
   watched: boolean;
+  comparedWith?: string[];
 }
 
 export interface ExtensionSettings {

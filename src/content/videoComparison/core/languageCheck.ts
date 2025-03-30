@@ -55,6 +55,11 @@ function findOptimalComparisonVideo(
 
   for (let i = 0; i < eligibleVideos.length; i++) {
     const candidateVideo = eligibleVideos[i];
+
+    if (currentVideo.comparedWith?.includes(candidateVideo.id)) {
+      continue;
+    }
+
     const score = calculateComparisonScore(currentVideo, candidateVideo, i);
 
     if (score > bestScore) {
