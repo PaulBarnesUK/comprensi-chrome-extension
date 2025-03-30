@@ -27,8 +27,8 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
   };
 
   return (
-    <div className={styles.modalOverlay}>
-      <div className={styles.modalContent}>
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
         <button className={styles.closeButton} onClick={onClose}>
           <X className={styles.closeIcon} size={24} />
         </button>
