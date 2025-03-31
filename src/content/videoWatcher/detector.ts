@@ -97,6 +97,7 @@ export async function endVideoTracking(state: VideoWatcherState): Promise<void> 
 
   window.clearInterval(state.watchIntervalId);
   state.watchIntervalId = null;
+  state.comparisonTimeout = null;
 
   const videoElement = getVideoElement();
   if (videoElement && state.eventHandlers) {
