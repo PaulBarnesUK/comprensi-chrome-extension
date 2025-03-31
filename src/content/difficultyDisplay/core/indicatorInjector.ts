@@ -9,7 +9,7 @@ import { VideoFullData } from '../../../types';
 export function findThumbnailsForVideoId(videoId: string): HTMLElement[] {
   const thumbnails = document.querySelectorAll(`a[href*="${videoId}"] img`);
   return Array.from(thumbnails)
-    .map(img => img.closest('a') as HTMLElement)
+    .map(img => img.closest('a:not(.ytd-video-preview') as HTMLElement)
     .filter(Boolean);
 }
 
