@@ -18,6 +18,7 @@ export interface VideoFullData extends VideoBaseData {
   title: string;
   channelName: string;
   duration: number;
+  bypassSigmaCheck: boolean;
 }
 
 export interface WatchData extends VideoFullData {

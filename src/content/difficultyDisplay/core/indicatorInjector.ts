@@ -23,7 +23,10 @@ export function findThumbnailsForVideoId(videoId: string): HTMLElement[] {
  * Determines if a video should have a difficulty indicator displayed
  */
 export function shouldDisplayIndicator(videoData: VideoFullData): boolean {
-  return videoData.difficulty.score > 0; // && videoData.difficulty.confidence > 0.85;
+  return (
+    videoData.difficulty.score > 0 &&
+    (videoData.difficulty.confidence > 0.85 || videoData.bypassSigmaCheck)
+  );
 }
 
 /**
