@@ -1,12 +1,13 @@
-import { findUnprocessedThumbnails, markThumbnailAsProcessed } from './core/thumbnailFinder';
+import { findThumbnails } from './core/thumbnailFinder';
 import { extractVideoIdFromThumbnail } from './core/videoIdExtractor';
 import { observeDomChanges } from './core/domObserver';
 import { processVideosForIndicators } from './core/indicatorManager';
 import { VideoRegistry, createInitialState, createFetchedState } from './types';
 import { VideoFullData } from '../../types';
 import { fetchVideosData } from '../../services/api/videoService';
+import { cleanAllIndicators } from './core/indicatorInjector';
 
-const videoRegistry: VideoRegistry = {};
+let videoRegistry: VideoRegistry = {};
 
 /**
  * Initializes the difficulty display feature
@@ -19,15 +20,25 @@ export function initDifficultyDisplay(): void {
 
   // Listen for page navigation events
   window.addEventListener('yt-navigate-finish', () => {
-    console.log('YouTube navigation detected, processing new thumbnails');
-    processNewThumbnails();
+    console.log('YouTube navigation detected, resetting state');
+
+    cleanAllIndicators();
+    resetVideoRegistry();
   });
 }
 
 /**
+ * Resets the video registry
+ * This is our source of truth for what has been processed
+ */
+function resetVideoRegistry(): void {
+  videoRegistry = {};
+}
+
+/**
  * Main processing pipeline for thumbnails:
- * 1. Find unprocessed thumbnails
- * 2. Extract video IDs
+ * 1. Find thumbnails and extract video IDs
+ * 2. Filter for videos not in registry
  * 3. Update registry
  * 4. Fetch videos data
  */
@@ -40,14 +51,15 @@ function processNewThumbnails(): void {
 }
 
 /**
- * Finds unprocessed thumbnails and registers their video IDs
+ * Finds thumbnails and registers their video IDs if not already in registry
+ * Uses the registry as the source of truth instead of DOM attributes
  * @returns Array of newly found video IDs
  */
 function findAndRegisterNewVideos(): string[] {
-  const thumbnails = findUnprocessedThumbnails();
+  const thumbnails = findThumbnails();
   const newVideoIds: string[] = [];
 
-  thumbnails.forEach(thumbnail => {
+  thumbnails.forEach((thumbnail: HTMLElement) => {
     const videoId = extractVideoIdFromThumbnail(thumbnail);
 
     if (!videoId) return;
@@ -56,8 +68,6 @@ function findAndRegisterNewVideos(): string[] {
       videoRegistry[videoId] = createInitialState(videoId);
       newVideoIds.push(videoId);
     }
-
-    markThumbnailAsProcessed(thumbnail);
   });
 
   if (newVideoIds.length > 0) {

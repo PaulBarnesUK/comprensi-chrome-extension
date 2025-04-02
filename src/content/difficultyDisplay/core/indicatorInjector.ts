@@ -82,3 +82,25 @@ export function injectIndicator(thumbnail: HTMLElement, videoData: VideoFullData
   renderIndicator(mountPoint, videoData);
   markThumbnailWithIndicator(thumbnail);
 }
+
+/**
+ * Cleans up all difficulty indicators from the page
+ * This reverses the changes made by injectIndicator
+ */
+export function cleanAllIndicators(): void {
+  const containers = document.querySelectorAll('.difficulty-indicator-container');
+
+  if (containers.length === 0) {
+    return;
+  }
+
+  containers.forEach(container => {
+    const thumbnail = container.querySelector('a');
+
+    if (thumbnail && container.parentElement) {
+      thumbnail.removeAttribute('data-difficulty-indicator');
+      container.parentElement.insertBefore(thumbnail, container);
+      container.remove();
+    }
+  });
+}

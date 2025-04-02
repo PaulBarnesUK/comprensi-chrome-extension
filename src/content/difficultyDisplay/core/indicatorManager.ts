@@ -6,6 +6,10 @@ import {
 } from './indicatorInjector';
 import { getSelectedLanguages } from '../../../utils/messaging';
 
+/**
+ * Processes videos and displays indicators for eligible ones
+ * @param videoRegistry The registry containing all processed videos
+ */
 export async function processVideosForIndicators(videoRegistry: VideoRegistry): Promise<void> {
   try {
     const selectedLanguages = await getSelectedLanguages();
@@ -18,7 +22,10 @@ export async function processVideosForIndicators(videoRegistry: VideoRegistry): 
 }
 
 /**
- * Finds videos that are eligible for indicator display
+ * Finds videos that are eligible for indicator display based on:
+ * 1. Being in fetched state
+ * 2. Meeting difficulty display criteria
+ * 3. Matching selected languages
  */
 function findEligibleVideos(
   videoRegistry: VideoRegistry,
@@ -36,6 +43,7 @@ function findEligibleVideos(
 
 /**
  * Injects difficulty indicators for the provided videos
+ * For each video, finds all its thumbnails and adds indicators
  */
 function injectIndicatorsForVideos(videos: FetchedVideoState[]): void {
   if (!videos.length) return;
