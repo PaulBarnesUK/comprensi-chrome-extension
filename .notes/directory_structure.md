@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-04-02 18:35:07
+Generated on 2025-04-04 18:41:39
 
 ## Core Components
 
@@ -87,6 +87,7 @@ Generated on 2025-04-02 18:35:07
         - index.ts _(4 KB)_
         - scss.d.ts _(4 KB)_
         - svg.d.ts _(4 KB)_    - **utils/**
+        - env.ts _(4 KB)_
         - languages.ts _(4 KB)_
         - messaging.ts _(4 KB)_
         - reactUtils.tsx _(4 KB)_

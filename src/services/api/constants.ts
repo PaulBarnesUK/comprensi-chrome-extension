@@ -1,7 +1,4 @@
-const isDevelopment = () => {
-  // Check if extension is loaded unpacked (common for development)
-  return chrome.runtime.getManifest().update_url === undefined;
-};
+import { isDevelopment } from '@/utils/env';
 
 export const API_BASE_URL = isDevelopment()
   ? 'http://localhost:8787'
