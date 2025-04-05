@@ -1,7 +1,7 @@
 import { ComparisonModal } from '@/components';
 import { renderComponent } from '@/utils/reactUtils';
 import { WatchData } from '@/types';
-import { ComparisonResult } from '@/types/api';
+import { ApiResponse, CompareResponse, ComparisonResult } from '@/types/api';
 
 /**
  * Interface for the comparison modal props
@@ -9,7 +9,7 @@ import { ComparisonResult } from '@/types/api';
 export interface ComparisonModalProps {
   currentVideo: WatchData;
   previousVideo: WatchData;
-  onCompare: (result: ComparisonResult) => void;
+  onCompare: (result: ComparisonResult) => Promise<ApiResponse<CompareResponse>>;
 }
 
 /**

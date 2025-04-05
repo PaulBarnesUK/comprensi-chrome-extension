@@ -2,7 +2,7 @@ import { WatchData } from '../../../types';
 import { comparisonManager } from './modalManager';
 import { findEligibleComparisonVideo } from './languageCheck';
 import { sendComparisonResult } from '../../../services/api/videoService';
-import { ComparisonResult } from '@/types/api';
+import { ApiResponse, CompareResponse, ComparisonResult } from '@/types/api';
 import { getWatchedVideo, saveWatchedVideo } from '../../../utils/storage';
 
 const comparisonsShownThisSession = new Set<string>();
@@ -48,7 +48,7 @@ function showComparisonModal(currentVideo: WatchData, previousVideo: WatchData):
     currentVideo,
     previousVideo,
     onCompare: (result: ComparisonResult) => {
-      handleCompare(currentVideo.id, previousVideo.id, result);
+      return handleCompare(currentVideo.id, previousVideo.id, result);
     }
   });
 }
@@ -72,28 +72,31 @@ async function updateComparisonRecord(videoId1: string, videoId2: string): Promi
   }
 }
 
-function handleCompare(
+async function handleCompare(
   currentVideoId: string,
   previousVideoId: string,
   result: ComparisonResult
-): void {
-  sendComparisonResult(currentVideoId, previousVideoId, result)
-    .then(async response => {
-      if (response.success) {
-        await updateComparisonRecord(currentVideoId, previousVideoId);
-        comparisonsShownThisSession.add(currentVideoId);
-      }
+): Promise<ApiResponse<CompareResponse>> {
+  try {
+    const response = await sendComparisonResult(currentVideoId, previousVideoId, result);
 
-      return response;
-    })
-    .then(response => {
-      if (response.success) {
-        console.log('Comparison result sent successfully:', response.data);
-      } else {
-        console.error('Failed to send comparison result:', response.error);
+    if (response.success) {
+      await updateComparisonRecord(currentVideoId, previousVideoId);
+      comparisonsShownThisSession.add(currentVideoId);
+      console.log('Comparison result sent successfully:', response.data);
+    } else {
+      console.error('Failed to send comparison result:', response.error);
+    }
+
+    return response;
+  } catch (error) {
+    console.error('Error sending comparison result:', error);
+    return {
+      success: false,
+      error: {
+        code: 'COMPARISON_ERROR',
+        message: error instanceof Error ? error.message : 'Unknown error occurred'
       }
-    })
-    .catch(error => {
-      console.error('Error sending comparison result:', error);
-    });
+    };
+  }
 }

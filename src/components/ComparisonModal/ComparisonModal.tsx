@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ComparisonModal.module.scss';
 import { WatchData } from '../../types';
-import { ComparisonResult } from '@/types/api';
+import { ComparisonResult, ApiResponse, CompareResponse } from '@/types/api';
 import { Info, X } from 'lucide-react';
 
 interface ComparisonModalProps {
@@ -9,7 +9,7 @@ interface ComparisonModalProps {
   onClose: () => void;
   currentVideo?: WatchData;
   previousVideo?: WatchData;
-  onCompare: (result: ComparisonResult) => void;
+  onCompare: (result: ComparisonResult) => Promise<ApiResponse<CompareResponse>>;
 }
 
 export const ComparisonModal: React.FC<ComparisonModalProps> = ({
@@ -21,8 +21,9 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
 }) => {
   if (!isOpen || !currentVideo || !previousVideo) return null;
 
-  const handleCompare = (result: ComparisonResult) => {
-    onCompare(result);
+  const handleCompare = async (result: ComparisonResult) => {
+    const response = await onCompare(result);
+    console.log(response);
     onClose();
   };
 
