@@ -5,7 +5,7 @@ export interface DifficultyData {
 
 export interface LanguageData {
   primary: string;
-  secondary: string;
+  full: string;
 }
 
 export interface VideoBaseData {

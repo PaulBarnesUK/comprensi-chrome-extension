@@ -25,13 +25,27 @@ export interface CompareResponse {
   firstVideo: {
     videoId: string;
     difficulty: {
-      score: number;
+      previous: {
+        score: number;
+        confidence: number;
+      };
+      current: {
+        score: number;
+        confidence: number;
+      };
     };
   };
   secondVideo: {
     videoId: string;
     difficulty: {
-      score: number;
+      previous: {
+        score: number;
+        confidence: number;
+      };
+      current: {
+        score: number;
+        confidence: number;
+      };
     };
   };
 }
