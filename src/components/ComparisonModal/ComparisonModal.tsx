@@ -27,13 +27,23 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
   onCompare
 }) => {
   const [modalStage, setModalStage] = useState<ModalStage>(ModalStage.COMPARISON);
+  const [compareResponse, setCompareResponse] = useState<CompareResponse | null>(null);
 
   if (!isOpen || !currentVideo || !previousVideo) return null;
 
   const handleCompare = async (result: ComparisonResult) => {
-    const response = await onCompare(result);
-    console.log(response);
-    setModalStage(ModalStage.THANK_YOU);
+    try {
+      const response = await onCompare(result);
+
+      if (response.success && response.data) {
+        setCompareResponse(response.data);
+        setModalStage(ModalStage.THANK_YOU);
+      } else {
+        console.error(response.error);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleClose = () => {
@@ -54,9 +64,9 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
             previousVideo={previousVideo}
             onCompare={handleCompare}
           />
-        ) : (
-          <ThankYouView onClose={handleClose} />
-        )}
+        ) : compareResponse ? (
+          <ThankYouView onClose={handleClose} compareResponse={compareResponse} />
+        ) : null}
       </div>
     </div>
   );
