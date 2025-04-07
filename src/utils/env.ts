@@ -1,4 +1,4 @@
-export const isDevelopment = () => {
-  // Check if extension is loaded unpacked (common for development)
-  return chrome.runtime.getManifest().update_url === undefined;
-};
+// Declare the global variable injected by Vite
+declare const __APP_MODE__: string;
+
+export const isDevelopment = __APP_MODE__ === 'development';
