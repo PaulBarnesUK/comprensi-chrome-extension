@@ -1,12 +1,11 @@
 # Chrome Extension Directory Structure
-Generated on 2025-04-06 08:48:48
+Generated on 2025-04-07 11:36:02
 
 ## Core Components
 
 - LICENSE _(4 KB)_
 - PRIVACY.md _(4 KB)_
 - README.md _(4 KB)_
-- **designs/**
 - eslint.config.js _(4 KB)_
 - manifest.json _(4 KB)_
 - package-lock.json _(316 KB)_
@@ -25,9 +24,7 @@ Generated on 2025-04-06 08:48:48
             - jp.svg _(4 KB)_
             - kr.svg _(4 KB)_
             - pt.svg _(12 KB)_
-            - us.svg _(4 KB)_        - icon32.png _(4 KB)_
-        - success-final.webp _(4 KB)_
-        - success.gif _(140 KB)_    - **background/**
+            - us.svg _(4 KB)_        - icon32.png _(4 KB)_    - **background/**
         - index.ts _(8 KB)_    - **components/**
         - **ComparisonModal/**
             - ComparisonModal.module.scss _(4 KB)_
@@ -50,7 +47,6 @@ Generated on 2025-04-06 08:48:48
             - **stories/**        - index.ts _(4 KB)_    - **content/**
         - **difficultyDisplay/**
             - **constants/**
-                - apiConfig.ts _(4 KB)_
                 - urlPatterns.ts _(4 KB)_            - **core/**
                 - domObserver.ts _(4 KB)_
                 - indicatorInjector.ts _(4 KB)_
