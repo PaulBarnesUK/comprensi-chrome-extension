@@ -18,11 +18,11 @@ The extension shows language level indicators on YouTube thumbnails with scores 
 
 However, to help give you a rough idea at a glance the indicator has a coloured progress bar based on the video's level:
 
-- Green bars generally indicate easier content
-- Blue bars suggest beginner-friendly videos
-- Yellow bars show intermediate difficulty
-- Red bars point to more challenging content
-- Purple bars typically mark the most difficult videos
+- Green bars generally indicate the easiest content ![Total Beginner Indicator](/docs/images/screenshot-indicator-total-beginner.png)
+- Blue bars suggest beginner-friendly videos ![Beginner Indicator](/docs/images/screenshot-indicator-beginner.png)
+- Yellow bars show intermediate difficulty ![Intermediate Indicator](/docs/images/screenshot-indicator-intermediate.png)
+- Red bars point to more challenging content ![Intermediate Indicator](/docs/images/screenshot-indicator-advanced.png)
+- Purple bars typically mark the most difficult videos ![Expert Indicator](/docs/images/screenshot-indicator-expert.png)
 
 When you watch videos, you'll occasionally be asked which one was harder to understand. Your answers help build this relative scoring system and improve the indicators for everyone.
 
