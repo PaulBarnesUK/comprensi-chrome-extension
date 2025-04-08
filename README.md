@@ -2,7 +2,7 @@
 
 This Chrome extension is for language learners using YouTube for comprehensible input. It overlays community-sourced language level indicators onto video thumbnails, helping you to gauge whether a video matches your level **before** you watch it. The goal is to make finding level-appropriate content less time-consuming.
 
-By comparing videos you've watched, you contribute to the community ratings system. This collaborative approach means the more you use it, the better it becomes for everyone. Each comparison you make helps refine the language level indicators, creating a continuously improving resource for the entire language learning community.
+Occasionally, the extension will ask you to compare the difficulty of videos you've recently watched. Your feedback contributes to a community rating system that improves with each comparison. This collaborative approach creates a continuously improving resource that helps all language learners find content at their level.
 
 [→ Install the extension now](#installation)
 
