@@ -4,11 +4,36 @@ This Chrome extension is for language learners using YouTube for comprehensible 
 
 By comparing videos you've watched, you contribute to the community ratings system. This collaborative approach means the more you use it, the better it becomes for everyone. Each comparison you make helps refine the language level indicators, creating a continuously improving resource for the entire language learning community.
 
+[→ Install the extension now](#installation)
+
 ## Features
 
-- Display language level indicators on YouTube video thumbnails
-- Compare videos you've watched to contribute to the community-driven level ratings
-- Support for 10 languages including Spanish, French, German, and more
+- **Visual Indicators**: See language levels directly on YouTube thumbnails
+- **Contribute by Comparing**: Simple comparisons after watching videos help improve the system
+- **Multiple Languages**: Support for 10 languages including Spanish, French, German, and more
+
+## Installation
+
+### For Early Testers
+
+1. Download the [latest release zip file](https://github.com/PaulBarnesUK/youtube-language-level/releases/latest)
+2. Unzip the file to a location on your computer
+3. Open Chrome and navigate to `chrome://extensions`
+4. Enable "Developer mode" using the toggle in the top-right corner
+5. Click "Load unpacked" and select the unzipped folder
+6. The extension should now be installed and active
+
+Note: This is an early development version. The extension will soon be available on the Chrome Web Store.
+
+Feedback from early users is really needed!! Please report any issues through GitHub issues or reach out directly.
+
+## Quick Start
+
+1. [Install the extension](#installation)
+2. Open the extension popup and select your target language(s)
+3. Browse YouTube normally - you'll see level indicators on thumbnails
+4. After watching videos, respond to occasional comparison prompts
+5. The more videos you watch and compare, the better the recommendations become
 
 ## How It Works
 
@@ -26,20 +51,23 @@ However, to help give you a rough idea at a glance the indicator has a coloured 
 
 When you watch videos, you'll occasionally be asked which one was harder to understand. Your answers help build this relative scoring system and improve the indicators for everyone.
 
-## Installation
+## Supported Languages
 
-### For Early Testers
+| Language | Flag |     | Language   | Flag |
+| -------- | ---- | --- | ---------- | ---- |
+| Spanish  | 🇪🇸   |     | Portuguese | 🇧🇷   |
+| French   | 🇫🇷   |     | Japanese   | 🇯🇵   |
+| German   | 🇩🇪   |     | Korean     | 🇰🇷   |
+| Italian  | 🇮🇹   |     | Hindi      | 🇮🇳   |
+| English  | 🇬🇧   |     | Chinese    | 🇨🇳   |
 
-1. Download the [latest release zip file](https://github.com/PaulBarnesUK/youtube-language-level/releases/latest)
-2. Unzip the file to a location on your computer
-3. Open Chrome and navigate to `chrome://extensions`
-4. Enable "Developer mode" using the toggle in the top-right corner
-5. Click "Load unpacked" and select the unzipped folder
-6. The extension should now be installed and active
+Select your target languages in the extension popup to see difficulty indicators for those languages.
 
-Note: This is an early development version. The extension will soon be available on the Chrome Web Store.
+## FAQ
 
-Feedback from early users is really needed!! Please report any issues through GitHub issues.
+### I don't see any level indicators, what's up??
+
+Indicators are only displayed once enough comparisons have been gathered that the system is confident in the video's difficulty level. As a result, early users will see fewer indicators while the system builds up data. I have imported data from <https://comprensi.com> for Spanish, but the data is still very sparse.
 
 ## Development
 

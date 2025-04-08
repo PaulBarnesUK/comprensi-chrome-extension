@@ -1,11 +1,11 @@
 # Chrome Extension Directory Structure
-Generated on 2025-04-08 10:54:07
+Generated on 2025-04-08 11:21:55
 
 ## Core Components
 
 - LICENSE _(4 KB)_
 - PRIVACY.md _(4 KB)_
-- README.md _(4 KB)_
+- README.md _(8 KB)_
 - **docs/**
     - **images/**
         - screenshot-indicator-advanced.png _(8 KB)_
