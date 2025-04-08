@@ -16,6 +16,8 @@ By comparing videos you've watched, you contribute to the community ratings syst
 
 ### For Early Testers
 
+**[Watch the video installation guide](https://youtu.be/raZLk-4FvfI)** or follow the steps below:
+
 1. Download the [latest release zip file](https://github.com/PaulBarnesUK/youtube-language-level/releases/latest)
 2. Unzip the file to a location on your computer
 3. Open Chrome and navigate to `chrome://extensions`
