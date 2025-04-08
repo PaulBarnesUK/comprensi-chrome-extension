@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
       }
     },
     define: {
-      __APP_MODE__: mode // Define global mode variable
+      __APP_MODE__: JSON.stringify(mode) // Define global mode variable
     },
     css: {
       modules: {

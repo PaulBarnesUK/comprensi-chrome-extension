@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-04-07 11:42:58
+Generated on 2025-04-08 07:49:11
 
 ## Core Components
 
@@ -8,7 +8,7 @@ Generated on 2025-04-07 11:42:58
 - README.md _(4 KB)_
 - eslint.config.js _(4 KB)_
 - manifest.json _(4 KB)_
-- package-lock.json _(316 KB)_
+- package-lock.json _(268 KB)_
 - package.json _(4 KB)_
 - **src/**
     - **assets/**
