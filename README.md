@@ -1,116 +1,49 @@
 # Language Level for YouTube
 
-A Chrome extension that helps language learners by estimating the difficulty level of YouTube videos through community feedback. By collaboratively rating videos through pairwise comparisons, users contribute to a community-driven system that enhances everyone's learning experience.
+This Chrome extension is for language learners using YouTube for comprehensible input. It overlays community-sourced language level indicators onto video thumbnails, helping you to gauge whether a video matches your level **before** you watch it. The goal is to make finding level-appropriate content less time-consuming.
+
+By comparing videos you've watched, you contribute to the community ratings system. This collaborative approach means the more you use it, the better it becomes for everyone. Each comparison you make helps refine the language level indicators, creating a continuously improving resource for the entire language learning community.
 
 ## Features
 
-- Track watched YouTube videos
-- Rate video difficulty through pairwise comparisons
-- Display difficulty indicators on video thumbnails
-- Filter difficulty ratings by language
-- Personalized language learning settings
-- Support for multiple languages: French, Spanish, Italian, German, Portuguese, English, Hindi, Korean, Japanese, and Chinese
+- Display language level indicators on YouTube video thumbnails
+- Compare videos you've watched to contribute to the community-driven level ratings
+- Support for 10 languages including Spanish, French, German, and more
+
+## How It Works
+
+![Language level indicators on YouTube thumbnails](/docs/images/screenshot-thumbnails.png)
+
+The extension shows language level indicators on YouTube thumbnails with scores like "54/100". These scores are **relative** - they only show how difficult a video is compared to other videos in the system, not absolute difficulty categories.
+
+However, to help give you a rough idea at a glance the indicator has a coloured progress bar based on the video's level:
+
+- Green bars generally indicate easier content
+- Blue bars suggest beginner-friendly videos
+- Yellow bars show intermediate difficulty
+- Red bars point to more challenging content
+- Purple bars typically mark the most difficult videos
+
+When you watch videos, you'll occasionally be asked which one was harder to understand. Your answers help build this relative scoring system and improve the indicators for everyone.
+
+## Installation
+
+### For Early Testers
+
+1. Download the [latest release zip file](https://github.com/PaulBarnesUK/youtube-language-level/releases/latest)
+2. Unzip the file to a location on your computer
+3. Open Chrome and navigate to `chrome://extensions`
+4. Enable "Developer mode" using the toggle in the top-right corner
+5. Click "Load unpacked" and select the unzipped folder
+6. The extension should now be installed and active
+
+Note: This is an early development version. The extension will soon be available on the Chrome Web Store.
+
+Feedback from early users is really needed!! Please report any issues through GitHub issues.
 
 ## Development
 
-### Prerequisites
-
-- Node.js (v16 or higher)
-- npm (v7 or higher)
-- Chrome browser
-
-### Setup
-
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-### Development Commands
-
-- `npm run dev` - Start development server with hot reload
-- `npm run build` - Build the extension for production
-- `npm run preview` - Preview the production build
-- `npm run check` - Type-check the codebase
-
-### Loading the Extension
-
-1. Build the extension:
-   ```bash
-   npm run build
-   ```
-2. Open Chrome and navigate to `chrome://extensions`
-3. Enable "Developer mode"
-4. Click "Load unpacked" and select the `dist` directory
-
-## Project Structure
-
-```
-src/
-├── assets/         # Icons and static assets
-├── background/     # Service worker
-├── content/        # Content scripts
-├── popup/          # Extension popup
-├── types/         # TypeScript type definitions
-└── utils/         # Shared utilities
-```
-
-### Directory Structure Documentation
-
-This project includes a Bash script that generates a detailed directory structure markdown file:
-
-- `update_directory.sh` - Generates a comprehensive directory structure in `.notes/directory_structure.md`
-
-To update the directory structure documentation:
-
-```bash
-./update_directory.sh
-```
-
-This is to give AI coders context of the full codebase.
-
-#### Git Hook Setup (Optional)
-
-For developers who want to keep the directory structure documentation automatically updated:
-
-1. Create a pre-commit hook:
-   ```bash
-   cp .git/hooks/pre-commit.sample .git/hooks/pre-commit
-   ```
-
-2. Edit the pre-commit hook:
-   ```bash
-   #!/bin/bash
-   
-   # Get the root directory of the Git repository
-   REPO_ROOT=$(git rev-parse --show-toplevel)
-   
-   echo "Running directory structure update script..."
-   # Run the update_directory.sh script
-   $REPO_ROOT/update_directory.sh
-   
-   # Add the updated directory structure file to the commit
-   git add $REPO_ROOT/.notes/directory_structure.md
-   
-   # Exit with success status
-   exit 0
-   ```
-
-3. Make it executable:
-   ```bash
-   chmod +x .git/hooks/pre-commit
-   ```
-
-This will automatically update the directory structure documentation before each commit.
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+This project is open source and welcomes contributions. If you're interested in helping improve this extension for language learners, please reach out and I can help you with the setup. I'm particularly interested in feedback from language learners and developers who can help make this tool more effective.
 
 ## License
 
