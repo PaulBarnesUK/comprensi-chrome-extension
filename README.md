@@ -34,8 +34,8 @@ Feedback from early users is really needed!! Please report any issues through Gi
 1. [Install the extension](#installation)
 2. Open the extension popup and select your target language(s)
 3. Browse YouTube normally - you'll see level indicators on thumbnails
-4. After watching videos, respond to occasional comparison prompts
-5. The more videos you watch and compare, the better the recommendations become
+4. When prompted, compare videos you've watched to help improve the system
+5. Each comparison you provide helps other learners find level-appropriate content
 
 ## How It Works
 
