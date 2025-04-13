@@ -25,7 +25,7 @@ export function findThumbnailsForVideoId(videoId: string): HTMLElement[] {
 export function shouldDisplayIndicator(videoData: VideoFullData): boolean {
   return (
     videoData.difficulty.score > 0 &&
-    (videoData.difficulty.confidence > 0.85 || videoData.bypassSigmaCheck)
+    (videoData.difficulty.confidence > 0.5 || videoData.bypassSigmaCheck)
   );
 }
 
