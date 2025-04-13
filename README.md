@@ -19,8 +19,7 @@ It's all based on user feedback, so it'll ask you to compare 2 recent videos you
 1. [Install the extension](#installation)
 2. Open the extension popup and select your target language(s)
 3. Browse YouTube normally - you'll see level indicators on thumbnails
-4. After watching videos, respond to occasional comparison prompts
-5. The more videos you watch and compare, the better the recommendations become
+4. After watching videos, respond to occasional comparison prompts - the more videos we compare, the better the experience is for everyone.
 
 ## How It Works
 
