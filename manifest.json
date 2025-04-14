@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "YouTube Video Difficulty Rater",
-  "version": "0.1.0",
+  "name": "YouTube Language Level",
+  "version": "0.1.1",
   "description": "Rate and track the difficulty of YouTube videos for language learning",
   "permissions": ["storage", "tabs"],
   "host_permissions": ["*://*.youtube.com/*"],
