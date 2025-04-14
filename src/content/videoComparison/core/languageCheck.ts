@@ -1,6 +1,6 @@
 import { WatchData } from '../../../types';
 import { getSelectedLanguages } from '../../../utils/storage';
-import { filterRecentVideosInLanguage } from '../utils/filterUtils';
+import { filterVideosInLanguage } from '../utils/filterUtils';
 import { calculateComparisonScore } from '../utils/scoringUtils';
 
 /**
@@ -28,7 +28,7 @@ export async function findEligibleComparisonVideo(
 
   const selectedLanguages = await getSelectedLanguages();
 
-  const eligibleVideos = filterRecentVideosInLanguage(
+  const eligibleVideos = filterVideosInLanguage(
     recentVideos.slice(1), // Exclude current video
     currentVideo.language.primary,
     selectedLanguages

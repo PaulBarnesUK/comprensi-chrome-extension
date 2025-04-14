@@ -1,7 +1,6 @@
 import { WatchData } from '../../../types';
-import { ONE_DAY_MS } from '../constants';
 
-export function filterRecentVideosInLanguage(
+export function filterVideosInLanguage(
   videos: WatchData[],
   currentVideoLanguage: string,
   selectedLanguages: string[]
@@ -10,12 +9,5 @@ export function filterRecentVideosInLanguage(
     return [];
   }
 
-  const now = Date.now();
-
-  return videos.filter(
-    video =>
-      video.language &&
-      video.language.primary === currentVideoLanguage &&
-      now - video.lastWatched <= ONE_DAY_MS
-  );
+  return videos.filter(video => video.language && video.language.primary === currentVideoLanguage);
 }

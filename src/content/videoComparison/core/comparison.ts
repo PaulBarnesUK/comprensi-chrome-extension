@@ -4,6 +4,7 @@ import { findEligibleComparisonVideo } from './languageCheck';
 import { sendComparisonResult } from '../../../services/api/videoService';
 import { ApiResponse, CompareResponse, ComparisonResult } from '@/types/api';
 import { getWatchedVideo, saveWatchedVideo } from '../../../utils/storage';
+import { TWO_DAYS_MS } from '../constants';
 
 const comparisonsShownThisSession = new Set<string>();
 
@@ -11,9 +12,10 @@ export async function getRecentWatchedVideos(): Promise<WatchData[]> {
   try {
     const result = await chrome.storage.local.get(['watchedVideos']);
     const watchedVideos = result.watchedVideos || {};
+    const now = Date.now();
 
     return Object.values(watchedVideos as Record<string, WatchData>)
-      .filter((video: WatchData) => video.watched)
+      .filter((video: WatchData) => video.watched && now - video.lastWatched <= TWO_DAYS_MS)
       .sort((a: WatchData, b: WatchData) => b.lastWatched - a.lastWatched);
   } catch (error) {
     console.error('Error fetching watched videos:', error);
