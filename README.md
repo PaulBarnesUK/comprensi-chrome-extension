@@ -6,7 +6,7 @@ It's all based on user feedback, so it'll ask you to compare 2 recent videos you
 
 **NOTE**: Right now, there is very little data in the system. **Early users can expect to see very few level indicators**. With more users and more feedback, the system will become more and more useful. So if you like the idea and have friends that you think would benefit, please share it with them! Together we can all contribute and help each other.
 
-[→ Install the extension now](#installation)
+[→ Install the extension now](https://github.com/PaulBarnesUK/youtube-language-level/releases/latest)
 
 ## Features
 
