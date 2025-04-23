@@ -4,8 +4,6 @@ This Chrome extension is for language learners using YouTube for comprehensible 
 
 It's all based on user feedback so it'll, every now and then, ask you to compare 2 recent videos you've watched and select the one you found easiest - that will then be used to help calculate the difficulty levels. It takes a few votes for it to be confident in a video's difficulty level but once it is, it'll show a little indicator over the video's thumbnail when browsing through YouTube.
 
-**NOTE**: Right now, there is very little data in the system. **Early users can expect to see very few level indicators**. With more users and more feedback, the system will become more and more useful. So if you like the idea and have friends that you think would benefit, please share it with them! Together we can all contribute and help each other.
-
 [→ Install the extension now](https://github.com/PaulBarnesUK/youtube-language-level/releases/latest)
 
 ## Features
