@@ -1,22 +1,23 @@
 # Chrome Extension Directory Structure
-Generated on 2025-04-14 11:06:00
+Generated on 2025-04-26 14:46:50
 
 ## Core Components
 
-- LICENSE _(4 KB)_
-- PRIVACY.md _(4 KB)_
-- README.md _(8 KB)_
 - **docs/**
     - **images/**
+        - difficulty-indicators-preview.png _(592 KB)_
         - screenshot-indicator-advanced.png _(8 KB)_
         - screenshot-indicator-beginner.png _(8 KB)_
         - screenshot-indicator-expert.png _(8 KB)_
         - screenshot-indicator-intermediate.png _(8 KB)_
         - screenshot-indicator-total-beginner.png _(8 KB)_
         - screenshot-thumbnails.png _(1120 KB)_- eslint.config.js _(4 KB)_
+- LICENSE _(4 KB)_
 - manifest.json _(4 KB)_
 - package-lock.json _(268 KB)_
 - package.json _(4 KB)_
+- PRIVACY.md _(4 KB)_
+- README.md _(8 KB)_
 - **src/**
     - **assets/**
         - **flags/**
@@ -37,21 +38,22 @@ Generated on 2025-04-14 11:06:00
             - ComparisonModal.module.scss _(4 KB)_
             - ComparisonModal.tsx _(4 KB)_
             - ComparisonView.tsx _(4 KB)_
-            - ThankYouView.tsx _(4 KB)_
-            - index.ts _(4 KB)_        - **DifficultyIndicator/**
+            - index.ts _(4 KB)_
+            - ThankYouView.tsx _(4 KB)_        - **DifficultyIndicator/**
             - DifficultyIndicator.module.scss _(4 KB)_
             - DifficultyIndicator.tsx _(4 KB)_
-            - index.ts _(4 KB)_        - **LanguageSettings/**
+            - index.ts _(4 KB)_        - index.ts _(4 KB)_
+        - **LanguageSettings/**
+            - index.ts _(4 KB)_
             - LanguageSettings.module.scss _(4 KB)_
-            - LanguageSettings.tsx _(4 KB)_
-            - index.ts _(4 KB)_        - **LanguageToggle/**
+            - LanguageSettings.tsx _(4 KB)_        - **LanguageToggle/**
+            - index.ts _(4 KB)_
             - LanguageToggle.module.scss _(4 KB)_
-            - LanguageToggle.tsx _(4 KB)_
-            - index.ts _(4 KB)_        - **Popup/**
+            - LanguageToggle.tsx _(4 KB)_        - **Popup/**
+            - index.ts _(4 KB)_
             - Popup.module.scss _(4 KB)_
-            - Popup.tsx _(4 KB)_
-            - index.ts _(4 KB)_        - **ThankYouModal/**
-            - **stories/**        - index.ts _(4 KB)_    - **content/**
+            - Popup.tsx _(4 KB)_        - **ThankYouModal/**
+            - **stories/**    - **content/**
         - **difficultyDisplay/**
             - **constants/**
                 - urlPatterns.ts _(4 KB)_            - **core/**

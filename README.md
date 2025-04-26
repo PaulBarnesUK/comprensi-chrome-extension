@@ -1,43 +1,33 @@
 # Language Level for YouTube
 
-This Chrome extension is for language learners using YouTube for comprehensible input. It overlays community-sourced language level indicators onto video thumbnails, helping you to gauge whether a video matches your level _before_ you watch it.
+This Chrome extension is for language learners using YouTube for comprehensible input. It overlays community-sourced difficulty scores onto video thumbnails, letting you know whether a video matches your level without needing to watch it first.
 
-It's all based on user feedback so it'll, every now and then, ask you to compare 2 recent videos you've watched and select the one you found easiest - that will then be used to help calculate the difficulty levels. It takes a few votes for it to be confident in a video's difficulty level but once it is, it'll show a little indicator over the video's thumbnail when browsing through YouTube.
+It's all based on user feedback so it will, every now and then, ask you to compare 2 recent videos you've watched and select the one you found easiest - that will then be used to help calculate the difficulty scores. It takes a few votes for it to be confident in a video's difficulty level but once it is, you will see an indicator over the video's thumbnail when browsing through YouTube.
+
+![Difficulty scores on YouTube thumbnails](/docs/images/difficulty-indicators-preview.png)
 
 [→ Install the extension now](https://github.com/PaulBarnesUK/youtube-language-level/releases/latest)
 
 ## Features
 
-- **Visual Indicators**: See language levels directly on YouTube thumbnails
-- **Contribute by Comparing**: Simple comparisons after watching videos help improve the system
+- **Visual Indicators**: See difficulty scores directly on YouTube thumbnails
 - **Multiple Languages**: Support for 10 languages including Spanish, French, German, and more
+- **Contribute by Comparing**: Simple comparisons after watching videos help improve the system
 
 ## Quick Start
 
 1. [Install the extension](#installation)
 2. Open the extension popup and select your target language(s)
-3. Browse YouTube normally - you'll see level indicators on thumbnails
+3. Browse YouTube normally - you'll see difficulty scores on thumbnails
 4. After watching videos, respond to occasional comparison prompts - the more videos we compare, the better the experience is for everyone.
 
 ## How It Works
 
-![Language level indicators on YouTube thumbnails](/docs/images/screenshot-thumbnails.png)
+The extension overlays difficulty scores on YouTube thumbnails with scores out of 100. These scores are **relative** - they show how difficult a video is compared to other videos in the system.
 
-The extension shows language level indicators on YouTube thumbnails with scores like "54/100". These levels are **relative** - they only show how difficult a video is compared to other videos in the system, not absolute difficulty categories.
-
-However, to help give you a rough idea at a glance the indicator has a coloured progress bar based on the video's level:
-
-- Green bars generally indicate the easiest content ![Total Beginner Indicator](/docs/images/screenshot-indicator-total-beginner.png)
-- Blue bars suggest beginner-friendly videos ![Beginner Indicator](/docs/images/screenshot-indicator-beginner.png)
-- Yellow bars show intermediate difficulty ![Intermediate Indicator](/docs/images/screenshot-indicator-intermediate.png)
-- Red bars point to more challenging content ![Intermediate Indicator](/docs/images/screenshot-indicator-advanced.png)
-- Purple bars typically mark the most difficult videos ![Expert Indicator](/docs/images/screenshot-indicator-expert.png)
-
-When you watch videos, you'll occasionally be asked which one was easier to understand. Your answers help build this relative scoring system and improve the indicators for everyone.
+When you watch videos, you'll occasionally be asked which one was easier to understand. The system then leverages the [TrueSkill algorithm](https://en.wikipedia.org/wiki/TrueSkill) to take this user feedback and, over time, converge to a difficulty score that it is confident is correct. There are varying levels of confidence, the level of confidence at which difficulty scores will start displaying is when the algorithm is 95% confident that the calculated difficulty score is within 15 of it's "true" score.
 
 ## Installation
-
-### For Early Testers
 
 **[Watch the video installation guide](https://youtu.be/raZLk-4FvfI)** or follow the steps below:
 
@@ -48,9 +38,7 @@ When you watch videos, you'll occasionally be asked which one was easier to unde
 5. Click "Load unpacked" and select the unzipped folder
 6. The extension should now be installed and active
 
-Note: This is an early development version. The extension will soon be available on the Chrome Web Store.
-
-Feedback from early users is really needed!! Please report any issues through GitHub issues or reach out directly.
+Note: This is a development version, as an early user you will help shape what the final version looks like. The extension will soon be available on the Chrome Web Store.
 
 ## Supported Languages
 
@@ -66,9 +54,9 @@ Select your target languages in the extension popup to see difficulty indicators
 
 ## FAQ
 
-### I don't see any level indicators, what's up??
+### I don't see any difficulty scores, what's up??
 
-Indicators are only displayed once enough comparisons have been gathered that the system is confident in the video's difficulty level. As a result, early users will see fewer indicators while the system builds up data. I have imported data from <https://comprensi.com> for Spanish, but the data is still very sparse.
+Difficulty scores are only displayed once enough comparisons have been gathered that the system is confident in the video's difficulty. As a result, early users will see fewer indicators while the system builds up data. I have imported data from <https://comprensi.com> for Spanish, but the data is still very sparse.
 
 ## Development
 
