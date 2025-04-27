@@ -1,46 +1,41 @@
 # Language Level for YouTube
 
-This Chrome extension is for language learners using YouTube for comprehensible input. It overlays community-sourced difficulty scores onto video thumbnails, letting you know whether a video matches your level without needing to watch it first.
+Find YouTube videos at your language level — instantly.
 
-It's all based on user feedback so it will, every now and then, ask you to compare 2 recent videos you've watched and select the one you found easiest - that will then be used to help calculate the difficulty scores. It takes a few votes for it to be confident in a video's difficulty level but once it is, you will see an indicator over the video's thumbnail when browsing through YouTube.
+No more guessing, no more wasted time.
+
+Language Level for YouTube shows you **difficulty scores directly on YouTube thumbnails**, so you can focus on videos that match your current skill level.
 
 ![Difficulty scores on YouTube thumbnails](/docs/images/difficulty-indicators-preview.png)
 
 [→ Install the extension now](https://github.com/PaulBarnesUK/youtube-language-level/releases/latest)
 
-## Features
+## 🚀 Features
 
-- **Visual Indicators**: See difficulty scores directly on YouTube thumbnails
+- **Instant Difficulty Scores**: See how hard a video is before you click.
 - **Multiple Languages**: Support for 10 languages including Spanish, French, German, and more
-- **Contribute by Comparing**: Simple comparisons after watching videos help improve the system
+- **Simple and Lightweight**: Install and browse as normal — no account needed.
+- **Smart Learning**: The system improves over time based on community comparisons.
 
-## Quick Start
+## ⚡ Quick Start
 
-1. [Install the extension](#installation)
-2. Open the extension popup and select your target language(s)
-3. Browse YouTube normally - you'll see difficulty scores on thumbnails
-4. After watching videos, respond to occasional comparison prompts - the more videos we compare, the better the experience is for everyone.
+1. [Download the latest release ZIP](https://github.com/PaulBarnesUK/youtube-language-level/releases/download/v0.1.1/youtube-language-level-v0.1.1.zip)
+2. Unzip and install via chrome://extensions (Developer Mode → Load Unpacked)
+3. Select your target language(s) from the extension popup.
+4. Start browsing YouTube — look for difficulty scores on video thumbnails!
 
-## How It Works
+(Note: The extension will soon be available on the Chrome Web Store.)
 
-The extension overlays difficulty scores on YouTube thumbnails with scores out of 100. These scores are **relative** - they show how difficult a video is compared to other videos in the system.
+## 🎯 How It Works
 
-When you watch videos, you'll occasionally be asked which one was easier to understand. The system then leverages the [TrueSkill algorithm](https://en.wikipedia.org/wiki/TrueSkill) to take this user feedback and, over time, converge to a difficulty score that it is confident is correct. There are varying levels of confidence, the level of confidence at which difficulty scores will start displaying is when the algorithm is 95% confident that the calculated difficulty score is within 15 of it's "true" score.
+When you browse YouTube, you'll see **difficulty scores (0–100)** over video thumbnails.
+These scores are based on real user feedback and will help you find the best comprehensible input fast.
 
-## Installation
+After watching a video, you might occasionally get a quick prompt asking which of two videos was easier to understand. These tiny comparisons help refine the system — making the scores even better for you and others.
 
-**[Watch the video installation guide](https://youtu.be/raZLk-4FvfI)** or follow the steps below:
+(Under the hood, it uses the [TrueSkill algorithm](https://en.wikipedia.org/wiki/TrueSkill) to smartly estimate difficulty based on user feedback.)
 
-1. Download the [latest release zip file](https://github.com/PaulBarnesUK/youtube-language-level/releases/latest)
-2. Unzip the file to a location on your computer
-3. Open Chrome and navigate to `chrome://extensions`
-4. Enable "Developer mode" using the toggle in the top-right corner
-5. Click "Load unpacked" and select the unzipped folder
-6. The extension should now be installed and active
-
-Note: This is a development version, as an early user you will help shape what the final version looks like. The extension will soon be available on the Chrome Web Store.
-
-## Supported Languages
+## 📚 Supported Languages
 
 | Language | Flag |     | Language   | Flag |
 | -------- | ---- | --- | ---------- | ---- |
@@ -52,15 +47,27 @@ Note: This is a development version, as an early user you will help shape what t
 
 Select your target languages in the extension popup to see difficulty indicators for those languages.
 
-## FAQ
+## 🔥 Why Use This?
+
+Learning a language is hard enough.
+Finding the _right content_ shouldn't be.
+
+Language Level for YouTube helps you:
+
+- Spend less time searching
+- Dive into videos you can actually understand
+- Stay motivated and consistent
+
+## ❓ FAQ
 
 ### I don't see any difficulty scores, what's up??
 
 Difficulty scores are only displayed once enough comparisons have been gathered that the system is confident in the video's difficulty. As a result, early users will see fewer indicators while the system builds up data. I have imported data from <https://comprensi.com> for Spanish, but the data is still very sparse.
 
-## Development
+## 💬 Feedback and Contributions
 
-This project is open source and welcomes contributions. If you're interested in helping improve this extension for language learners, please reach out and I can help you with the setup. I'm particularly interested in feedback from language learners and developers who can help make this tool more effective.
+This project is open source and growing fast!
+If you have ideas, spot bugs, or want to contribute, feel free to open an issue or pull request.
 
 ## License
 

@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-04-26 14:46:50
+Generated on 2025-04-27 08:50:17
 
 ## Core Components
 
@@ -17,7 +17,7 @@ Generated on 2025-04-26 14:46:50
 - package-lock.json _(268 KB)_
 - package.json _(4 KB)_
 - PRIVACY.md _(4 KB)_
-- README.md _(8 KB)_
+- README.md _(4 KB)_
 - **src/**
     - **assets/**
         - **flags/**
