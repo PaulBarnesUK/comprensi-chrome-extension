@@ -6,7 +6,7 @@ No more guessing, no more wasted time.
 
 Language Level for YouTube shows you **difficulty scores directly on YouTube thumbnails**, so you can focus on videos that match your current skill level.
 
-![Difficulty scores on YouTube thumbnails](/docs/images/difficulty-indicators-preview.png)
+![Difficulty scores on YouTube thumbnails](/docs/images/difficulty-scores-preview.png)
 
 [→ Install the extension now](https://github.com/PaulBarnesUK/youtube-language-level/releases/latest)
 

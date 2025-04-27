@@ -1,17 +1,11 @@
 # Chrome Extension Directory Structure
-Generated on 2025-04-27 08:50:17
+Generated on 2025-04-27 09:02:50
 
 ## Core Components
 
 - **docs/**
     - **images/**
-        - difficulty-indicators-preview.png _(592 KB)_
-        - screenshot-indicator-advanced.png _(8 KB)_
-        - screenshot-indicator-beginner.png _(8 KB)_
-        - screenshot-indicator-expert.png _(8 KB)_
-        - screenshot-indicator-intermediate.png _(8 KB)_
-        - screenshot-indicator-total-beginner.png _(8 KB)_
-        - screenshot-thumbnails.png _(1120 KB)_- eslint.config.js _(4 KB)_
+        - difficulty-scores-preview.png _(360 KB)_- eslint.config.js _(4 KB)_
 - LICENSE _(4 KB)_
 - manifest.json _(4 KB)_
 - package-lock.json _(268 KB)_
