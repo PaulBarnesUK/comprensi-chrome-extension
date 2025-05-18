@@ -1,7 +1,7 @@
 {
-  "name": "youtube-language-level",
+  "name": "comprensi-chrome-extension",
   "version": "0.1.2",
-  "description": "Chrome extension for rating and tracking YouTube video difficulty for language learning",
+  "description": "Find comprehensible YouTube videos and track your language learning minutes automatically",
   "type": "module",
   "scripts": {
     "dev": "vite",
