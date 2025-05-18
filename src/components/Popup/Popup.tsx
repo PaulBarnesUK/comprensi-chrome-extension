@@ -7,7 +7,7 @@ const Popup: React.FC = () => {
   return (
     <div className={styles.popup}>
       <header className={styles.header}>
-        <h1 className={styles.title}>YouTube Video Difficulty Rater</h1>
+        <h1 className={styles.title}>Comprensi: Language Learning on Youtube</h1>
         <p className={styles.description}>Select languages to show difficulty ratings</p>
       </header>
 
