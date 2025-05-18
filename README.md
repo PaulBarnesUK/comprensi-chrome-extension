@@ -4,9 +4,9 @@
 
 Comprensi adds a smart overlay to YouTube that shows **video difficulty scores** _and_ automatically **tracks the minutes you spend with comprehensible input**. No more guessing which videos suit your current level or wondering if you’re putting in enough exposure each week — Comprensi does the heavy lifting so you can focus on learning.
 
-![Difficulty scores on YouTube thumbnails](/docs/images/difficulty-scores-preview.png)
+[→ Install the latest version now](https://github.com/PaulBarnesUK/youtube-language-level/releases/latest)
 
-[→ Install the extension now](https://github.com/PaulBarnesUK/youtube-language-level/releases/latest)
+![Difficulty scores on YouTube thumbnails](/docs/images/difficulty-scores-preview.png)
 
 ---
 
