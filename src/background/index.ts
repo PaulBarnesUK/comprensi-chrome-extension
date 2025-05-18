@@ -197,10 +197,15 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
           success: true,
           watchData: updatedWatchData
         });
-        chrome.runtime.sendMessage({
-          type: 'LANGUAGE_STATS_UPDATED',
-          data: { videoId: updatedWatchData.id }
-        });
+
+        chrome.runtime
+          .sendMessage({
+            type: 'LANGUAGE_STATS_UPDATED',
+            data: { videoId: updatedWatchData.id }
+          })
+          .catch(() => {
+            // Ignore errors from sending to non-existent receivers
+          });
       })
       .catch(error => {
         console.error('Error handling video watched:', error);
