@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Comprensi: Language Learning on YouTube",
+  "name": "Comprensi: YouTube Language Learning",
   "version": "0.1.2",
   "description": "Find comprehensible YouTube videos and track your language learning minutes automatically",
   "permissions": ["storage", "tabs", "alarms"],
