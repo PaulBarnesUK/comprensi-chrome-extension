@@ -8,7 +8,7 @@ Comprensi adds a smart overlay to YouTube that shows **video difficulty scores**
 
 ![Difficulty scores on YouTube thumbnails](/docs/images/difficulty-scores-preview.png)
 
-![Automatic time tracking](/docs/images/auto-time-tracking.png)
+![Automatic time tracking](/docs/images/auto-time-tracking-1.png)
 
 ---
 
