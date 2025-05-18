@@ -5,7 +5,8 @@ import {
   isGetSelectedLanguagesMessage,
   isSaveSelectedLanguagesMessage,
   isSelectAllLanguagesMessage,
-  isDeselectAllLanguagesMessage
+  isDeselectAllLanguagesMessage,
+  isGetLanguageWatchTimesMessage
 } from '../types';
 import {
   saveWatchedVideo,
@@ -191,14 +192,41 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
 
   if (isVideoWatchedMessage(message)) {
     handleVideoWatched(message.data)
-      .then(updatedWatchData =>
+      .then(updatedWatchData => {
         sendResponse({
           success: true,
           watchData: updatedWatchData
-        })
-      )
+        });
+        chrome.runtime.sendMessage({
+          type: 'LANGUAGE_STATS_UPDATED',
+          data: { videoId: updatedWatchData.id }
+        });
+      })
       .catch(error => {
         console.error('Error handling video watched:', error);
+        sendResponse({ success: false, error: error.message });
+      });
+    return true;
+  }
+
+  if (isGetLanguageWatchTimesMessage(message)) {
+    Promise.all([getLanguageStats(), getSelectedLanguages()])
+      .then(([stats, selectedLanguages]) => {
+        // Filter stats to only include selected languages
+        const filteredStats = Object.entries(stats)
+          .filter(([langCode]) => selectedLanguages.includes(langCode))
+          .reduce(
+            (acc, [langCode, data]) => {
+              acc[langCode] = data;
+              return acc;
+            },
+            {} as typeof stats
+          );
+
+        sendResponse({ success: true, stats: filteredStats });
+      })
+      .catch(error => {
+        console.error('Error getting language watch times:', error);
         sendResponse({ success: false, error: error.message });
       });
     return true;

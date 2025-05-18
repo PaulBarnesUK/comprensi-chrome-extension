@@ -1,18 +1,18 @@
 import React from 'react';
 import styles from './Popup.module.scss';
 import LanguageSettings from '../LanguageSettings';
+import LanguageStatus from '../LanguageStatus';
 
 const Popup: React.FC = () => {
   return (
     <div className={styles.popup}>
       <header className={styles.header}>
         <h1 className={styles.title}>YouTube Video Difficulty Rater</h1>
-        <p className={styles.description}>
-          Select languages to show difficulty ratings
-        </p>
+        <p className={styles.description}>Select languages to show difficulty ratings</p>
       </header>
 
       <main>
+        <LanguageStatus />
         <LanguageSettings />
       </main>
 
@@ -23,4 +23,4 @@ const Popup: React.FC = () => {
   );
 };
 
-export default Popup; 
+export default Popup;

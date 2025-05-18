@@ -1,0 +1,58 @@
+.container {
+  margin-bottom: 24px;
+}
+
+.title {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #202124;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 8px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 16px;
+  padding: 8px 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #f1f3f4;
+  }
+}
+
+.cell {
+  font-size: 14px;
+  color: #5f6368;
+
+  .header & {
+    font-weight: 500;
+    color: #202124;
+  }
+}
+
+.loading,
+.error,
+.empty {
+  padding: 16px;
+  text-align: center;
+  color: #5f6368;
+  font-size: 14px;
+}
+
+.error {
+  color: #d93025;
+}

@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-05-18 08:30:32
+Generated on 2025-05-18 08:58:16
 
 ## Core Components
 
@@ -27,7 +27,7 @@ Generated on 2025-05-18 08:30:32
             - kr.svg _(4 KB)_
             - pt.svg _(12 KB)_
             - us.svg _(4 KB)_        - icon32.png _(4 KB)_    - **background/**
-        - index.ts _(8 KB)_    - **components/**
+        - index.ts _(12 KB)_    - **components/**
         - **ComparisonModal/**
             - ComparisonModal.module.scss _(4 KB)_
             - ComparisonModal.tsx _(4 KB)_
@@ -40,7 +40,9 @@ Generated on 2025-05-18 08:30:32
         - **LanguageSettings/**
             - index.ts _(4 KB)_
             - LanguageSettings.module.scss _(4 KB)_
-            - LanguageSettings.tsx _(4 KB)_        - **LanguageToggle/**
+            - LanguageSettings.tsx _(4 KB)_        - **LanguageStatus/**
+            - index.tsx _(4 KB)_
+            - LanguageStatus.module.scss _(4 KB)_        - **LanguageToggle/**
             - index.ts _(4 KB)_
             - LanguageToggle.module.scss _(4 KB)_
             - LanguageToggle.tsx _(4 KB)_        - **Popup/**

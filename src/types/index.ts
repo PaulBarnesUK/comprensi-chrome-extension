@@ -43,7 +43,8 @@ export type MessageType =
   | 'GET_SELECTED_LANGUAGES'
   | 'SAVE_SELECTED_LANGUAGES'
   | 'SELECT_ALL_LANGUAGES'
-  | 'DESELECT_ALL_LANGUAGES';
+  | 'DESELECT_ALL_LANGUAGES'
+  | 'GET_LANGUAGE_WATCH_TIMES';
 
 export interface Message {
   type: MessageType;
@@ -91,6 +92,10 @@ export interface StorageSchema {
   languageStats: LanguageStats;
 }
 
+export interface GetLanguageWatchTimesMessage extends Message {
+  type: 'GET_LANGUAGE_WATCH_TIMES';
+}
+
 export function isVideoWatchedMessage(message: Message): message is VideoWatchedMessage {
   return message.type === 'VIDEO_WATCHED';
 }
@@ -117,4 +122,10 @@ export function isDeselectAllLanguagesMessage(
   message: Message
 ): message is DeselectAllLanguagesMessage {
   return message.type === 'DESELECT_ALL_LANGUAGES';
+}
+
+export function isGetLanguageWatchTimesMessage(
+  message: Message
+): message is GetLanguageWatchTimesMessage {
+  return message.type === 'GET_LANGUAGE_WATCH_TIMES';
 }
