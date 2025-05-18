@@ -1,39 +1,37 @@
-# Language Level for YouTube
+# Comprensi: Language Learning on YouTube
 
-Find YouTube videos at your language level — instantly.
+**Understand more, track your progress, and level‑up faster — all without leaving YouTube.**
 
-No more guessing, no more wasted time.
-
-Language Level for YouTube shows you **difficulty scores directly on YouTube thumbnails**, so you can focus on videos that match your current skill level.
+Comprensi adds a smart overlay to YouTube that shows **video difficulty scores** _and_ automatically **tracks the minutes you spend with comprehensible input**. No more guessing which videos suit your current level or wondering if you’re putting in enough exposure each week — Comprensi does the heavy lifting so you can focus on learning.
 
 ![Difficulty scores on YouTube thumbnails](/docs/images/difficulty-scores-preview.png)
 
 [→ Install the extension now](https://github.com/PaulBarnesUK/youtube-language-level/releases/latest)
 
+---
+
 ## 🚀 Features
 
-- **Instant Difficulty Scores**: See how hard a video is before you click.
-- **Multiple Languages**: Support for 10 languages including Spanish, French, German, and more
-- **Simple and Lightweight**: Install and browse as normal — no account needed.
-- **Smart Learning**: The system improves over time based on community comparisons.
+- **Instant Difficulty Scores** – See how challenging a video will be _before_ you click.
+- **Automatic Time Tracking** – Log every minute of comprehensible input you watch. Stay consistent and visualize your progress.
+- **Cross‑Language Support** – 10 languages (and counting) including Spanish, French, German, Japanese, Korean, and more.
+- **Lightweight & Private** – Runs entirely in your browser; no sign‑up required and no data ever leaves your computer unless you opt in.
+- **Community‑Powered Accuracy** – Difficulty ratings improve continuously thanks to quick pairwise feedback prompts powered by the TrueSkill algorithm.
 
 ## ⚡ Quick Start
 
-1. [Download the latest release ZIP](https://github.com/PaulBarnesUK/youtube-language-level/releases/download/v0.1.1/youtube-language-level-v0.1.1.zip)
-2. Unzip and install via chrome://extensions (Developer Mode → Load Unpacked)
-3. Select your target language(s) from the extension popup.
-4. Start browsing YouTube — look for difficulty scores on video thumbnails!
+1. [Download the latest release ZIP](https://github.com/PaulBarnesUK/youtube-language-level/releases/latest)
+2. Unzip and install via **chrome://extensions** (Enable _Developer Mode_ → _Load Unpacked_)
+3. Pick your target language(s) from the Comprensi popup.
+4. Browse YouTube — watch for difficulty badges and let Comprensi record your input minutes automatically!
 
-(Note: The extension will soon be available on the Chrome Web Store.)
+_Note: The extension will be published on the Chrome Web Store soon. When it’s live you’ll be able to install in one click and receive auto‑updates._
 
 ## 🎯 How It Works
 
-When you browse YouTube, you'll see **difficulty scores (0–100)** over video thumbnails.
-These scores are based on real user feedback and will help you find the best comprehensible input fast.
-
-After watching a video, you might occasionally get a quick prompt asking which of two videos was easier to understand. These tiny comparisons help refine the system — making the scores even better for you and others.
-
-(Under the hood, it uses the [TrueSkill algorithm](https://en.wikipedia.org/wiki/TrueSkill) to smartly estimate difficulty based on user feedback.)
+- **Difficulty Scoring** — Comprensi overlays a score (0–100) on every video thumbnail once enough data is available. The score is based on community comparisons that are processed with TrueSkill for robust estimates.
+- **Time Tracking** — While you watch, Comprensi securely logs how many minutes you spend on videos in your chosen language(s). A weekly and all‑time tally is available in the popup so you can stick to your input goals.
+- **Light Nudges** — After finishing a video you may occasionally see a super‑short prompt asking which of two videos was easier. Your answer sharpens future difficulty scores for everyone.
 
 ## 📚 Supported Languages
 
@@ -45,30 +43,32 @@ After watching a video, you might occasionally get a quick prompt asking which o
 | Italian  | 🇮🇹   |     | Hindi      | 🇮🇳   |
 | English  | 🇬🇧   |     | Chinese    | 🇨🇳   |
 
-Select your target languages in the extension popup to see difficulty indicators for those languages.
+Select one or multiple languages in the extension popup to tailor both difficulty scores _and_ time tracking.
 
-## 🔥 Why Use This?
+## 🔥 Why Use Comprensi?
 
-Learning a language is hard enough.
-Finding the _right content_ shouldn't be.
-
-Language Level for YouTube helps you:
-
-- Spend less time searching
-- Dive into videos you can actually understand
-- Stay motivated and consistent
+- **Spend more time understanding** — Skip videos that are too hard (or boringly easy).
+- **Quantify your input** — See exactly how many minutes of comprehensible input you’re getting each day and week.
+- **Stay motivated** — Watching your progress climb is a powerful habit‑builder.
 
 ## ❓ FAQ
 
-### I don't see any difficulty scores, what's up??
+### I don’t see any difficulty scores yet. Is something wrong?
 
-Difficulty scores are only displayed once enough comparisons have been gathered that the system is confident in the video's difficulty. As a result, early users will see fewer indicators while the system builds up data. I have imported data from <https://comprensi.com> for Spanish, but the data is still very sparse.
+Scores appear only after enough comparison data has been gathered to make a confident estimate. Early adopters may see fewer scores while the system warms up. We’ve pre‑seeded Spanish with data from <https://comprensi.com>, but most other languages will need a little time to populate.
 
-## 💬 Feedback and Contributions
+### Where is my watch‑time data stored?
 
-This project is open source and growing fast!
-If you have ideas, spot bugs, or want to contribute, feel free to open an issue or pull request.
+All time‑tracking happens locally in your browser. Nothing is uploaded unless you explicitly opt into sync features (coming later). Your privacy is paramount.
+
+### Does Comprensi work on mobile YouTube?
+
+At the moment, Chrome extensions only run on desktop browsers.
+
+## 💬 Feedback & Contributions
+
+Comprensi is open source and growing fast! If you have ideas, spot bugs, or want to contribute, please open an issue or pull request.
 
 ## License
 
-This project is licensed under the ISC License - a permissive free software license that lets people do anything with your code with proper attribution and without warranty. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the ISC License — a permissive free software license that lets people do anything with your code with proper attribution and without warranty. See the [LICENSE](LICENSE) file for full details.
