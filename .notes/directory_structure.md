@@ -1,10 +1,11 @@
 # Chrome Extension Directory Structure
-Generated on 2025-05-18 09:47:51
+Generated on 2025-05-18 10:12:56
 
 ## Core Components
 
 - **docs/**
     - **images/**
+        - auto-time-tracking.png _(864 KB)_
         - difficulty-scores-preview.png _(360 KB)_- eslint.config.js _(4 KB)_
 - LICENSE _(4 KB)_
 - manifest.json _(4 KB)_
