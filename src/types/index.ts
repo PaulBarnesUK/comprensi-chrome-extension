@@ -73,11 +73,22 @@ export interface DeselectAllLanguagesMessage extends Message {
   type: 'DESELECT_ALL_LANGUAGES';
 }
 
+export interface LanguageWatchStats {
+  dailyWatchTimeSeconds: number;
+  weeklyWatchTimeSeconds: number;
+  totalWatchTimeSeconds: number;
+}
+
+export interface LanguageStats {
+  [languageCode: string]: LanguageWatchStats;
+}
+
 export interface StorageSchema {
   watchedVideos: Record<string, WatchData>;
   settings: {
     settings: ExtensionSettings;
   };
+  languageStats: LanguageStats;
 }
 
 export function isVideoWatchedMessage(message: Message): message is VideoWatchedMessage {

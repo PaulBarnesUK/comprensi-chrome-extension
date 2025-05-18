@@ -1,4 +1,4 @@
-import { StorageSchema, WatchData } from '../types';
+import { StorageSchema, WatchData, LanguageStats } from '../types';
 import { DEFAULT_LANGUAGE } from './languages';
 
 export async function getWatchedVideo(videoId: string): Promise<WatchData | null> {
@@ -76,4 +76,13 @@ export async function saveSelectedLanguages(languages: string[]): Promise<void> 
     console.error('Error saving selected languages:', error);
     throw error;
   }
+}
+
+export async function getLanguageStats(): Promise<LanguageStats> {
+  const result = await chrome.storage.local.get('languageStats');
+  return result.languageStats || {};
+}
+
+export async function saveLanguageStats(stats: LanguageStats): Promise<void> {
+  await chrome.storage.local.set({ languageStats: stats });
 }
