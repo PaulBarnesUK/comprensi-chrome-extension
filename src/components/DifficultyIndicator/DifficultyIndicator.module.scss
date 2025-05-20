@@ -2,7 +2,7 @@
 .container {
   display: flex;
   align-items: center;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   color: #fff;
   border: 2px solid #fff;
   border-radius: 100px;
@@ -58,36 +58,42 @@
 }
 
 .progress {
-    height: 100%;
+  height: 100%;
 }
 
 // Difficulty colors
+.unknown {
+  &.progress {
+    background-color: #999;
+  }
+}
+
 .totalBeginner {
   &.progress {
-    background-color: #4AFF33;
+    background-color: #4aff33;
   }
 }
 
 .beginner {
   &.progress {
-    background-color: #33CCFF;
+    background-color: #33ccff;
   }
 }
 
 .intermediate {
   &.progress {
-    background-color: #FFD633;
+    background-color: #ffd633;
   }
 }
 
 .advanced {
   &.progress {
-    background-color: #FF5252;
+    background-color: #ff5252;
   }
 }
 
 .expert {
   &.progress {
-    background-color: #E066FF;
+    background-color: #e066ff;
   }
-} 
+}

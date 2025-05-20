@@ -1,16 +1,19 @@
 import React from 'react';
 import styles from './DifficultyIndicator.module.scss';
 import { LANGUAGE_FLAGS } from '../../utils/languages';
+import unknownFlag from '../../assets/flags/unknown.svg';
 
 export interface DifficultyIndicatorProps {
-  score: number;
-  language: string;
+  score?: number;
+  language?: string;
 }
 
 export const DifficultyIndicator: React.FC<DifficultyIndicatorProps> = ({ score, language }) => {
-  const percentage = Math.round(score);
+  const percentage = score ? Math.round(score) : 0;
+  const displayScore = score ? `${score}/100` : '??/100';
 
   const getColorClass = () => {
+    if (!score) return styles.unknown;
     if (percentage <= 30) return styles.totalBeginner;
     if (percentage <= 44) return styles.beginner;
     if (percentage <= 60) return styles.intermediate;
@@ -21,16 +24,14 @@ export const DifficultyIndicator: React.FC<DifficultyIndicatorProps> = ({ score,
   return (
     <div className={`${styles.container}`}>
       <div className={styles.flag}>
-        {LANGUAGE_FLAGS[language] && (
-          <img
-            src={LANGUAGE_FLAGS[language]}
-            alt={`${language} flag`}
-            className={styles.flagIcon}
-          />
-        )}
+        <img
+          src={language ? LANGUAGE_FLAGS[language] : unknownFlag}
+          alt={language ? `${language} flag` : 'Unknown language'}
+          className={styles.flagIcon}
+        />
       </div>
       <div className={styles.scoreContainer}>
-        <div className={`${styles.score} ${getColorClass()}`}>{score}/100</div>
+        <div className={`${styles.score} ${getColorClass()}`}>{displayScore}</div>
         <div className={styles.progressBar}>
           <div
             className={`${styles.progress} ${getColorClass()}`}
