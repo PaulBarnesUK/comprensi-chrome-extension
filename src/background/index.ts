@@ -6,7 +6,8 @@ import {
   isSaveSelectedLanguagesMessage,
   isSelectAllLanguagesMessage,
   isDeselectAllLanguagesMessage,
-  isGetLanguageWatchTimesMessage
+  isGetLanguageWatchTimesMessage,
+  isUpdateVideoLanguageMessage
 } from '../types';
 import {
   saveWatchedVideo,
@@ -187,6 +188,61 @@ async function handleVideoWatched(watchData: WatchData): Promise<WatchData> {
   }
 }
 
+/**
+ * Handles updating a video's language and adjusting watch time stats accordingly
+ */
+async function handleVideoLanguageUpdate(videoId: string, newLanguage: string): Promise<void> {
+  const watchData = await getWatchedVideo(videoId);
+  if (!watchData) return;
+
+  const selectedLanguages = await getSelectedLanguages();
+  const oldLanguage = watchData.language?.primary;
+  const watchTimeSeconds = watchData.watchTimeSeconds;
+
+  await transferWatchTimeBetweenLanguages(
+    oldLanguage,
+    newLanguage,
+    watchTimeSeconds,
+    selectedLanguages
+  );
+  await updateVideoLanguage(watchData, newLanguage);
+  await notifyLanguageStatsUpdate(videoId);
+}
+
+async function transferWatchTimeBetweenLanguages(
+  oldLanguage: string | undefined,
+  newLanguage: string,
+  watchTimeSeconds: number,
+  selectedLanguages: string[]
+): Promise<void> {
+  if (oldLanguage && selectedLanguages.includes(oldLanguage)) {
+    await updateLanguageStats(oldLanguage, -watchTimeSeconds);
+  }
+
+  if (selectedLanguages.includes(newLanguage)) {
+    await updateLanguageStats(newLanguage, watchTimeSeconds);
+  }
+}
+
+async function updateVideoLanguage(watchData: WatchData, newLanguage: string): Promise<void> {
+  watchData.language = {
+    primary: newLanguage,
+    full: newLanguage
+  };
+  await saveWatchedVideo(watchData);
+}
+
+async function notifyLanguageStatsUpdate(videoId: string): Promise<void> {
+  chrome.runtime
+    .sendMessage({
+      type: 'LANGUAGE_STATS_UPDATED',
+      data: { videoId }
+    })
+    .catch(() => {
+      // Ignore errors from sending to non-existent receivers
+    });
+}
+
 chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) => {
   console.log('Received message:', message.type, sender.tab?.url);
 
@@ -209,6 +265,18 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
       })
       .catch(error => {
         console.error('Error handling video watched:', error);
+        sendResponse({ success: false, error: error.message });
+      });
+    return true;
+  }
+
+  if (isUpdateVideoLanguageMessage(message)) {
+    handleVideoLanguageUpdate(message.data.videoId, message.data.newLanguage)
+      .then(() => {
+        sendResponse({ success: true });
+      })
+      .catch(error => {
+        console.error('Error updating video language:', error);
         sendResponse({ success: false, error: error.message });
       });
     return true;

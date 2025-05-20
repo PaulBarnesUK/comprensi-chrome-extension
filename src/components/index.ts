@@ -1,2 +1,2 @@
-export * from './ComparisonModal'; 
-export * from './DifficultyIndicator'; 
+export * from './ComparisonModal';
+export * from './DifficultyIndicator';

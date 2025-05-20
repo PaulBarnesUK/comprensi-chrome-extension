@@ -44,7 +44,8 @@ export type MessageType =
   | 'SAVE_SELECTED_LANGUAGES'
   | 'SELECT_ALL_LANGUAGES'
   | 'DESELECT_ALL_LANGUAGES'
-  | 'GET_LANGUAGE_WATCH_TIMES';
+  | 'GET_LANGUAGE_WATCH_TIMES'
+  | 'UPDATE_VIDEO_LANGUAGE';
 
 export interface Message {
   type: MessageType;
@@ -96,6 +97,14 @@ export interface GetLanguageWatchTimesMessage extends Message {
   type: 'GET_LANGUAGE_WATCH_TIMES';
 }
 
+export interface UpdateVideoLanguageMessage extends Message {
+  type: 'UPDATE_VIDEO_LANGUAGE';
+  data: {
+    videoId: string;
+    newLanguage: string;
+  };
+}
+
 export function isVideoWatchedMessage(message: Message): message is VideoWatchedMessage {
   return message.type === 'VIDEO_WATCHED';
 }
@@ -128,4 +137,10 @@ export function isGetLanguageWatchTimesMessage(
   message: Message
 ): message is GetLanguageWatchTimesMessage {
   return message.type === 'GET_LANGUAGE_WATCH_TIMES';
+}
+
+export function isUpdateVideoLanguageMessage(
+  message: Message
+): message is UpdateVideoLanguageMessage {
+  return message.type === 'UPDATE_VIDEO_LANGUAGE';
 }
