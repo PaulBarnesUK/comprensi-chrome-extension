@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-05-20 16:17:16
+Generated on 2025-05-20 16:58:52
 
 ## Core Components
 
@@ -15,6 +15,7 @@ Generated on 2025-05-20 16:17:16
 - README.md _(8 KB)_
 - **src/**
     - **assets/**
+        - alert.svg _(4 KB)_
         - **flags/**
             - br.svg _(8 KB)_
             - cn.svg _(4 KB)_
