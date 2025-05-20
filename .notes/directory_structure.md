@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-05-20 14:58:46
+Generated on 2025-05-20 15:14:08
 
 ## Core Components
 
@@ -38,7 +38,6 @@ Generated on 2025-05-20 14:58:46
             - DifficultyIndicator.module.scss _(4 KB)_
             - DifficultyIndicator.tsx _(4 KB)_
             - index.ts _(4 KB)_        - index.ts _(4 KB)_
-        - **LanguageSelector/**
         - **LanguageSettings/**
             - index.ts _(4 KB)_
             - LanguageSettings.module.scss _(4 KB)_

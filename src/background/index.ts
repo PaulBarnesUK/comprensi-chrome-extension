@@ -124,8 +124,6 @@ async function handleAlarm(alarm: chrome.alarms.Alarm): Promise<void> {
  * Updates the language stats with new watch time for a specific language
  */
 async function updateLanguageStats(languageCode: string, watchTimeDelta: number): Promise<void> {
-  if (watchTimeDelta <= 0) return;
-
   const currentStats = await getLanguageStats();
   const langStats = currentStats[languageCode] || {
     dailyWatchTimeSeconds: 0,
