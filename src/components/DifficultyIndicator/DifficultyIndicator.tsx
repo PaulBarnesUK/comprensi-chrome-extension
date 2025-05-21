@@ -1,13 +1,19 @@
 import React from 'react';
 import styles from './DifficultyIndicator.module.scss';
 import { LANGUAGE_FLAGS } from '../../utils/languages';
+import unknownFlag from '../../assets/flags/unknown.svg';
 
 export interface DifficultyIndicatorProps {
   score?: number;
   language?: string;
+  showScore?: boolean;
 }
 
-export const DifficultyIndicator: React.FC<DifficultyIndicatorProps> = ({ score, language }) => {
+export const DifficultyIndicator: React.FC<DifficultyIndicatorProps> = ({
+  score,
+  language,
+  showScore = true
+}) => {
   const percentage = score ? Math.round(score) : 0;
   const displayScore = score ? `${score}/100` : '??/100';
 
@@ -33,12 +39,14 @@ export const DifficultyIndicator: React.FC<DifficultyIndicatorProps> = ({ score,
   };
 
   const getScoreTooltip = () => {
-    if (!score) return 'Difficulty score is still being calculated.';
+    if (!score) return 'Difficulty score is being calibrated.';
     return `Difficulty score: ${displayScore}`;
   };
 
   return (
-    <div className={styles.container}>
+    <div
+      className={`${styles.container} ${!showScore ? styles.noScore : ''} ${!language ? styles.noLanguage : ''}`}
+    >
       <div className={styles.flag} title={getFlagTooltip()}>
         {language ? (
           <img
@@ -48,6 +56,7 @@ export const DifficultyIndicator: React.FC<DifficultyIndicatorProps> = ({ score,
           />
         ) : (
           <div className={styles.flagIconAlert} onClick={handleSetLanguage}>
+            <img src={unknownFlag} alt="Unknown flag" />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -66,17 +75,19 @@ export const DifficultyIndicator: React.FC<DifficultyIndicatorProps> = ({ score,
           </div>
         )}
       </div>
-      <div className={styles.scoreContainer}>
-        <div className={`${styles.score} ${getColorClass()}`} title={getScoreTooltip()}>
-          {displayScore}
+      {showScore && (
+        <div className={styles.scoreContainer}>
+          <div className={`${styles.score} ${getColorClass()}`} title={getScoreTooltip()}>
+            {displayScore}
+          </div>
+          <div className={styles.progressBar}>
+            <div
+              className={`${styles.progress} ${getColorClass()}`}
+              style={{ width: `${percentage}%` }}
+            ></div>
+          </div>
         </div>
-        <div className={styles.progressBar}>
-          <div
-            className={`${styles.progress} ${getColorClass()}`}
-            style={{ width: `${percentage}%` }}
-          ></div>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

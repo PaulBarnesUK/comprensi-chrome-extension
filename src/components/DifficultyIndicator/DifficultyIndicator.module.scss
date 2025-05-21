@@ -34,8 +34,18 @@
   }
 }
 
+.noScore {
+  width: 30px;
+  padding: 0;
+}
+
+.noLanguage {
+  border-color: #cdcdcd;
+}
+
 .flag {
-  border: 2px solid #fff;
+  border: 2px solid;
+  border-color: inherit;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -51,25 +61,32 @@
 .flagIcon {
   display: inline-block;
   object-fit: contain;
-  transform: translateY(-1px);
+}
+
+@keyframes alertPulse {
+  from {
+    color: transparent;
+  }
+  to {
+    color: #f4511e;
+  }
 }
 
 .flagIconAlert {
   cursor: pointer;
   color: #fff;
-  animation: alertPulse 4s infinite alternate;
+  animation: alertPulse 2s infinite linear alternate;
+  transform: translateY(-1px);
   svg {
+    position: relative;
     height: 20px;
     width: 20px;
   }
-}
-
-@keyframes alertPulse {
-  from {
-    color: #fff;
-  }
-  to {
-    color: #ffab91;
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
