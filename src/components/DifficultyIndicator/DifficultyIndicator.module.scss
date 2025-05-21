@@ -65,10 +65,10 @@
 
 @keyframes alertPulse {
   from {
-    color: transparent;
+    color: rgba(0, 0, 0, 0);
   }
   to {
-    color: #f4511e;
+    color: rgba(0, 0, 0, 1);
   }
 }
 
@@ -76,7 +76,8 @@
   cursor: pointer;
   color: #fff;
   animation: alertPulse 2s infinite linear alternate;
-  transform: translateY(-1px);
+  display: flex;
+  align-items: center;
   svg {
     position: relative;
     height: 20px;
