@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-05-20 16:58:52
+Generated on 2025-05-21 06:16:23
 
 ## Core Components
 
@@ -60,7 +60,8 @@ Generated on 2025-05-20 16:58:52
                 - indicatorInjector.ts _(4 KB)_
                 - indicatorManager.ts _(4 KB)_
                 - thumbnailFinder.ts _(4 KB)_
-                - videoIdExtractor.ts _(4 KB)_            - index.ts _(4 KB)_
+                - videoIdExtractor.ts _(4 KB)_
+                - videoPageIndicator.ts _(4 KB)_            - index.ts _(4 KB)_
             - types.ts _(4 KB)_
             - **utils/**
                 - elementParser.ts _(4 KB)_

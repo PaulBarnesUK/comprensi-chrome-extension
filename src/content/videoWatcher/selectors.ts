@@ -3,7 +3,7 @@ export function getVideoElement(): HTMLVideoElement | null {
 }
 
 export function getTitleElement(): HTMLElement | null {
-  return document.querySelector('h1.ytd-video-primary-info-renderer');
+  return document.querySelector('h1.ytd-watch-metadata');
 }
 
 export function getChannelElement(): HTMLElement | null {

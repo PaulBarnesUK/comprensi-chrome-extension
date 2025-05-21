@@ -9,6 +9,10 @@ import { getVideoData } from './utils/metadata';
 import { isVideoPage, observeUrlChanges } from './utils/url';
 import { waitForVideoElement } from './utils/domObserver';
 import { retryOperation } from './utils/retry';
+import {
+  appendDifficultyIndicatorToTitle,
+  removeDifficultyIndicatorFromTitle
+} from '../difficultyDisplay/core/videoPageIndicator';
 
 function createWatcherState(): VideoWatcherState {
   return {
@@ -36,7 +40,7 @@ export async function initVideoWatchDetector(): Promise<void> {
 function setupUrlChangeDetection(state: VideoWatcherState): void {
   const onUrlChange = async () => {
     endVideoTracking(state);
-
+    removeDifficultyIndicatorFromTitle();
     if (isVideoPage()) {
       attemptVideoTracking(state);
     }
@@ -73,6 +77,8 @@ async function setupVideoTracking(
 
   setupWatchTimeTracking(state);
   attachVideoEventListeners(videoElement, state);
+
+  appendDifficultyIndicatorToTitle(videoData);
 }
 
 async function initializeWatchState(

@@ -1,21 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './DifficultyIndicator.module.scss';
 import { LANGUAGE_FLAGS } from '../../utils/languages';
-import alertIcon from '../../assets/alert.svg';
 
 export interface DifficultyIndicatorProps {
   score?: number;
   language?: string;
-  showTooltip?: boolean;
 }
 
-export const DifficultyIndicator: React.FC<DifficultyIndicatorProps> = ({
-  score,
-  language,
-  showTooltip = true
-}) => {
-  const [tooltipVisible, setTooltipVisible] = useState(!language);
-
+export const DifficultyIndicator: React.FC<DifficultyIndicatorProps> = ({ score, language }) => {
   const percentage = score ? Math.round(score) : 0;
   const displayScore = score ? `${score}/100` : '??/100';
 
@@ -30,25 +22,24 @@ export const DifficultyIndicator: React.FC<DifficultyIndicatorProps> = ({
 
   const handleSetLanguage = (e: React.MouseEvent) => {
     e.stopPropagation();
-    // Placeholder for future logic
+    // Placeholder for future modal logic
     // eslint-disable-next-line no-console
-    console.log('Set language button clicked');
+    console.log('Open set language modal');
   };
 
-  const shouldShowTooltip = showTooltip && (!language || tooltipVisible);
+  const getFlagTooltip = () => {
+    if (language) return `${language} flag`;
+    return 'Language not detected. This video will not be counted in your watch time tracking. Click to set language.';
+  };
 
   const getScoreTooltip = () => {
-    if (!score) return 'Difficulty level is being calibrated based on your watch history';
+    if (!score) return 'Difficulty score is still being calculated.';
     return `Difficulty score: ${displayScore}`;
   };
 
   return (
-    <div
-      className={styles.container}
-      onMouseEnter={() => showTooltip && language && setTooltipVisible(true)}
-      onMouseLeave={() => showTooltip && language && setTooltipVisible(false)}
-    >
-      <div className={styles.flag}>
+    <div className={styles.container}>
+      <div className={styles.flag} title={getFlagTooltip()}>
         {language ? (
           <img
             src={LANGUAGE_FLAGS[language]}
@@ -56,16 +47,22 @@ export const DifficultyIndicator: React.FC<DifficultyIndicatorProps> = ({
             className={styles.flagIcon}
           />
         ) : (
-          <img src={alertIcon} alt="Alert: language not detected" className={styles.flagIcon} />
-        )}
-        {shouldShowTooltip && (
-          <div className={styles.tooltip}>
-            <div>
-              Language not detected. This video will not be counted in your watch time tracking.
-            </div>
-            <button className={styles.setLanguageBtn} onClick={handleSetLanguage} type="button">
-              Set language
-            </button>
+          <div className={styles.flagIconAlert} onClick={handleSetLanguage}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+              <path d="M12 9v4" />
+              <path d="M12 17h.01" />
+            </svg>
           </div>
         )}
       </div>
