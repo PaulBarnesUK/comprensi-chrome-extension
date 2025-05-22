@@ -35,7 +35,7 @@ export const DifficultyIndicator: React.FC<DifficultyIndicatorProps> = ({
 
   const getFlagTooltip = () => {
     if (language) return `${language} flag`;
-    return 'Language not detected. This video will not be counted in your watch time tracking. Click to set language.';
+    return 'Language not detected — watch time cannot be tracked. Click to set language.';
   };
 
   const getScoreTooltip = () => {
