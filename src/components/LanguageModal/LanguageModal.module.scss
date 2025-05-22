@@ -1,0 +1,145 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  padding: 32px 28px 24px 28px;
+  min-width: 340px;
+  max-width: 95vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 27px;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s;
+  z-index: 1;
+}
+.closeButton:hover {
+  color: #000;
+}
+
+.title {
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #222;
+  text-align: center;
+}
+
+.description {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.languageList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.languageOption,
+.languageSelected {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 7px;
+  border: 1.5px solid #e0e0e0;
+  background: #fafbfc;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  transition:
+    border 0.2s,
+    background 0.2s,
+    color 0.2s;
+}
+.languageOption:hover {
+  border-color: #bdbdbd;
+  background: #f5f5f5;
+}
+.languageSelected {
+  border-color: #1976d2;
+  background: #e3f2fd;
+  color: #1976d2;
+  font-weight: 600;
+}
+
+.flag {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #e0e0e0;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.cancelButton {
+  background: #f5f5f5;
+  color: #666;
+  border: none;
+  border-radius: 5px;
+  padding: 7px 18px;
+  font-size: 16px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.cancelButton:hover {
+  background: #e0e0e0;
+  color: #222;
+}
+
+.saveButton {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 7px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.saveButton:disabled {
+  background: #b3c6e6;
+  color: #fff;
+  cursor: not-allowed;
+}
+.saveButton:not(:disabled):hover {
+  background: #1565c0;
+}
