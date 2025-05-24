@@ -30,15 +30,13 @@ async function updateVideoLanguage(videoId: string, newLanguage: string): Promis
     }
   });
 
-  const response = await fetchWithRetry(`${API_BASE_URL}${API_ENDPOINTS.VIDEO}/${videoId}`, {
+  fetchWithRetry(`${API_BASE_URL}${API_ENDPOINTS.VIDEO}/${videoId}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ language: { primary: newLanguage } })
+  }).catch(error => {
+    throw new Error(error?.message || 'Failed to update video language');
   });
-
-  if (!response.success) {
-    throw new Error(response.error?.message || 'Failed to update video language');
-  }
 }
 
 export async function appendDifficultyIndicatorToTitle(videoData: VideoFullData): Promise<void> {
