@@ -3,17 +3,20 @@ import styles from './DifficultyIndicator.module.scss';
 import { LANGUAGE_FLAGS } from '../../utils/languages';
 import unknownFlag from '../../assets/flags/unknown.svg';
 import LanguageModal from '../LanguageModal/LanguageModal';
+import { Pencil } from 'lucide-react';
 
 export interface DifficultyIndicatorProps {
   score?: number;
   language?: string;
   showScore?: boolean;
+  onLanguageChange?: (newLanguage: string) => Promise<void>;
 }
 
 export const DifficultyIndicator: React.FC<DifficultyIndicatorProps> = ({
   score,
   language,
-  showScore = true
+  showScore = true,
+  onLanguageChange
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -35,15 +38,16 @@ export const DifficultyIndicator: React.FC<DifficultyIndicatorProps> = ({
   };
 
   const handleModalClose = () => setModalOpen(false);
-  const handleModalSave = (selectedLanguage: string) => {
-    // Placeholder for future logic to update language
-    // eslint-disable-next-line no-console
-    console.log('Selected language:', selectedLanguage);
+
+  const handleModalSave = async (selectedLanguage: string) => {
+    if (onLanguageChange) {
+      await onLanguageChange(selectedLanguage);
+    }
     setModalOpen(false);
   };
 
   const getFlagTooltip = () => {
-    if (language) return `${language} flag. Click to change video's language.`;
+    if (language) return `Click to change video's language.`;
     return 'Language not detected — watch time cannot be tracked. Click to set language.';
   };
 
@@ -84,6 +88,9 @@ export const DifficultyIndicator: React.FC<DifficultyIndicatorProps> = ({
               </svg>
             </div>
           )}
+          <div className={styles.pencilIcon}>
+            <Pencil strokeWidth={3} size={16} />
+          </div>
         </div>
         {showScore && (
           <div className={styles.scoreContainer}>

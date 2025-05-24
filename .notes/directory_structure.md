@@ -1,5 +1,5 @@
 # Chrome Extension Directory Structure
-Generated on 2025-05-21 19:27:30
+Generated on 2025-05-24 08:42:47
 
 ## Core Components
 
@@ -9,7 +9,7 @@ Generated on 2025-05-21 19:27:30
         - difficulty-scores-preview.png _(360 KB)_- eslint.config.js _(4 KB)_
 - LICENSE _(4 KB)_
 - manifest.json _(4 KB)_
-- package-lock.json _(244 KB)_
+- package-lock.json _(232 KB)_
 - package.json _(4 KB)_
 - PRIVACY.md _(4 KB)_
 - README.md _(8 KB)_

@@ -31,7 +31,7 @@ export const LanguageModal: React.FC<LanguageModalProps> = ({
         </button>
         <h2 className={styles.title}>Set Video Language</h2>
         <p className={styles.description}>
-          Selecting the correct language ensures your watch time is tracked accurately.
+          Selecting the correct language ensures yours and others' watch time is tracked accurately.
         </p>
         <div className={styles.languageList}>
           {SUPPORTED_LANGUAGES.map(lang => (

@@ -34,6 +34,28 @@
   }
 }
 
+.pencilIcon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  height: 100%;
+  width: 100%;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
 .noScore {
   width: 30px;
   padding: 0;
