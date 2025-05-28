@@ -44,9 +44,15 @@ chrome.runtime.onInstalled.addListener(details => {
     });
 
     scheduleAlarms();
+  } else if (details.reason === 'update') {
+    ensureAlarms();
   }
 });
 chrome.alarms.onAlarm.addListener(handleAlarm);
+
+chrome.runtime.onStartup.addListener(() => {
+  ensureAlarms();
+});
 
 function getMidnightTomorrow(): Date {
   const tomorrow = new Date();
@@ -84,6 +90,18 @@ function scheduleAlarms(): void {
   });
 
   console.log('Daily and weekly reset alarms scheduled.');
+}
+
+function ensureAlarms(): void {
+  chrome.alarms.getAll(alarms => {
+    const names = alarms.map(a => a.name);
+    const hasDaily = names.includes(DAILY_RESET_ALARM);
+    const hasWeekly = names.includes(WEEKLY_RESET_ALARM);
+
+    if (!hasDaily || !hasWeekly) {
+      scheduleAlarms();
+    }
+  });
 }
 
 /**
@@ -260,6 +278,8 @@ chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) =>
           .catch(() => {
             // Ignore errors from sending to non-existent receivers
           });
+
+        ensureAlarms();
       })
       .catch(error => {
         console.error('Error handling video watched:', error);
