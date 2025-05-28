@@ -173,17 +173,12 @@ async function handleVideoWatched(watchData: WatchData): Promise<WatchData> {
     const previousWatchData = await getWatchedVideo(watchData.id);
     const selectedLanguages = await getSelectedLanguages();
 
-    // Calculate the new watch time delta
     const previousWatchTimeSeconds = previousWatchData?.watchTimeSeconds || 0;
     const watchTimeDelta = watchData.watchTimeSeconds - previousWatchTimeSeconds;
 
-    // Update language stats if this is a selected language and we have new watch time
-    if (
-      watchData.language?.primary &&
-      selectedLanguages.includes(watchData.language.primary) &&
-      watchTimeDelta > 0
-    ) {
-      await updateLanguageStats(watchData.language.primary, watchTimeDelta);
+    const effectiveLanguage = previousWatchData?.language?.primary || watchData.language?.primary;
+    if (effectiveLanguage && selectedLanguages.includes(effectiveLanguage) && watchTimeDelta > 0) {
+      await updateLanguageStats(effectiveLanguage, watchTimeDelta);
     }
 
     const isWatched =
@@ -191,13 +186,17 @@ async function handleVideoWatched(watchData: WatchData): Promise<WatchData> {
       (watchData.watchTimeSeconds >= settings.minimumWatchTimeSeconds &&
         watchData.watchPercentage >= settings.minimumWatchPercentage);
 
-    watchData.watched = isWatched;
-    watchData.lastWatched = Date.now();
+    const updatedWatchData = {
+      ...watchData,
+      watched: isWatched,
+      lastWatched: Date.now(),
+      language: previousWatchData?.language || watchData.language
+    };
 
-    await saveWatchedVideo(watchData);
-    console.log('Saved watch data for video:', watchData.id, 'Watched:', isWatched);
+    await saveWatchedVideo(updatedWatchData);
+    console.log('Saved watch data for video:', updatedWatchData.id, 'Watched:', isWatched);
 
-    return watchData;
+    return updatedWatchData;
   } catch (error) {
     console.error('Error storing watch data:', error);
     throw error;
@@ -245,6 +244,7 @@ async function updateVideoLanguage(watchData: WatchData, newLanguage: string): P
     primary: newLanguage,
     full: newLanguage
   };
+  console.log('updated video language', watchData);
   await saveWatchedVideo(watchData);
 }
 
